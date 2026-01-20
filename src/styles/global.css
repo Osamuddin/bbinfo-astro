@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ body {
+            background-color: #030303;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* -------------------------------------------
+           HeroGeometric 背景
+           ------------------------------------------- */
+        .hero-geometric-bg {
+            position: fixed;
+            top: 0; left: 0; 
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bg-blur-gradient {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom right, rgba(99, 102, 241, 0.05), transparent, rgba(244, 63, 94, 0.05));
+            z-index: 0;
+        }
+
+        .shape-wrapper {
+            position: absolute; opacity: 0; z-index: 1;
+            animation: drop-in 2.4s cubic-bezier(0.23, 0.86, 0.39, 0.96) forwards;
+        }
+
+        .shape-float {
+            position: relative; width: 100%; height: 100%;
+            animation: float-vertical 12s infinite ease-in-out;
+        }
+
+        .shape-content {
+            width: 100%; height: 100%; border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .shape-content::after {
+            content: ''; position: absolute; inset: 0; border-radius: 9999px;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2), transparent 70%);
+            z-index: 2;
+        }
+
+        @keyframes drop-in {
+            0% { opacity: 0; transform: translateY(-150px) rotate(var(--rot-start)); }
+            100% { opacity: 1; transform: translateY(0) rotate(var(--rot-end)); }
+        }
+        @keyframes float-vertical {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(15px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes pulse-opacity {
+            0%, 100% { opacity: 0.4; filter: brightness(100%); }
+            50% { opacity: 1; filter: brightness(200%); box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
+        }
+
+        @keyframes luxury-border-flow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* 回転アニメーション（CTA用） */
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        nav, section, footer { position: relative; z-index: 10; }
+
+        .glow-card-container {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+            border-radius: 1.5rem;
+            padding: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+        
+        .glow-card-container:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 20px 40px -10px rgba(0, 243, 255, 0.1);
+            z-index: 50;
+            cursor: pointer;
+        }
+
+        .glow-effect {
+            position: absolute; inset: 0; border-radius: inherit;
+            pointer-events: none;
+            overflow: hidden;
+            --start: 0; --spread: 60; --active: 0; --border-width: 2px;
+            --gradient: radial-gradient(circle, #00f3ff 10%, transparent 20%),
+                        radial-gradient(circle at 40% 40%, #bc13fe 10%, transparent 20%),
+                        radial-gradient(circle at 60% 60%, #00f3ff 10%, transparent 20%),
+                        repeating-conic-gradient(from 0deg at 50% 50%, #00f3ff 0%, #bc13fe 25%, #00f3ff 50%, #bc13fe 75%, #00f3ff 100%);
+        }
+
+        .glow-effect::after {
+            content: ""; position: absolute; inset: calc(-1 * var(--border-width));
+            border: var(--border-width) solid transparent; border-radius: inherit;
+            background: var(--gradient); background-attachment: fixed; opacity: var(--active);
+            transition: opacity 0.3s;
+            -webkit-mask: linear-gradient(#0000, #0000), conic-gradient(from calc((var(--start) - var(--spread)) * 1deg), transparent 0deg, #fff, transparent calc(var(--spread) * 2deg));
+            mask: linear-gradient(#0000, #0000), conic-gradient(from calc((var(--start) - var(--spread)) * 1deg), transparent 0deg, #fff, transparent calc(var(--spread) * 2deg));
+            -webkit-mask-clip: padding-box, border-box; mask-clip: padding-box, border-box;
+            -webkit-mask-composite: xor; mask-composite: exclude;
+        }
+
+        .static-card-container {
+            position: relative;
+            border-radius: 1.5rem;
+            padding: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .static-card-container:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .static-card-content {
+            background: rgba(5, 5, 5, 0.95);
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        details[open] summary .caret-icon {
+            transform: rotate(180deg);
+        }
+        .caret-icon {
+            transition: transform 0.2s ease;
+        }
+
+        .channel-grid-wrapper {
+            content-visibility: auto; 
+            contain-intrinsic-size: 0 500px;
+        }
+
+        .luxury-card-fix {
+            background: transparent !important; 
+            padding: 2px !important; 
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+        }
+        .luxury-card-fix::before {
+            content: '';
+            position: absolute; inset: 0; border-radius: inherit; z-index: -1; 
+            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.6), rgba(188, 19, 254, 0.6), transparent);
+            background-size: 200% 200%;
+            animation: luxury-border-flow 4s linear infinite;
+        }
+        .luxury-card-fix .glow-card-content {
+            background: rgba(5, 5, 5, 0.95);
+            height: 100%; width: 100%; border-radius: 1.4rem; 
+        }
+        .luxury-card-fix .glow-effect { z-index: 2; }
+        .luxury-card-fix .glow-effect::after { opacity: calc(var(--active) * 0.4) !important; }
+
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+            pointer-events: auto;
+        }
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .glass-header {
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            z-index: 100;
+        }
+
+        .glow-card-content {
+            position: relative; height: 100%; border-radius: 1.5rem;
+            background: rgba(5, 5, 5, 0.9);
+            padding: 2rem; overflow: hidden;
+        }
+
+        .reveal-up { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal-up.active { opacity: 1; transform: translateY(0); }
+
+        .bento-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1.5rem; }
+        @media (min-width: 768px) {
+            .bento-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto; }
+            .col-span-2 { grid-column: span 2; }
+            .col-span-3 { grid-column: span 3; }
+            .row-span-2 { grid-row: span 2; }
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        .text-glow { text-shadow: 0 0 20px rgba(0, 243, 255, 0.3); }
+
+        #mobile-menu { transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; background: rgba(5, 5, 5, 0.98) !important; z-index: 999; }
+        #mobile-menu.hidden { display: none; }
+        #mobile-menu.open { display: flex; transform: translateY(0); opacity: 1; }
+        #mobile-menu.closed { transform: translateY(-20px); opacity: 0; }
+
+        .gradient-button {
+            position: relative; appearance: none; cursor: pointer; background: #111;
+            background: radial-gradient(circle at center, #1f1f1f 0%, #000000 100%);
+            background: radial-gradient(var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y), var(--color-1) var(--stop-1), var(--color-2) var(--stop-2), var(--color-3) var(--stop-3), var(--color-4) var(--stop-4), var(--color-5) var(--stop-5));
+            transition: --pos-x 0.5s, --pos-y 0.5s, --spread-x 0.5s, --spread-y 0.5s, --color-1 0.5s, --color-2 0.5s, --color-3 0.5s, --color-4 0.5s, --color-5 0.5s, --border-angle 0.5s, --border-color-1 0.5s, --border-color-2 0.5s, --stop-1 0.5s, --stop-2 0.5s, --stop-3 0.5s, --stop-4 0.5s, --stop-5 0.5s;
+            z-index: 30;
+        }
+        @property --pos-x { syntax: '<percentage>'; initial-value: 11.14%; inherits: false; }
+        @property --pos-y { syntax: '<percentage>'; initial-value: 140%; inherits: false; }
+        @property --spread-x { syntax: '<percentage>'; initial-value: 150%; inherits: false; }
+        @property --spread-y { syntax: '<percentage>'; initial-value: 180.06%; inherits: false; }
+        @property --color-1 { syntax: '<color>'; initial-value: #000; inherits: false; }
+        @property --color-2 { syntax: '<color>'; initial-value: #08012c; inherits: false; }
+        @property --color-3 { syntax: '<color>'; initial-value: #4e1e40; inherits: false; }
+        @property --color-4 { syntax: '<color>'; initial-value: #70464e; inherits: false; }
+        @property --color-5 { syntax: '<color>'; initial-value: #88394c; inherits: false; }
+        @property --border-angle { syntax: '<angle>'; initial-value: 20deg; inherits: true; }
+        @property --border-color-1 { syntax: '<color>'; initial-value: hsla(340, 75%, 60%, 0.2); inherits: true; }
+        @property --border-color-2 { syntax: '<color>'; initial-value: hsla(340, 75%, 40%, 0.75); inherits: true; }
+        @property --stop-1 { syntax: '<percentage>'; initial-value: 37.35%; inherits: false; }
+        @property --stop-2 { syntax: '<percentage>'; initial-value: 61.36%; inherits: false; }
+        @property --stop-3 { syntax: '<percentage>'; initial-value: 78.42%; inherits: false; }
+        @property --stop-4 { syntax: '<percentage>'; initial-value: 89.52%; inherits: false; }
+        @property --stop-5 { syntax: '<percentage>'; initial-value: 100%; inherits: false; }
+
+        .gradient-button::before {
+            content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+            background: linear-gradient(var(--border-angle), var(--border-color-1), var(--border-color-2));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+        }
+        .gradient-button:hover {
+            --pos-x: 0%; --pos-y: 91.51%; --spread-x: 120.24%; --spread-y: 103.18%;
+            --color-1: #c96287; --color-2: #c66c64; --color-3: #cc7d23; --color-4: #37140a; --color-5: #000;
+            --border-angle: 190deg; --border-color-1: hsla(340, 78%, 90%, 0.1); --border-color-2: hsla(340, 75%, 90%, 0.6);
+            --stop-1: 0%; --stop-2: 8.8%; --stop-3: 21.44%; --stop-4: 71.34%; --stop-5: 85.76%;
+        }
+
+        .modal-overlay { background: rgba(0, 0, 0, 0.95); z-index: 1000; }

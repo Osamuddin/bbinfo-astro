@@ -1,0 +1,272 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="無料体験お申し込み | BBINFO">
+    <main class="relative z-10 pt-32 pb-20 px-6 min-h-screen">
+        <div class="max-w-2xl mx-auto">
+            
+            <div class="text-center mb-12 reveal-up">
+                <h1 class="text-3xl md:text-5xl font-black mb-4">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 text-glow">Free Trial</span>
+                </h1>
+                <p class="text-gray-300 text-lg">1週間無料体験のお申し込み</p>
+                <p class="text-sm text-gray-400 mt-2">完全無料・自動課金なし。まずは品質をお確かめください。</p>
+            </div>
+
+            <div class="glow-card-container reveal-up">
+                <div class="glow-effect" aria-hidden="true"></div>
+                
+                <div class="glow-card-content !p-8 md:!p-12 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+
+                    <form 
+                        method="POST" 
+                        action="/thanks" 
+                        name="trial-form" 
+                        data-netlify="true"
+                        class="space-y-8 relative z-10"
+                    >
+                        <input type="hidden" name="form-name" value="trial-form" />
+                        <input type="hidden" name="subject" value="【無料体験】Webサイトからのお申し込み" />
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-gray-300">お名前 <span class="text-red-500">*</span></label>
+                                <input type="text" name="name" placeholder="山田 太郎" class="glass-input" required>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-gray-300">お名前（アルファベット） <span class="text-red-500">*</span></label>
+                                <input type="text" name="name_alpha" placeholder="YAMADA TARO" class="glass-input" required>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-gray-300">電話番号 <span class="text-red-500">*</span></label>
+                                <input type="tel" name="phone" placeholder="+91 98765 43210" class="glass-input" required>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-gray-300">メールアドレス <span class="text-red-500">*</span></label>
+                                <input type="email" name="email" placeholder="your@email.com" class="glass-input" required>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-gray-300">住所 <span class="text-red-500">*</span></label>
+                            <textarea name="address" rows="3" placeholder="Building Name, Street, City, State, PIN Code" class="glass-input" required></textarea>
+                        </div>
+
+                        <div class="space-y-3">
+                            <label class="block text-sm font-bold text-gray-300">ご希望の機器設置方法 <span class="text-red-500">*</span></label>
+                            <div class="space-y-4">
+                                <label class="flex items-start gap-3 cursor-pointer group">
+                                    <input type="radio" name="installation_method" value="出張設置" class="custom-radio mt-1" required>
+                                    <div>
+                                        <span class="block text-sm font-medium group-hover:text-white transition-colors text-gray-300">出張設置（スタッフ訪問）</span>
+                                        <span class="block text-xs text-gray-500 mt-1">有料：Rs.2,000 / 出張対応時間：平日10:00-17:00<br>デリー・グルガオンの一部のみ</span>
+                                    </div>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="radio" name="installation_method" value="来店受取" class="custom-radio">
+                                    <span class="text-sm font-medium group-hover:text-white transition-colors text-gray-300">ご自身で設置（弊社オフィスで受取）</span>
+                                </label>
+                                <label class="flex items-start gap-3 cursor-pointer group">
+                                    <input type="radio" name="installation_method" value="郵送" class="custom-radio mt-1">
+                                    <div>
+                                        <span class="block text-sm font-medium group-hover:text-white transition-colors text-gray-300">ご自身で設置（機器を郵送）</span>
+                                        <span class="block text-xs text-gray-500 mt-1">勤務先への発送をご希望の場合は「その他・特記事項」欄にご記入ください</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-gray-300">設置／来店希望日</label>
+                                <div class="text-[10px] text-gray-500 mb-1">新規機械設置・修理受付<br>平日10:00-17:00　定休日:土曜日,日曜日</div>
+                                <div class="input-wrapper relative">
+                                    <input type="date" name="preferred_date" class="glass-input" placeholder="DD/MM/YYYY">
+                                    <i class="ph ph-calendar-blank input-icon absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-gray-300">設置／来店希望時間</label>
+                                <div class="text-[10px] text-transparent mb-1 select-none">Time Space<br>Space</div>
+                                <div class="input-wrapper relative">
+                                    <select name="preferred_time" class="glass-input appearance-none">
+                                        <option value="" disabled selected>時間を選択</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="10:30">10:30</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="11:30">11:30</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="12:30">12:30</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="13:30">13:30</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="14:30">14:30</option>
+                                        <option value="15:00">15:00</option>
+                                        <option value="15:30">15:30</option>
+                                        <option value="16:00">16:00</option>
+                                        <option value="16:30">16:30</option>
+                                        <option value="17:00">17:00</option>
+                                    </select>
+                                    <i class="ph ph-clock input-icon absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-gray-300">LANケーブル接続をご希望の場合は、テレビからルーターまでの壁伝いの長さを入力してください。</label>
+                            <div class="flex items-center gap-3">
+                                <input type="number" name="lan_cable_length" placeholder="10" min="0" step="0.5" class="glass-input max-w-[120px]">
+                                <span class="text-white font-medium">メートル</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <label class="block text-sm font-bold text-gray-300">BBINFOを知ったきっかけ （複数選択可） <span class="text-red-500">*</span></label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
+                                {[
+                                    "Web広告", "BBINFO公式サイト", "Chalo", "ご利用者様からの紹介", 
+                                    "チラシ", "不動産会社(スターツ)", "不動産会社(ピラミッドリロ)", 
+                                    "不動産会社(NRM International)", "日本人会", "その他"
+                                ].map((item) => (
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input type="checkbox" name="referral_source" value={item} class="custom-checkbox">
+                                        <span class="text-sm text-gray-400 group-hover:text-white transition-colors">{item}</span>
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-gray-300">その他・特記事項</label>
+                            <textarea name="notes" rows="3" placeholder="ご質問や郵送先などがあればご記入ください" class="glass-input"></textarea>
+                        </div>
+
+                        <div class="pt-6">
+                            <button type="submit" class="w-full gradient-button inline-flex items-center justify-center rounded-full px-6 md:px-9 py-4 text-sm leading-[19px] font-medium text-white font-sans font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:scale-105 transition-transform duration-300 whitespace-nowrap shadow-lg">
+                                <span class="flex items-center gap-2">
+                                    申し込む（無料） <i class="ph-bold ph-lightning"></i>
+                                </span>
+                            </button>
+                            
+                            <p class="text-center text-xs text-gray-500 mt-4">
+                                送信することで、<a href="/privacypolicy" class="text-cyan-400 underline hover:text-cyan-300 transition-colors">プライバシーポリシー</a>に同意したものとみなされます。
+                            </p>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    /* フォーム要素専用スタイル */
+    .glass-input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.75rem;
+        padding: 1rem;
+        color: white;
+        transition: all 0.3s ease;
+    }
+    
+    .glass-input:focus {
+        outline: none;
+        border-color: #00f3ff;
+        background: rgba(0, 243, 255, 0.05);
+        box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+    }
+    
+    .glass-input::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* 日付・時刻入力のアイコン調整 */
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        opacity: 0; cursor: pointer; z-index: 10;
+    }
+    input[type="date"], input[type="time"] { color-scheme: dark; }
+
+    /* カスタムラジオボタン */
+    .custom-radio {
+        appearance: none; width: 1.25rem; height: 1.25rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%; background-color: rgba(255, 255, 255, 0.05);
+        cursor: pointer; position: relative; transition: all 0.2s ease; flex-shrink: 0;
+    }
+    .custom-radio:checked {
+        border-color: #00f3ff; background-color: rgba(0, 243, 255, 0.2);
+    }
+    .custom-radio:checked::after {
+        content: ''; position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0.6rem; height: 0.6rem; background-color: #00f3ff;
+        border-radius: 50%; box-shadow: 0 0 10px #00f3ff;
+    }
+
+    /* カスタムチェックボックス */
+    .custom-checkbox {
+        appearance: none; width: 1.25rem; height: 1.25rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 0.25rem; background-color: rgba(255, 255, 255, 0.05);
+        cursor: pointer; position: relative; transition: all 0.2s ease; flex-shrink: 0;
+    }
+    .custom-checkbox:checked {
+        border-color: #00f3ff; background-color: #00f3ff;
+    }
+    .custom-checkbox:checked::after {
+        content: '✓'; position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        color: black; font-size: 0.8rem; font-weight: bold;
+    }
+</style>
+
+<script>
+    const initScrollObserver = () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+    };
+
+    const initGlowingEffect = () => {
+        const cards = document.querySelectorAll('.glow-card-container');
+        const handleMove = (e: MouseEvent) => {
+            cards.forEach(card => {
+                const htmlCard = card as HTMLElement;
+                const glowEffect = htmlCard.querySelector('.glow-effect') as HTMLElement;
+                if (!glowEffect) return;
+                const rect = htmlCard.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const inside = x >= -50 && x <= rect.width + 50 && y >= -50 && y <= rect.height + 50;
+                if (inside) {
+                    glowEffect.style.setProperty('--active', '1');
+                    const centerX = rect.width / 2; const centerY = rect.height / 2;
+                    const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) + 90;
+                    glowEffect.style.setProperty('--start', angle.toString());
+                } else {
+                    glowEffect.style.setProperty('--active', '0');
+                }
+            });
+        };
+        window.addEventListener('mousemove', handleMove);
+    };
+
+    initScrollObserver();
+    initGlowingEffect();
+</script>

@@ -1,0 +1,252 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="お問い合わせ | BBINFO">
+    <main class="min-h-screen pt-32 pb-20 px-6 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="text-center mb-12 reveal-up">
+                <h1 class="text-3xl md:text-5xl font-black mb-4">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 text-glow">Contact Us</span>
+                </h1>
+                <p class="text-gray-300 text-lg">お問い合わせ</p>
+                <p class="text-sm text-gray-400 mt-2">ご質問・ご相談などお気軽にお問い合わせください。</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start reveal-up">
+                
+                <div class="glow-card-container h-full">
+                    <div class="glow-effect" aria-hidden="true"></div>
+                    <div class="glow-card-content !p-8 md:!p-10 relative overflow-hidden h-full">
+                        <div class="absolute top-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-[80px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+
+                        <form 
+                            name="contact-form" 
+                            method="POST" 
+                            action="/thanks2" 
+                            data-netlify="true" 
+                            class="space-y-6 relative z-10"
+                        >
+                            <input type="hidden" name="form-name" value="contact-form" />
+                            <input type="hidden" name="subject" value="【お問い合わせ】Webサイトから" />
+                            
+                            <div class="space-y-2">
+                                <label for="name" class="block text-sm font-bold text-gray-300">お名前 <span class="text-red-500">*</span></label>
+                                <input type="text" id="name" name="name" placeholder="山田 太郎" class="glass-input" required>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <label for="email" class="block text-sm font-bold text-gray-300">メールアドレス <span class="text-red-500">*</span></label>
+                                <div class="input-wrapper relative">
+                                    <input type="email" id="email" name="email" placeholder="your@email.com" class="glass-input" required>
+                                    <i class="ph ph-envelope input-icon absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="phone" class="block text-sm font-bold text-gray-300">電話番号</label>
+                                <div class="input-wrapper relative">
+                                    <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" class="glass-input">
+                                    <i class="ph ph-phone input-icon absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="category" class="block text-sm font-bold text-gray-300">お問い合わせ内容 <span class="text-red-500">*</span></label>
+                                <div class="input-wrapper relative">
+                                    <select id="category" name="category" class="glass-input cursor-pointer appearance-none" required>
+                                        <option value="" disabled selected>選択してください</option>
+                                        <option value="サービスについて詳しく知りたい">サービスについて詳しく知りたい</option>
+                                        <option value="初期設定に関して">初期設定に関して</option>
+                                        <option value="視聴に関するトラブル">視聴に関するトラブル</option>
+                                        <option value="お支払いに関して">お支払いに関して</option>
+                                        <option value="その他">その他</option>
+                                    </select>
+                                    <i class="ph ph-caret-down input-icon absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="message" class="block text-sm font-bold text-gray-300">お問い合わせ詳細 <span class="text-red-500">*</span></label>
+                                <textarea id="message" rows="5" name="message" placeholder="詳細をご記入ください..." class="glass-input resize-none" required></textarea>
+                            </div>
+
+                            <div class="pt-4">
+                                <button type="submit" class="w-full gradient-button inline-flex items-center justify-center rounded-full px-6 md:px-9 py-4 text-sm leading-[19px] font-medium text-white font-sans font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring hover:scale-105 transition-transform duration-300 shadow-lg group">
+                                    <span class="flex items-center gap-2">
+                                        送信する <i class="ph-bold ph-paper-plane-right group-hover:translate-x-1 transition-transform"></i>
+                                    </span>
+                                </button>
+
+                                <p class="text-center text-xs text-gray-500 mt-4">
+                                    送信することで、<a href="/privacypolicy" class="text-cyan-400 underline hover:text-cyan-300 transition-colors">プライバシーポリシー</a>に同意したものとみなされます。
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-3xl p-8 md:p-10 flex flex-col h-full relative overflow-hidden border border-white/10">
+                    <div class="absolute bottom-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-[80px] translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+
+                    <div class="relative z-10 flex-grow flex flex-col">
+                        
+                        <div class="mb-8">
+                            <h3 class="text-xl font-black tracking-wide text-white">BBINFO INDIA</h3>
+                            <p class="text-sm text-gray-400 font-bold">JCNET Communications Pvt. Ltd.</p>
+                        </div>
+
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 text-white bg-white/5">
+                                    <i class="ph ph-map-pin"></i>
+                                </div>
+                                <div class="text-sm leading-relaxed text-gray-300">
+                                    3rd Floor, Building No.17 (Beyond Designs Building)<br>
+                                    KH. No.382, M.G.Road, Sultanpur, New Delhi 110030
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 text-white bg-white/5">
+                                    <i class="ph ph-envelope-simple"></i>
+                                </div>
+                                <div class="text-lg font-bold text-white tracking-wide break-all">
+                                    india@myslingtv.com
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 text-white bg-white/5">
+                                    <i class="ph ph-phone"></i>
+                                </div>
+                                <div class="text-base text-gray-300">
+                                    <span class="font-bold text-white">+91 95 6005 4243</span>
+                                    <span class="text-xs text-gray-400 ml-1 block sm:inline">(日本語／英語／ヒンディー)</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 text-white bg-white/5">
+                                    <i class="ph ph-buildings"></i>
+                                </div>
+                                <div class="text-sm text-gray-300 space-y-1">
+                                    <div><span class="font-bold text-white">営業時間</span> 〈月〜金〉 9:00〜18:00</div>
+                                    <div><span class="font-bold text-white">出張設置対応時間</span> 〈月〜金〉 10:00〜17:00</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full h-64 bg-gray-900 rounded-xl overflow-hidden shadow-inner border border-white/10 relative mb-6">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.946399126343!2d77.16016637616052!3d28.481413990938676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1f7b7b7b7b7b%3A0x7b7b7b7b7b7b7b7b!2sSultanpur!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                class="dark-map-filter absolute inset-0 w-full h-full">
+                            </iframe>
+                        </div>
+
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-5 relative overflow-hidden">
+                            <ul class="space-y-4 text-sm text-gray-300">
+                                <li class="flex items-start gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></div>
+                                    <div>
+                                        スルタンプルメトロ駅より徒歩7分
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></div>
+                                    <div>
+                                        アバロンコートヤードホテル 向かって右側の白いビル（家具工房）の3rd Floor (最上階)です。
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    /* フォーム要素専用スタイル */
+    .glass-input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.75rem;
+        padding: 1rem;
+        color: white;
+        transition: all 0.3s ease;
+    }
+    
+    .glass-input:focus {
+        outline: none;
+        border-color: #00f3ff;
+        background: rgba(0, 243, 255, 0.05);
+        box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+    }
+    
+    .glass-input::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Select要素のオプション背景 */
+    select.glass-input option {
+        background-color: #1a1a1a;
+        color: white;
+    }
+
+    /* Google Maps Dark Filter */
+    .dark-map-filter {
+        filter: grayscale(100%) invert(92%) contrast(83%);
+    }
+</style>
+
+<script>
+    const initScrollObserver = () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+    };
+
+    const initGlowingEffect = () => {
+        const cards = document.querySelectorAll('.glow-card-container');
+        const handleMove = (e: MouseEvent) => {
+            cards.forEach(card => {
+                const htmlCard = card as HTMLElement;
+                const glowEffect = htmlCard.querySelector('.glow-effect') as HTMLElement;
+                if (!glowEffect) return;
+                const rect = htmlCard.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const inside = x >= -50 && x <= rect.width + 50 && y >= -50 && y <= rect.height + 50;
+                if (inside) {
+                    glowEffect.style.setProperty('--active', '1');
+                    const centerX = rect.width / 2; const centerY = rect.height / 2;
+                    const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) + 90;
+                    glowEffect.style.setProperty('--start', angle.toString());
+                } else {
+                    glowEffect.style.setProperty('--active', '0');
+                }
+            });
+        };
+        window.addEventListener('mousemove', handleMove);
+    };
+
+    initScrollObserver();
+    initGlowingEffect();
+</script>
