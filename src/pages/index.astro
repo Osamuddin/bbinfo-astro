@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-    <section class="relative min-h-screen flex justify-center pt-36 pb-20 overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
             <div class="reveal-up font-black mb-10 tracking-tight">
                 <div class="text-3xl sm:text-5xl md:text-6xl lg:text-8xl mb-4 md:mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/80">
@@ -447,23 +447,19 @@ import Layout from '../layouts/Layout.astro';
                 }
                 const recentNews = data.slice(0, 3);
                 const html = recentNews.map(item => {
-                    // 日付データの取得（大文字・小文字両対応）
                     const entryDate = item.Date || item.date;
                     const entryTitle = item.Title || item.title;
                     const entryContent = item.Content || item.content || item.body;
                     const entryLabel = item.Label || item.label;
                     const entryType = item.Type || item.type;
 
-                    // 日付フォーマットの安全な変換
                     let dateStr = "";
                     if (entryDate) {
                         try {
                             const d = new Date(entryDate);
-                            // Invalid Dateチェック
                             if (d.toString() !== 'Invalid Date') {
                                 dateStr = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
                             } else {
-                                // パース失敗時は元の文字列を使用
                                 dateStr = String(entryDate);
                             }
                         } catch (e) {
