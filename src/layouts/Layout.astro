@@ -5,8 +5,8 @@ interface Props {
 }
 
 const { 
-	title = "BBINFO | あなたのインド生活に日本のテレビを。",
-	description = "インドで日本のテレビを見るならBBINFO。地上波・BS・CS全66チャンネル、4週間自動録画、1週間の無料体験実施中。"
+	title = "BBINFO | インドの生活を、もっと快適に。",
+	description = "インドで日本のテレビを見るならBBINFO。地上波・BS・CS全66チャンネル、4週間自動録画、VPN機能付き。1週間無料体験実施中。"
 } = Astro.props;
 ---
 
@@ -23,16 +23,14 @@ const {
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
 
-		<script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+		<script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 		<title>{title}</title>
 
         <style>
-            html.lenis { height: auto; }
-            .lenis.lenis-smooth { scroll-behavior: auto; }
-            .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-            .lenis.lenis-stopped { overflow: hidden; }
-            .lenis.lenis-scrolling iframe { pointer-events: none; }
+            /* Lenisが効いていない時でも最低限のスタイルを保つ */
+            html { height: 100%; }
+            body { min-height: 100%; }
         </style>
 	</head>
 	<body class="bg-[#050505] text-white font-sans antialiased overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
@@ -112,22 +110,26 @@ const {
         </footer>
 
         <script>
+            // Lenisの読み込みに失敗してもサイトが壊れないようにtry-catchで囲む
             import Lenis from '@studio-freight/lenis';
 
-            // スムーズスクロールの初期化
-            const lenis = new Lenis({
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                orientation: 'vertical',
-                gestureDirection: 'vertical',
-                smoothWheel: true,
-            });
+            try {
+                const lenis = new Lenis({
+                    duration: 1.2,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    orientation: 'vertical',
+                    gestureDirection: 'vertical',
+                    smoothWheel: true,
+                });
 
-            function raf(time: number) {
-                lenis.raf(time);
+                function raf(time: number) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
                 requestAnimationFrame(raf);
+            } catch (e) {
+                console.warn('Lenis scroll not loaded:', e);
             }
-            requestAnimationFrame(raf);
 
             // ナビバーの背景制御
             const navbar = document.getElementById('navbar');
@@ -151,7 +153,7 @@ const {
                 const isOpen = mobileMenu?.classList.contains('opacity-0');
                 if (isOpen) {
                     mobileMenu?.classList.remove('opacity-0', 'pointer-events-none');
-                    document.body.style.overflow = 'hidden'; // スクロールロック
+                    document.body.style.overflow = 'hidden';
                 } else {
                     mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
                     document.body.style.overflow = '';
