@@ -60,5 +60,39 @@ import Footer from '../components/Footer.astro';
 		</main>
 		
         <Footer />
+        <div id="floating-cta" class="md:hidden fixed bottom-0 left-0 w-full p-4 z-[60] translate-y-full opacity-0 transition-all duration-500 ease-in-out">
+            <a href="/trial" class="flex items-center justify-center w-full h-14 bg-gradient-to-r from-indigo-600 via-purple-600 to-rose-600 text-white font-bold rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.5)] border border-white/20 active:scale-95 transition-transform">
+                <span class="flex items-center gap-2">
+                    1週間の無料体験を申し込む <i class="ph-bold ph-lightning"></i>
+                </span>
+            </a>
+        </div>
+
+        <script>
+            // スクロール検知：一定量スクロールしたらボタンを出す
+            const floatingCta = document.getElementById('floating-cta');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) { // 300px以上スクロールしたら表示
+                    floatingCta?.classList.remove('translate-y-full', 'opacity-0');
+                    floatingCta?.classList.add('translate-y-0', 'opacity-100');
+                } else {
+                    floatingCta?.classList.add('translate-y-full', 'opacity-0');
+                    floatingCta?.classList.remove('translate-y-0', 'opacity-100');
+                }
+            });
+
+            // 既存のナビバー制御などのスクリプトがここにあるはずです
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar?.classList.add('bg-black/80', 'backdrop-blur-md', 'border-white/10');
+                } else {
+                    navbar?.classList.remove('bg-black/80', 'backdrop-blur-md', 'border-white/10');
+                }
+            });
+
+            // モバイルメニュー等の制御コードが続く...
+        </script>
 	</body>
 </html>
