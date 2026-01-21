@@ -21,43 +21,50 @@ import Layout from '../layouts/Layout.astro';
                     <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
 
                     <form 
+                        id="trial-form"
                         method="POST" 
                         action="/success/" 
                         name="trial-form" 
                         data-netlify="true"
                         class="space-y-8 relative z-10"
+                        novalidate
                     >
                         <input type="hidden" name="form-name" value="trial-form" />
                         <input type="hidden" name="subject" value="【無料体験】Webサイトからのお申し込み" />
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="block text-sm font-bold text-gray-300">お名前 <span class="text-red-500">*</span></label>
-                                <input type="text" name="name" placeholder="山田 太郎" class="glass-input" required>
+                                <label for="name" class="block text-sm font-bold text-gray-300">お名前 <span class="text-red-500">*</span></label>
+                                <input type="text" id="name" name="name" placeholder="山田 太郎" class="glass-input" required>
+                                <p class="error-message text-red-400 text-xs hidden">お名前を入力してください</p>
                             </div>
                             <div class="space-y-2">
-                                <label class="block text-sm font-bold text-gray-300">お名前（アルファベット） <span class="text-red-500">*</span></label>
-                                <input type="text" name="name_alpha" placeholder="YAMADA TARO" class="glass-input" required>
+                                <label for="name_alpha" class="block text-sm font-bold text-gray-300">お名前（アルファベット） <span class="text-red-500">*</span></label>
+                                <input type="text" id="name_alpha" name="name_alpha" placeholder="YAMADA TARO" class="glass-input" required>
+                                <p class="error-message text-red-400 text-xs hidden">アルファベットでお名前を入力してください</p>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="block text-sm font-bold text-gray-300">電話番号 <span class="text-red-500">*</span></label>
-                                <input type="tel" name="phone" placeholder="+91 98765 43210" class="glass-input" required>
+                                <label for="phone" class="block text-sm font-bold text-gray-300">電話番号 <span class="text-red-500">*</span></label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" class="glass-input" required>
+                                <p class="error-message text-red-400 text-xs hidden">電話番号を入力してください</p>
                             </div>
                             <div class="space-y-2">
-                                <label class="block text-sm font-bold text-gray-300">メールアドレス <span class="text-red-500">*</span></label>
-                                <input type="email" name="email" placeholder="your@email.com" class="glass-input" required>
+                                <label for="email" class="block text-sm font-bold text-gray-300">メールアドレス <span class="text-red-500">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" class="glass-input" required>
+                                <p class="error-message text-red-400 text-xs hidden">有効なメールアドレスを入力してください</p>
                             </div>
                         </div>
 
                         <div class="space-y-2">
-                            <label class="block text-sm font-bold text-gray-300">住所 <span class="text-red-500">*</span></label>
-                            <textarea name="address" rows="3" placeholder="Building Name, Street, City, State, PIN Code" class="glass-input" required></textarea>
+                            <label for="address" class="block text-sm font-bold text-gray-300">住所 <span class="text-red-500">*</span></label>
+                            <textarea id="address" name="address" rows="3" placeholder="Building Name, Street, City, State, PIN Code" class="glass-input" required></textarea>
+                            <p class="error-message text-red-400 text-xs hidden">住所を入力してください</p>
                         </div>
 
-                        <div class="space-y-3">
+                        <div class="space-y-3" id="installation-group">
                             <label class="block text-sm font-bold text-gray-300">ご希望の機器設置方法 <span class="text-red-500">*</span></label>
                             <div class="space-y-4">
                                 <label class="flex items-start gap-3 cursor-pointer group">
@@ -79,6 +86,7 @@ import Layout from '../layouts/Layout.astro';
                                     </div>
                                 </label>
                             </div>
+                            <p class="error-message text-red-400 text-xs hidden">設置方法を選択してください</p>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
@@ -125,7 +133,7 @@ import Layout from '../layouts/Layout.astro';
                             </div>
                         </div>
 
-                        <div class="space-y-3">
+                        <div class="space-y-3" id="referral-group">
                             <label class="block text-sm font-bold text-gray-300">BBINFOを知ったきっかけ （複数選択可） <span class="text-red-500">*</span></label>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
                                 {[
@@ -139,6 +147,7 @@ import Layout from '../layouts/Layout.astro';
                                     </label>
                                 ))}
                             </div>
+                            <p class="error-message text-red-400 text-xs hidden">少なくとも1つ選択してください</p>
                         </div>
 
                         <div class="space-y-2">
@@ -147,7 +156,7 @@ import Layout from '../layouts/Layout.astro';
                         </div>
 
                         <div class="pt-6">
-                            <button type="submit" class="w-full gradient-button inline-flex items-center justify-center rounded-full px-6 md:px-9 py-4 text-sm leading-[19px] font-medium text-white font-sans font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:scale-105 transition-transform duration-300 whitespace-nowrap shadow-lg">
+                            <button type="submit" class="w-full gradient-button inline-flex items-center justify-center rounded-full px-6 md:px-9 py-4 text-sm leading-[19px] font-medium text-white font-sans font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring hover:scale-105 transition-transform duration-300 whitespace-nowrap shadow-lg">
                                 <span class="flex items-center gap-2">
                                     申し込む（無料） <i class="ph-bold ph-lightning"></i>
                                 </span>
@@ -182,6 +191,11 @@ import Layout from '../layouts/Layout.astro';
         border-color: #00f3ff;
         background: rgba(0, 243, 255, 0.05);
         box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+    }
+    
+    .glass-input.error {
+        border-color: #ef4444; /* red-500 */
+        background: rgba(239, 68, 68, 0.1);
     }
     
     .glass-input::placeholder {
@@ -232,6 +246,84 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
+    // ------------------------------------------
+    // バリデーション機能
+    // ------------------------------------------
+    const form = document.getElementById('trial-form') as HTMLFormElement;
+    
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            let isValid = true;
+            
+            // 1. テキスト入力の必須チェック
+            const requiredTextIds = ['name', 'name_alpha', 'phone', 'email', 'address'];
+            requiredTextIds.forEach(id => {
+                const input = document.getElementById(id) as HTMLInputElement | HTMLTextAreaElement;
+                const errorMsg = input.nextElementSibling as HTMLElement;
+
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('error');
+                    if(errorMsg && errorMsg.classList.contains('error-message')) {
+                        errorMsg.classList.remove('hidden');
+                    }
+                } else {
+                    input.classList.remove('error');
+                    if(errorMsg && errorMsg.classList.contains('error-message')) {
+                        errorMsg.classList.add('hidden');
+                    }
+                }
+            });
+
+            // 2. ラジオボタン（設置方法）の必須チェック
+            const installationGroup = document.getElementById('installation-group');
+            const installationRadios = document.querySelectorAll('input[name="installation_method"]');
+            const installationError = installationGroup?.querySelector('.error-message');
+            let isInstallationChecked = false;
+            
+            installationRadios.forEach((radio: any) => {
+                if (radio.checked) isInstallationChecked = true;
+            });
+
+            if (!isInstallationChecked) {
+                isValid = false;
+                if(installationError) installationError.classList.remove('hidden');
+            } else {
+                if(installationError) installationError.classList.add('hidden');
+            }
+
+            // 3. チェックボックス（きっかけ）の必須チェック
+            const referralGroup = document.getElementById('referral-group');
+            const referralCheckboxes = document.querySelectorAll('input[name="referral_source"]');
+            const referralError = referralGroup?.querySelector('.error-message');
+            let isReferralChecked = false;
+
+            referralCheckboxes.forEach((checkbox: any) => {
+                if (checkbox.checked) isReferralChecked = true;
+            });
+
+            if (!isReferralChecked) {
+                isValid = false;
+                if(referralError) referralError.classList.remove('hidden');
+            } else {
+                if(referralError) referralError.classList.add('hidden');
+            }
+
+            // バリデーションNGなら送信を止める
+            if (!isValid) {
+                e.preventDefault();
+                // 最初のエラー箇所へスクロール（簡易的）
+                const firstError = document.querySelector('.error-message:not(.hidden)');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+    }
+
+    // ------------------------------------------
+    // スクロール＆エフェクト
+    // ------------------------------------------
     const initScrollObserver = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {

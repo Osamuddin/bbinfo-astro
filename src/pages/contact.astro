@@ -22,11 +22,13 @@ import Layout from '../layouts/Layout.astro';
                         <div class="absolute top-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-[80px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
                         <form 
+                            id="contact-form"
                             name="contact-form" 
                             method="POST" 
                             action="/complete/" 
                             data-netlify="true" 
                             class="space-y-6 relative z-10"
+                            novalidate
                         >
                             <input type="hidden" name="form-name" value="contact-form" />
                             <input type="hidden" name="subject" value="【お問い合わせ】Webサイトから" />
@@ -34,6 +36,7 @@ import Layout from '../layouts/Layout.astro';
                             <div class="space-y-2">
                                 <label for="name" class="block text-sm font-bold text-gray-300">お名前 <span class="text-red-500">*</span></label>
                                 <input type="text" id="name" name="name" placeholder="山田 太郎" class="glass-input" required>
+                                <p class="error-message text-red-400 text-xs hidden">お名前を入力してください</p>
                             </div>
                             
                             <div class="space-y-2">
@@ -42,6 +45,7 @@ import Layout from '../layouts/Layout.astro';
                                     <input type="email" id="email" name="email" placeholder="your@email.com" class="glass-input" required>
                                     <i class="ph ph-envelope input-icon absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
                                 </div>
+                                <p class="error-message text-red-400 text-xs hidden">有効なメールアドレスを入力してください</p>
                             </div>
 
                             <div class="space-y-2">
@@ -65,11 +69,13 @@ import Layout from '../layouts/Layout.astro';
                                     </select>
                                     <i class="ph ph-caret-down input-icon absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
                                 </div>
+                                <p class="error-message text-red-400 text-xs hidden">お問い合わせ内容を選択してください</p>
                             </div>
 
                             <div class="space-y-2">
                                 <label for="message" class="block text-sm font-bold text-gray-300">お問い合わせ詳細 <span class="text-red-500">*</span></label>
                                 <textarea id="message" rows="5" name="message" placeholder="詳細をご記入ください..." class="glass-input resize-none" required></textarea>
+                                <p class="error-message text-red-400 text-xs hidden">お問い合わせ詳細を入力してください</p>
                             </div>
 
                             <div class="pt-4">
@@ -195,6 +201,11 @@ import Layout from '../layouts/Layout.astro';
         box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
     }
     
+    .glass-input.error {
+        border-color: #ef4444; /* red-500 */
+        background: rgba(239, 68, 68, 0.1);
+    }
+    
     .glass-input::placeholder {
         color: rgba(255, 255, 255, 0.3);
     }
@@ -212,6 +223,46 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
+    // ------------------------------------------
+    // バリデーション機能
+    // ------------------------------------------
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            let isValid = true;
+            
+            // 必須項目のIDリスト
+            const requiredIds = ['name', 'email', 'category', 'message'];
+            
+            requiredIds.forEach(id => {
+                const input = document.getElementById(id) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+                const errorMsg = input.nextElementSibling as HTMLElement; // inputの次の要素（pタグ）
+
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('error');
+                    if(errorMsg && errorMsg.classList.contains('error-message')) {
+                        errorMsg.classList.remove('hidden');
+                    }
+                } else {
+                    input.classList.remove('error');
+                    if(errorMsg && errorMsg.classList.contains('error-message')) {
+                        errorMsg.classList.add('hidden');
+                    }
+                }
+            });
+
+            // バリデーションNGなら送信を止める
+            if (!isValid) {
+                e.preventDefault();
+            }
+        });
+    }
+
+    // ------------------------------------------
+    // スクロール＆エフェクト
+    // ------------------------------------------
     const initScrollObserver = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
