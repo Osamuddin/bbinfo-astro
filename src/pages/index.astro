@@ -37,7 +37,15 @@ import Layout from '../layouts/Layout.astro';
                 <div class="col-span-1 md:col-span-2 row-span-2 reveal-up glass-panel p-0 rounded-3xl overflow-hidden group hover:border-white/20 transition-colors duration-500 min-h-[300px]">
                     <div class="relative h-full flex flex-col justify-end p-8">
                         <div class="absolute top-0 right-0 w-full h-full z-0">
-                            <img src="/images/shibuya.avif" alt="Tokyo Neon Night" class="w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-700">
+                            <img 
+                                src="/images/shibuya.avif" 
+                                alt="Tokyo Neon Night" 
+                                width="800" 
+                                height="600"
+                                loading="lazy"
+                                decoding="async"
+                                class="w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-700"
+                            >
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
                         </div>
                         <div class="relative z-10 h-full flex flex-col justify-end">
@@ -197,7 +205,15 @@ import Layout from '../layouts/Layout.astro';
 
     <section id="trial" class="py-32 px-6 relative">
         <div class="absolute inset-0 z-0">
-            <img src="/images/circuit.avif" alt="World Connection" class="w-full h-full object-cover opacity-30">
+            <img 
+                src="/images/circuit.avif" 
+                alt="World Connection" 
+                width="1200" 
+                height="800"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover opacity-30"
+            >
             <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent"></div>
         </div>
         <div class="max-w-3xl mx-auto text-center relative z-10 glow-card-container reveal-up group luxury-card-fix">
@@ -237,8 +253,13 @@ import Layout from '../layouts/Layout.astro';
                 <h2 class="text-3xl md:text-5xl font-bold mb-4">お知らせ</h2>
                 <p class="text-gray-400">最新のニュース</p>
             </div>
-            <div id="news-container" class="flex flex-col gap-3 reveal-up min-h-[200px]">
-                <div class="text-center text-gray-500 py-10">Loading news...</div>
+            <div id="news-container" class="flex flex-col gap-3 reveal-up min-h-[300px]">
+                <div class="glass-panel p-5 h-24 flex items-center justify-center text-gray-500 animate-pulse">
+                    Loading news...
+                </div>
+                <div class="glass-panel p-5 h-24 hidden md:flex items-center justify-center text-gray-500 animate-pulse">
+                    Waiting for data...
+                </div>
             </div>
         </div>
     </section>
