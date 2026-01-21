@@ -27,19 +27,13 @@ const {
 
 		<title>{title}</title>
 
-        <style>
-            /* Lenisが効いていない時でも最低限のスタイルを保つ */
-            html { height: 100%; }
-            body { min-height: 100%; }
-        </style>
-	</head>
+        </head>
 	<body class="bg-[#050505] text-white font-sans antialiased overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
 		
         <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent" id="navbar">
             <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                <a href="/" class="text-2xl font-black tracking-tighter flex items-center gap-2 group">
-                    <div class="w-8 h-8 rounded bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-white text-lg group-hover:scale-110 transition-transform">B</div>
-                    <span>BBINFO</span>
+                <a href="/" class="flex items-center gap-2 group">
+                    <span class="text-2xl font-black tracking-tighter text-white">BBINFO</span>
                 </a>
 
                 <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
@@ -110,26 +104,8 @@ const {
         </footer>
 
         <script>
-            // Lenisの読み込みに失敗してもサイトが壊れないようにtry-catchで囲む
-            import Lenis from '@studio-freight/lenis';
-
-            try {
-                const lenis = new Lenis({
-                    duration: 1.2,
-                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                    orientation: 'vertical',
-                    gestureDirection: 'vertical',
-                    smoothWheel: true,
-                });
-
-                function raf(time: number) {
-                    lenis.raf(time);
-                    requestAnimationFrame(raf);
-                }
-                requestAnimationFrame(raf);
-            } catch (e) {
-                console.warn('Lenis scroll not loaded:', e);
-            }
+            // 【修正】Lenis（重いスクロール制御）を完全に削除しました。
+            // これによりブラウザ標準の軽いスクロールに戻ります。
 
             // ナビバーの背景制御
             const navbar = document.getElementById('navbar');
