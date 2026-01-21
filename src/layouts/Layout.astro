@@ -1,144 +1,64 @@
 ---
-interface Props {
-	title?: string;
-	description?: string;
-}
-
-const { 
-	title = "BBINFO | インドの生活を、もっと快適に。",
-	description = "インドで日本のテレビを見るならBBINFO。地上波・BS・CS全66チャンネル、4週間自動録画、VPN機能付き。1週間無料体験実施中。"
-} = Astro.props;
+// src/layouts/Layout.astro
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <!doctype html>
 <html lang="ja" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+        
+        <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+
+		<title>BBINFO | インドで日本のテレビを見るなら</title>
+	</head>
+    
+    <body class="antialiased selection:bg-cyan-500 selection:text-white bg-[#030303] text-white">
+        
+        <div class="hero-geometric-bg">
+            <div class="bg-blur-gradient"></div>
+
+            <div class="shape-wrapper" style="top: 20%; left: -10%; --rot-start: -3deg; --rot-end: 12deg; animation-delay: 0.3s;">
+                <div class="shape-float" style="width: 600px; height: 140px;">
+                    <div class="shape-content" style="background: linear-gradient(to right, rgba(99, 102, 241, 0.15), transparent); animation: pulse-opacity 10s infinite ease-in-out;"></div>
+                </div>
+            </div>
+            <div class="shape-wrapper" style="top: 70%; right: -5%; --rot-start: -30deg; --rot-end: -15deg; animation-delay: 0.5s;">
+                <div class="shape-float" style="width: 500px; height: 120px;">
+                    <div class="shape-content" style="background: linear-gradient(to right, rgba(244, 63, 94, 0.15), transparent); animation: pulse-opacity 14s infinite ease-in-out 2s;"></div>
+                </div>
+            </div>
+            <div class="shape-wrapper" style="bottom: 10%; left: 5%; --rot-start: -23deg; --rot-end: -8deg; animation-delay: 0.4s;">
+                <div class="shape-float" style="width: 300px; height: 80px;">
+                    <div class="shape-content" style="background: linear-gradient(to right, rgba(139, 92, 246, 0.15), transparent); animation: pulse-opacity 9s infinite ease-in-out 1s;"></div>
+                </div>
+            </div>
+            <div class="shape-wrapper" style="top: 15%; right: 20%; --rot-start: 5deg; --rot-end: 20deg; animation-delay: 0.6s;">
+                <div class="shape-float" style="width: 200px; height: 60px;">
+                    <div class="shape-content" style="background: linear-gradient(to right, rgba(245, 158, 11, 0.15), transparent); animation: pulse-opacity 11s infinite ease-in-out 4s;"></div>
+                </div>
+            </div>
+            <div class="shape-wrapper" style="top: 10%; left: 25%; --rot-start: -40deg; --rot-end: -25deg; animation-delay: 0.7s;">
+                <div class="shape-float" style="width: 150px; height: 40px;">
+                    <div class="shape-content" style="background: linear-gradient(to right, rgba(6, 182, 212, 0.15), transparent); animation: pulse-opacity 13s infinite ease-in-out 3s;"></div>
+                </div>
+            </div>
+        </div>
+        <Header />
+
+        <main class="relative w-full overflow-x-hidden">
+		    <slot />
+		</main>
 		
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-
-		<script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-		<title>{title}</title>
-
-        </head>
-	<body class="bg-[#050505] text-white font-sans antialiased overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
-		
-        <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent" id="navbar">
-            <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                <a href="/" class="flex items-center gap-2 group">
-                    <span class="text-2xl font-black tracking-tighter text-white">BBINFO</span>
-                </a>
-
-                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-                    <a href="/#service_detail" class="hover:text-white transition-colors">サービス特徴</a>
-                    <a href="/#channels" class="hover:text-white transition-colors">チャンネル</a>
-                    <a href="/#pricing" class="hover:text-white transition-colors">料金プラン</a>
-                    <a href="/contact" class="hover:text-white transition-colors">お問い合わせ</a>
-                    <a href="/trial" class="px-5 py-2.5 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition-colors">無料体験</a>
-                </nav>
-
-                <button id="menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
-                    <i class="ph ph-list"></i>
-                </button>
-            </div>
-
-            <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-40 flex flex-col items-center justify-center gap-8 text-xl font-bold opacity-0 pointer-events-none transition-all duration-300">
-                <a href="/#service_detail" class="mobile-link hover:text-cyan-400">サービス特徴</a>
-                <a href="/#channels" class="mobile-link hover:text-cyan-400">チャンネル</a>
-                <a href="/#pricing" class="mobile-link hover:text-cyan-400">料金プラン</a>
-                <a href="/contact" class="mobile-link hover:text-cyan-400">お問い合わせ</a>
-                <a href="/trial" class="mobile-link text-cyan-400">無料体験</a>
-                <button id="close-menu-btn" class="absolute top-6 right-6 text-3xl text-gray-500 hover:text-white">
-                    <i class="ph ph-x"></i>
-                </button>
-            </div>
-        </header>
-
-		<slot />
-
-        <footer class="py-12 px-6 border-t border-white/10 bg-[#020202] relative z-10">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-sm">
-                <div class="space-y-4">
-                    <div class="text-xl font-black">BBINFO</div>
-                    <p class="text-gray-500 leading-relaxed">
-                        インド生活をより豊かに、快適に。<br>
-                        日本のテレビを通じて、<br>安心とエンターテインメントをお届けします。
-                    </p>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 text-gray-300">サービス</h4>
-                    <ul class="space-y-2 text-gray-500">
-                        <li><a href="/#service_detail" class="hover:text-white transition-colors">機能・特徴</a></li>
-                        <li><a href="/#channels" class="hover:text-white transition-colors">チャンネル一覧</a></li>
-                        <li><a href="/#pricing" class="hover:text-white transition-colors">料金プラン</a></li>
-                        <li><a href="/trial" class="hover:text-white transition-colors">無料体験申し込み</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 text-gray-300">サポート</h4>
-                    <ul class="space-y-2 text-gray-500">
-                        <li><a href="/contact" class="hover:text-white transition-colors">お問い合わせ</a></li>
-                        <li><a href="/faq" class="hover:text-white transition-colors">よくある質問</a></li>
-                        <li><a href="/setup" class="hover:text-white transition-colors">設置ガイド</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 text-gray-300">会社情報</h4>
-                    <ul class="space-y-2 text-gray-500">
-                        <li><a href="/company" class="hover:text-white transition-colors">運営会社</a></li>
-                        <li><a href="/privacypolicy" class="hover:text-white transition-colors">プライバシーポリシー</a></li>
-                        <li><a href="/terms" class="hover:text-white transition-colors">利用規約</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 text-center text-xs text-gray-600">
-                &copy; {new Date().getFullYear()} BBINFO INDIA. All rights reserved.
-            </div>
-        </footer>
-
-        <script>
-            // 【修正】Lenis（重いスクロール制御）を完全に削除しました。
-            // これによりブラウザ標準の軽いスクロールに戻ります。
-
-            // ナビバーの背景制御
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar?.classList.add('bg-black/80', 'backdrop-blur-md', 'border-white/10');
-                    navbar?.classList.remove('border-transparent');
-                } else {
-                    navbar?.classList.remove('bg-black/80', 'backdrop-blur-md', 'border-white/10');
-                    navbar?.classList.add('border-transparent');
-                }
-            });
-
-            // モバイルメニュー制御
-            const menuBtn = document.getElementById('menu-btn');
-            const closeMenuBtn = document.getElementById('close-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-
-            const toggleMenu = () => {
-                const isOpen = mobileMenu?.classList.contains('opacity-0');
-                if (isOpen) {
-                    mobileMenu?.classList.remove('opacity-0', 'pointer-events-none');
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
-                    document.body.style.overflow = '';
-                }
-            };
-
-            menuBtn?.addEventListener('click', toggleMenu);
-            closeMenuBtn?.addEventListener('click', toggleMenu);
-            mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
-        </script>
+        <Footer />
 	</body>
 </html>
