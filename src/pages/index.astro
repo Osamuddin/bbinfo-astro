@@ -98,7 +98,7 @@ import Layout from '../layouts/Layout.astro';
             
             <div class="space-y-6">
                 <div class="static-card-container reveal-up accordion-item" data-state="closed">
-                    <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none hover:bg-white/5 transition-colors text-left accordion-trigger focus:outline-none">
+                    <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none md:hover:bg-white/5 transition-colors text-left accordion-trigger focus:outline-none select-none">
                         <div class="flex items-center gap-4 pointer-events-none">
                             <span class="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_white]"></span>
                             <span class="font-bold text-base md:text-lg text-white">地上波：15ch</span>
@@ -117,7 +117,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
 
                 <div class="static-card-container reveal-up accordion-item" data-state="closed">
-                    <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none bg-blue-900/10 hover:bg-blue-900/20 transition-colors text-left accordion-trigger focus:outline-none">
+                    <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none bg-blue-900/10 md:hover:bg-blue-900/20 transition-colors text-left accordion-trigger focus:outline-none select-none">
                         <div class="flex items-center gap-4 pointer-events-none">
                             <span class="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_10px_#60a5fa]"></span>
                             <span class="font-bold text-base md:text-lg text-white">BS：21ch</span>
@@ -136,7 +136,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
 
                 <div class="static-card-container reveal-up accordion-item" data-state="closed">
-                    <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none bg-green-900/10 hover:bg-green-900/20 transition-colors text-left accordion-trigger focus:outline-none">
+                    <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none bg-green-900/10 md:hover:bg-green-900/20 transition-colors text-left accordion-trigger focus:outline-none select-none">
                         <div class="flex items-center gap-4 pointer-events-none">
                             <span class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_#4ade80]"></span>
                             <span class="font-bold text-base md:text-lg text-white">CS：30ch</span>
@@ -276,7 +276,7 @@ import Layout from '../layouts/Layout.astro';
                 <div><h3 class="modal-plan-name text-3xl font-black text-white tracking-tight leading-none mb-1">Plan A</h3><p class="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Channel List</p></div>
                 <button onclick="closeChannelModal()" class="text-gray-500 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10"><i class="ph-bold ph-x text-lg"></i></button>
             </div>
-            <div id="modal-content" class="p-6 max-h-[60vh] overflow-y-auto custom-scrollbar" data-lenis-prevent></div>
+            <div id="modal-content" class="p-6 max-h-[60vh] overflow-y-auto custom-scrollbar overscroll-contain" data-lenis-prevent></div>
             <div class="px-6 py-3 border-t border-white/5 bg-black/20 text-center"><button id="modal-close-btn" onclick="closeChannelModal()" class="w-full sm:w-auto px-6 py-2 rounded-lg border border-white/10 hover:bg-white hover:text-black text-gray-300 text-xs font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black">閉じる</button></div>
         </div>
     </div>
@@ -289,7 +289,7 @@ import Layout from '../layouts/Layout.astro';
                     <i class="ph-bold ph-x text-lg"></i>
                 </button>
             </div>
-            <div id="news-modal-body" class="p-8 text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-wrap max-h-[60vh] overflow-y-auto custom-scrollbar"></div>
+            <div id="news-modal-body" class="p-8 text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-wrap max-h-[60vh] overflow-y-auto custom-scrollbar overscroll-contain"></div>
             <div class="px-6 py-3 border-t border-white/5 bg-black/20 text-center">
                 <button id="news-modal-close-btn" onclick="closeNewsModal()" class="w-full sm:w-auto px-6 py-2 rounded-lg border border-white/10 hover:bg-white hover:text-black text-gray-300 text-xs font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black">閉じる</button>
             </div>
@@ -309,9 +309,6 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script is:inline>
-    // スクロール位置保存用変数
-    let savedScrollPosition = 0;
-
     // ==========================================
     // UI Interaction Logic
     // ==========================================
@@ -366,7 +363,7 @@ import Layout from '../layouts/Layout.astro';
 
             trigger.addEventListener('click', (e) => {
                 e.preventDefault();
-                e.stopPropagation(); // バブリング防止
+                e.stopPropagation();
                 
                 // data-state属性で管理 (確実に判定するため)
                 const isClosed = acc.getAttribute('data-state') === 'closed';
@@ -389,7 +386,40 @@ import Layout from '../layouts/Layout.astro';
     };
 
     // ==========================================
-    // Channel Modal Logic (Blackout & Scroll Fix)
+    // Modal Interaction (Blackout Fix)
+    // ==========================================
+    
+    // 背景のスクロールを止めるための関数（iOS対策）
+    const preventTouchMove = (e) => {
+        // オーバーレイ自体をタッチしている時だけスクロールをブロック
+        if (e.target.classList.contains('modal-overlay')) {
+            e.preventDefault();
+        }
+    };
+
+    const enableScrollLock = (overlay) => {
+        // position: fixed を使わず、overflow: hidden で固定する
+        // これにより、閉じた瞬間の再描画負荷（ブラックアウトの原因）を回避
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+        
+        // iOSで背景がスクロールしないようにタッチイベントをブロック
+        if (overlay) {
+            overlay.addEventListener('touchmove', preventTouchMove, { passive: false });
+        }
+    };
+
+    const disableScrollLock = (overlay) => {
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        
+        if (overlay) {
+            overlay.removeEventListener('touchmove', preventTouchMove);
+        }
+    };
+
+    // ==========================================
+    // Channel Modal Logic
     // ==========================================
     const channelData = {
         planA: {
@@ -420,12 +450,7 @@ import Layout from '../layouts/Layout.astro';
         });
         modalContent.innerHTML = html;
         if(modalOverlay) {
-            // 現在位置保存
-            savedScrollPosition = window.scrollY;
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${savedScrollPosition}px`;
-            document.body.style.width = '100%';
-
+            enableScrollLock(modalOverlay);
             modalOverlay.classList.remove('hidden'); modalOverlay.classList.add('flex');
             setTimeout(() => { modal.classList.remove('scale-95', 'opacity-0'); modal.classList.add('scale-100', 'opacity-100'); const closeBtn = document.getElementById('modal-close-btn'); if (closeBtn) { closeBtn.focus(); } }, 10);
         }
@@ -439,34 +464,8 @@ import Layout from '../layouts/Layout.astro';
             if(modalOverlay) { 
                 modalOverlay.classList.add('hidden'); 
                 modalOverlay.classList.remove('flex'); 
-            }
-            // ▼▼▼ 修正箇所: ブラックアウト防止の完全版 ▼▼▼
-            const html = document.documentElement;
-            const body = document.body;
-            
-            // 1. スムーズスクロール無効化
-            html.style.scrollBehavior = 'auto';
-            body.style.scrollBehavior = 'auto';
-            
-            // 2. 固定解除
-            body.style.position = '';
-            body.style.top = '';
-            body.style.width = '';
-            
-            // 3. 瞬時にジャンプ
-            window.scrollTo(0, savedScrollPosition);
-            
-            // 4. ★重要★ レイアウトの強制再計算 (Reflow) を起こして、描画を確定させる
-            // これにより、ブラウザが「描画待ち」で真っ暗になるのを防ぎます
-            void body.offsetHeight; 
-            
-            // 5. 設定を元に戻す
-            setTimeout(() => {
-                html.style.scrollBehavior = '';
-                body.style.scrollBehavior = '';
-            }, 10);
-            // ▲▲▲ 修正箇所ここまで ▲▲▲
-
+                disableScrollLock(modalOverlay);
+            } 
         }, 300);
     }
     if (modalOverlay) {
@@ -486,10 +485,7 @@ import Layout from '../layouts/Layout.astro';
         newsModalTitle.textContent = title;
         newsModalBody.innerHTML = body;
         
-        savedScrollPosition = window.scrollY;
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${savedScrollPosition}px`;
-        document.body.style.width = '100%';
+        enableScrollLock(newsModalOverlay);
 
         newsModalOverlay.classList.remove('hidden'); 
         newsModalOverlay.classList.add('flex');
@@ -511,24 +507,8 @@ import Layout from '../layouts/Layout.astro';
             if(newsModalOverlay) {
                 newsModalOverlay.classList.add('hidden'); 
                 newsModalOverlay.classList.remove('flex'); 
+                disableScrollLock(newsModalOverlay);
             }
-            // 同じく修正
-            const html = document.documentElement;
-            const body = document.body;
-            html.style.scrollBehavior = 'auto';
-            body.style.scrollBehavior = 'auto';
-            
-            body.style.position = '';
-            body.style.top = '';
-            body.style.width = '';
-            window.scrollTo(0, savedScrollPosition);
-            
-            void body.offsetHeight; // Force Reflow
-            
-            setTimeout(() => {
-                html.style.scrollBehavior = '';
-                body.style.scrollBehavior = '';
-            }, 10);
         }, 300);
     }
     
