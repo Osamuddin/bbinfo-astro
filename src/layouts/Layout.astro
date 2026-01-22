@@ -7,10 +7,10 @@ import Footer from '../components/Footer.astro';
 
 <!doctype html>
 <html lang="ja" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,8 +19,8 @@ import Footer from '../components/Footer.astro';
         
         <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
 
-		<title>BBINFO | インドで日本のテレビを見るなら</title>
-	</head>
+        <title>BBINFO | インドで日本のテレビを見るなら</title>
+    </head>
     
     <body class="antialiased selection:bg-cyan-500 selection:text-white bg-[#030303] text-white">
         
@@ -53,12 +53,13 @@ import Footer from '../components/Footer.astro';
                 </div>
             </div>
         </div>
+
         <Header />
 
         <main class="relative w-full overflow-x-hidden">
-		    <slot />
-		</main>
-		
+            <slot />
+        </main>
+        
         <Footer />
-	</body>
+    </body>
 </html>

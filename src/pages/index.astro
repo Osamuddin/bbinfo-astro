@@ -5,14 +5,14 @@ import Layout from '../layouts/Layout.astro';
 <Layout>
     <section id="hero-section" class="relative min-h-[100svh] flex flex-col justify-center items-center pt-20 pb-10 overflow-hidden">
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
-            <div class="reveal-up font-black mb-10 tracking-tight">
-                <div class="text-3xl sm:text-5xl md:text-6xl lg:text-8xl mb-4 md:mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/80">
+            <h1 class="reveal-up font-black mb-10 tracking-tight">
+                <span class="text-3xl sm:text-5xl md:text-6xl lg:text-8xl mb-4 md:mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/80">
                     あなたのインド生活に、
-                </div>
-                <div class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-white to-rose-500 text-glow leading-tight pt-2 pb-2 break-keep">
+                </span>
+                <span class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-white to-rose-500 text-glow leading-tight pt-2 pb-2 break-keep">
                     日本のテレビを。
-                </div>
-            </div>
+                </span>
+            </h1>
             <p class="reveal-up text-gray-400 text-sm md:text-lg max-w-2xl mx-auto mb-12 leading-loose">
                 BBINFOならインドにいても<br class="hidden md:block">日本のテレビ（地上波、BS、CS）66チャンネルが楽しめます。<br>
                 VPN機能付きセットボックスだから<br class="hidden md:block">日本のNetflixやAmazon Prime、AbemaやTVerも視聴可能。<br><br>
@@ -296,7 +296,6 @@ import Layout from '../layouts/Layout.astro';
         </div>
     </div>
 
-    <!-- Mobile Fixed CTA -->
     <div id="mobile-cta" class="fixed bottom-0 left-0 right-0 z-50 md:hidden translate-y-full opacity-0 transition-all duration-300">
         <div class="px-4 py-3">
             <a href="/trial/" class="gradient-button inline-flex items-center justify-center rounded-full w-full px-8 py-4 text-base leading-[20px] font-bold text-white hover:scale-105 transition-transform duration-300 whitespace-nowrap shadow-lg">
@@ -407,6 +406,7 @@ import Layout from '../layouts/Layout.astro';
         modalPlanName.textContent = data.title;
         let html = '';
         data.groups.forEach(group => {
+            // H4: JS内で生成される見出し (Plan Name H3 -> Group Name H4)
             html += `<div class="mb-6 last:mb-0"><div class="flex items-baseline gap-3 mb-3 border-b border-white/10 pb-1"><h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider">${group.name}</h4><span class="text-[10px] text-gray-600 font-mono">${group.count}</span></div><div class="grid grid-cols-2 sm:grid-cols-3 gap-x-2 gap-y-1.5">${group.channels.map(ch => `<div class="text-[11px] sm:text-xs text-gray-300 hover:text-white transition-colors cursor-default truncate" title="${ch}">${ch}</div>`).join('')}</div></div>`;
         });
         modalContent.innerHTML = html;
