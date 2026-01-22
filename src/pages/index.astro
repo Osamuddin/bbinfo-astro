@@ -277,8 +277,12 @@ import Layout from '../layouts/Layout.astro';
                 <button onclick="closeChannelModal()" class="text-gray-500 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10"><i class="ph-bold ph-x text-lg"></i></button>
             </div>
             <div id="modal-content" class="p-6 max-h-[60vh] overflow-y-auto custom-scrollbar overscroll-contain overscroll-y-contain" data-lenis-prevent></div>
-            <div class="px-6 py-3 border-t border-white/5 bg-black/20 text-center"><button id="modal-close-btn" onclick="closeChannelModal()" class="w-full sm:w-auto px-6 py-2 rounded-lg border border-white/10 hover:bg-white hover:text-black text-gray-300 text-xs font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black">閉じる</button></div>
-        </div>
+            <div class="px-6 py-3 border-t border-white/5 bg-black/20 text-center">
+                <button id="modal-close-btn" onclick="closeChannelModal()" class="w-full sm:w-auto px-6 py-2 rounded-lg border border-cyan-500 text-cyan-400 font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:bg-cyan-950/30 text-xs">
+                    閉じる
+                </button>
+            </div>
+            </div>
     </div>
 
     <div id="news-modal-overlay" class="fixed inset-0 z-[100] hidden modal-overlay items-center justify-center p-4">
@@ -291,9 +295,11 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <div id="news-modal-body" class="p-8 text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-wrap max-h-[60vh] overflow-y-auto custom-scrollbar overscroll-contain overscroll-y-contain"></div>
             <div class="px-6 py-3 border-t border-white/5 bg-black/20 text-center">
-                <button id="news-modal-close-btn" onclick="closeNewsModal()" class="w-full sm:w-auto px-6 py-2 rounded-lg border border-white/10 hover:bg-white hover:text-black text-gray-300 text-xs font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black">閉じる</button>
+                <button id="news-modal-close-btn" onclick="closeNewsModal()" class="w-full sm:w-auto px-6 py-2 rounded-lg border border-cyan-500 text-cyan-400 font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:bg-cyan-950/30 text-xs">
+                    閉じる
+                </button>
             </div>
-        </div>
+            </div>
     </div>
 
     <div id="mobile-cta" class="fixed bottom-0 left-0 right-0 z-50 md:hidden translate-y-full opacity-0 transition-all duration-300">
@@ -309,16 +315,12 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-    /* Desktop Only: モダンブラウザでのスクロールバー非表示 (PCだけ適用) */
+    /* PCのみ: スクロールバー非表示 (overflow制御によるガタツキ防止) */
     @media (min-width: 768px) {
         body.overflow-hidden {
             overflow: hidden !important;
-            padding-right: 15px; /* スクロールバー分のガタツキ防止 */
+            padding-right: 15px;
         }
-    }
-    /* モバイルでのオーバーレイタッチ制御用クラス */
-    .no-scroll {
-        touch-action: none;
     }
 </style>
 
@@ -343,7 +345,6 @@ import Layout from '../layouts/Layout.astro';
     const initGlowingEffect = () => {
         const cards = document.querySelectorAll('.glow-card-container');
         const handleMove = (e) => {
-            // パフォーマンス最適化: requestAnimationFrame
             requestAnimationFrame(() => {
                 cards.forEach(card => {
                     const glowEffect = card.querySelector('.glow-effect');
@@ -363,7 +364,7 @@ import Layout from '../layouts/Layout.astro';
                 });
             });
         };
-        // PCのみで実行 (スマホの負荷軽減)
+        // PCのみで実行
         if (window.matchMedia('(hover: hover)').matches) {
             window.addEventListener('mousemove', handleMove);
         }
@@ -403,29 +404,23 @@ import Layout from '../layouts/Layout.astro';
     };
 
     // ==========================================
-    // The Silicon Valley Fix: Input Interception
+    // "Blackout-Proof" Modal Logic
     // ==========================================
-    // Bodyのスタイルを一切変更せず、イベントだけを無効化することで
-    // 再描画(Repaint)を発生させず、ブラックアウトを根絶する。
-
+    
+    // 背景(オーバーレイ)のタッチイベントだけを止める
+    // Bodyのスタイルはいじらない = 再描画させない
     const handleTouchMove = (e) => {
-        // オーバーレイ部分（背景）をタッチした時のみ無効化
-        // モーダルの中身(content)はバブリングでここに来る前に処理済みか、
-        // containsチェックで除外されるべきだが、一番確実なのは
-        // e.targetがmodal-overlayそのものであるか確認すること
         if (e.target.classList.contains('modal-overlay')) {
             e.preventDefault();
         }
     };
 
     const lockScroll = (overlay) => {
-        // モバイル: イベントリスナーでスクロールを阻止 (CSSはいじらない)
-        // passive: false が必須 (preventDefaultを呼ぶため)
+        // スマホ: イベントでスクロール阻止
         if (overlay) {
             overlay.addEventListener('touchmove', handleTouchMove, { passive: false });
         }
-
-        // デスクトップ: スクロールバーを消す (PCは見栄え重視)
+        // PC: スクロールバー消去
         if (window.innerWidth >= 768) {
             document.body.classList.add('overflow-hidden');
         }
@@ -474,10 +469,12 @@ import Layout from '../layouts/Layout.astro';
         if(modalOverlay) {
             lockScroll(modalOverlay);
             modalOverlay.classList.remove('hidden'); modalOverlay.classList.add('flex');
-            // アニメーション用微小遅延
             requestAnimationFrame(() => {
                 modal.classList.remove('scale-95', 'opacity-0'); 
                 modal.classList.add('scale-100', 'opacity-100'); 
+                // フォーカスをボタンへ
+                const closeBtn = document.getElementById('modal-close-btn'); 
+                if (closeBtn) { closeBtn.focus(); }
             });
         }
     }
@@ -520,6 +517,8 @@ import Layout from '../layouts/Layout.astro';
             if(newsModal) {
                 newsModal.classList.remove('scale-95', 'opacity-0'); 
                 newsModal.classList.add('scale-100', 'opacity-100'); 
+                const closeBtn = document.getElementById('news-modal-close-btn'); 
+                if (closeBtn) { closeBtn.focus(); }
             }
         });
     }
