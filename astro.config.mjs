@@ -7,10 +7,5 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: 'https://bbinfoindia.com',
   integrations: [tailwind(), sitemap()],
-  vite: {
-    build: {
-      // ⚠️ もしこの記述があったら削除してください
-      // assetsInlineLimit: 12288, 
-    },
-  },
+  
 });
