@@ -23,7 +23,7 @@
             </a>
         </div>
 
-        <button id="menu-toggle" class="md:hidden text-white text-2xl focus:outline-none">
+        <button id="menu-toggle" aria-label="メニューを開閉する" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-white text-2xl focus:outline-none">
             <i class="ph ph-list" id="menu-icon"></i>
         </button>
     </div>
@@ -63,13 +63,17 @@
         menuToggle.addEventListener('click', () => {
             const isOpen = !mobileMenu.classList.contains('hidden');
             if (isOpen) {
+                // メニューを閉じる
                 mobileMenu.classList.remove('open'); mobileMenu.classList.add('closed');
                 setTimeout(() => { mobileMenu.classList.add('hidden'); mobileMenu.classList.remove('closed'); }, 300);
                 menuIcon.classList.remove('ph-x'); menuIcon.classList.add('ph-list');
+                menuToggle.setAttribute('aria-expanded', 'false'); // アクセシビリティ更新
             } else {
+                // メニューを開く
                 mobileMenu.classList.remove('hidden'); 
                 requestAnimationFrame(() => { mobileMenu.classList.add('open'); });
                 menuIcon.classList.remove('ph-list'); menuIcon.classList.add('ph-x');
+                menuToggle.setAttribute('aria-expanded', 'true'); // アクセシビリティ更新
             }
         });
 
@@ -78,6 +82,7 @@
                 mobileMenu.classList.remove('open'); mobileMenu.classList.add('closed');
                 setTimeout(() => { mobileMenu.classList.add('hidden'); mobileMenu.classList.remove('closed'); }, 300);
                 menuIcon.classList.remove('ph-x'); menuIcon.classList.add('ph-list');
+                menuToggle.setAttribute('aria-expanded', 'false'); // アクセシビリティ更新
             });
         });
     }
