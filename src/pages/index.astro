@@ -97,13 +97,13 @@ import Layout from '../layouts/Layout.astro';
             <p class="text-gray-400 text-center mb-12 reveal-up">地上波・BS・CS、合わせて66チャンネル</p>
             
             <div class="space-y-6">
-                <div class="static-card-container reveal-up accordion-item">
-                    <button class="static-card-content group w-full flex justify-between items-center p-6 cursor-pointer list-none hover:bg-white/5 transition-colors text-left accordion-trigger focus:outline-none">
-                        <div class="flex items-center gap-4">
+                <div class="static-card-container reveal-up accordion-item" data-state="closed">
+                    <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none hover:bg-white/5 transition-colors text-left accordion-trigger focus:outline-none">
+                        <div class="flex items-center gap-4 pointer-events-none">
                             <span class="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_white]"></span>
                             <span class="font-bold text-base md:text-lg text-white">地上波：15ch</span>
                         </div>
-                        <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300"></i>
+                        <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300 pointer-events-none"></i>
                     </button>
                     <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out accordion-wrapper">
                         <div class="overflow-hidden min-h-0">
@@ -116,13 +116,13 @@ import Layout from '../layouts/Layout.astro';
                     </div>
                 </div>
 
-                <div class="static-card-container reveal-up accordion-item">
-                    <button class="static-card-content group w-full flex justify-between items-center p-6 cursor-pointer list-none bg-blue-900/10 hover:bg-blue-900/20 transition-colors text-left accordion-trigger focus:outline-none">
-                        <div class="flex items-center gap-4">
+                <div class="static-card-container reveal-up accordion-item" data-state="closed">
+                    <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none bg-blue-900/10 hover:bg-blue-900/20 transition-colors text-left accordion-trigger focus:outline-none">
+                        <div class="flex items-center gap-4 pointer-events-none">
                             <span class="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_10px_#60a5fa]"></span>
                             <span class="font-bold text-base md:text-lg text-white">BS：21ch</span>
                         </div>
-                        <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300"></i>
+                        <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300 pointer-events-none"></i>
                     </button>
                     <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out accordion-wrapper">
                         <div class="overflow-hidden min-h-0">
@@ -135,13 +135,13 @@ import Layout from '../layouts/Layout.astro';
                     </div>
                 </div>
 
-                <div class="static-card-container reveal-up accordion-item">
-                    <button class="static-card-content group w-full flex justify-between items-center p-6 cursor-pointer list-none bg-green-900/10 hover:bg-green-900/20 transition-colors text-left accordion-trigger focus:outline-none">
-                        <div class="flex items-center gap-4">
+                <div class="static-card-container reveal-up accordion-item" data-state="closed">
+                    <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none bg-green-900/10 hover:bg-green-900/20 transition-colors text-left accordion-trigger focus:outline-none">
+                        <div class="flex items-center gap-4 pointer-events-none">
                             <span class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_#4ade80]"></span>
                             <span class="font-bold text-base md:text-lg text-white">CS：30ch</span>
                         </div>
-                        <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300"></i>
+                        <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300 pointer-events-none"></i>
                     </button>
                     <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out accordion-wrapper">
                         <div class="overflow-hidden min-h-0">
@@ -353,7 +353,7 @@ import Layout from '../layouts/Layout.astro';
     };
 
     // ==========================================
-    // Channel Accordion Logic
+    // Channel Accordion Logic (Single Tap Fix)
     // ==========================================
     const initAccordion = () => {
         const accordions = document.querySelectorAll('.accordion-item');
@@ -366,23 +366,30 @@ import Layout from '../layouts/Layout.astro';
 
             trigger.addEventListener('click', (e) => {
                 e.preventDefault();
-                const isOpen = wrapper.classList.contains('grid-rows-[1fr]');
+                e.stopPropagation(); // バブリング防止
                 
-                if (isOpen) {
-                    wrapper.classList.remove('grid-rows-[1fr]');
-                    wrapper.classList.add('grid-rows-[0fr]');
-                    icon.classList.remove('rotate-180');
-                } else {
+                // data-state属性で管理 (確実に判定するため)
+                const isClosed = acc.getAttribute('data-state') === 'closed';
+                
+                if (isClosed) {
+                    // Open
+                    acc.setAttribute('data-state', 'open');
                     wrapper.classList.remove('grid-rows-[0fr]');
                     wrapper.classList.add('grid-rows-[1fr]');
                     icon.classList.add('rotate-180');
+                } else {
+                    // Close
+                    acc.setAttribute('data-state', 'closed');
+                    wrapper.classList.remove('grid-rows-[1fr]');
+                    wrapper.classList.add('grid-rows-[0fr]');
+                    icon.classList.remove('rotate-180');
                 }
             });
         });
     };
 
     // ==========================================
-    // Channel Modal Logic (Fixed Scrolling Bug)
+    // Channel Modal Logic (Blackout & Scroll Fix)
     // ==========================================
     const channelData = {
         planA: {
@@ -433,19 +440,31 @@ import Layout from '../layouts/Layout.astro';
                 modalOverlay.classList.add('hidden'); 
                 modalOverlay.classList.remove('flex'); 
             }
-            // ▼▼▼ 修正箇所: スムーズスクロールを一時的に無効化して瞬時に戻る ▼▼▼
+            // ▼▼▼ 修正箇所: ブラックアウト防止の完全版 ▼▼▼
             const html = document.documentElement;
-            html.style.scrollBehavior = 'auto'; // 一時的に無効化
+            const body = document.body;
             
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
+            // 1. スムーズスクロール無効化
+            html.style.scrollBehavior = 'auto';
+            body.style.scrollBehavior = 'auto';
+            
+            // 2. 固定解除
+            body.style.position = '';
+            body.style.top = '';
+            body.style.width = '';
+            
+            // 3. 瞬時にジャンプ
             window.scrollTo(0, savedScrollPosition);
             
-            // 少し待ってから元に戻す（衝突回避）
+            // 4. ★重要★ レイアウトの強制再計算 (Reflow) を起こして、描画を確定させる
+            // これにより、ブラウザが「描画待ち」で真っ暗になるのを防ぎます
+            void body.offsetHeight; 
+            
+            // 5. 設定を元に戻す
             setTimeout(() => {
-                html.style.scrollBehavior = ''; 
-            }, 50);
+                html.style.scrollBehavior = '';
+                body.style.scrollBehavior = '';
+            }, 10);
             // ▲▲▲ 修正箇所ここまで ▲▲▲
 
         }, 300);
@@ -493,20 +512,23 @@ import Layout from '../layouts/Layout.astro';
                 newsModalOverlay.classList.add('hidden'); 
                 newsModalOverlay.classList.remove('flex'); 
             }
-            // ▼▼▼ 修正箇所: スムーズスクロールを一時的に無効化 ▼▼▼
+            // 同じく修正
             const html = document.documentElement;
+            const body = document.body;
             html.style.scrollBehavior = 'auto';
+            body.style.scrollBehavior = 'auto';
             
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
+            body.style.position = '';
+            body.style.top = '';
+            body.style.width = '';
             window.scrollTo(0, savedScrollPosition);
+            
+            void body.offsetHeight; // Force Reflow
             
             setTimeout(() => {
                 html.style.scrollBehavior = '';
-            }, 50);
-            // ▲▲▲ 修正箇所ここまで ▲▲▲
-
+                body.style.scrollBehavior = '';
+            }, 10);
         }, 300);
     }
     
