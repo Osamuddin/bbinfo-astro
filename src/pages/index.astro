@@ -3,272 +3,274 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-    <section id="hero-section" class="relative min-h-[100svh] flex flex-col justify-center items-center pt-20 pb-10 overflow-hidden">
-        <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
-            <h1 class="reveal-up font-black mb-10 tracking-tight">
-                <span class="block text-3xl sm:text-5xl md:text-6xl lg:text-8xl mb-4 md:mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/80">
-                    あなたのインド生活に、
-                </span>
-                <span class="block text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-white to-rose-500 text-glow leading-tight pt-2 pb-2 break-keep">
-                    日本のテレビを。
-                </span>
-            </h1>
-            <p class="reveal-up text-gray-400 text-sm md:text-lg max-w-2xl mx-auto mb-12 leading-loose">
-                BBINFOならインドにいても<br class="hidden md:block">日本のテレビ（地上波、BS、CS）66チャンネルが楽しめます。<br>
-                VPN機能付きセットボックスだから<br class="hidden md:block">日本のNetflixやAmazon Prime、AbemaやTVerも視聴可能。<br><br>
-                <span class="text-white font-semibold text-lg md:text-xl">1週間の無料体験で、まずはお試しください。</span>
-            </p>
-            <div class="reveal-up flex flex-col md:flex-row gap-4 justify-center items-center">
-                <a href="/trial/" class="gradient-button inline-flex items-center justify-center rounded-full min-w-[132px] px-6 md:px-9 py-4 text-sm leading-[19px] font-medium text-white font-sans font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:scale-105 transition-transform duration-300 whitespace-nowrap">
-                    <span class="flex items-center gap-2">1週間の無料体験を申し込む <i class="ph-bold ph-lightning"></i></span>
-                </a>
-            </div>
-        </div>
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-500"><i class="ph ph-caret-down text-2xl"></i></div>
-    </section>
-
-    <section id="service_detail" class="py-24 px-6 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal-up">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">Why BBINFO?</h2>
-                <p class="text-gray-400">圧倒的な利便性と品質</p>
-            </div>
-            <div class="bento-grid grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 auto-rows-fr">
-                <div class="col-span-1 md:col-span-2 row-span-2 reveal-up glass-panel p-0 rounded-3xl overflow-hidden group hover:border-white/20 transition-colors duration-500 min-h-[300px]">
-                    <div class="relative h-full flex flex-col justify-end p-8">
-                        <div class="absolute top-0 right-0 w-full h-full z-0">
-                            <img 
-                                src="/images/shibuya.avif" 
-                                srcset="/images/shibuya-sm.avif 600w, /images/shibuya.avif 1200w"
-                                sizes="(max-width: 768px) 100vw, 60vw"
-                                alt="Tokyo Neon Night" 
-                                width="800" 
-                                height="600"
-                                loading="lazy"
-                                decoding="async"
-                                class="w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-700"
-                                onerror="this.removeAttribute('srcset')" 
-                            >
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-                        </div>
-                        <div class="relative z-10 h-full flex flex-col justify-end">
-                            <div class="w-12 h-12 bg-black/90 rounded-xl flex items-center justify-center mb-4 border border-white/10"><i class="ph-fill ph-television text-2xl text-cyan-400"></i></div>
-                            <h3 class="text-2xl md:text-3xl font-bold mb-2">地上波・BS・CS 66局</h3>
-                            <p class="text-gray-300 mb-4 text-sm md:text-base">日本の主要チャンネルを完全網羅。リアルタイム視聴はもちろん、30分のタイムシフト機能で「今」を見逃しません。</p>
-                            <div class="flex flex-wrap gap-2 text-xs font-mono text-cyan-300">
-                                <span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">NHK</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">日テレ</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">テレ朝</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">TBS</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">フジ</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">WOWOW</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">J SPORTS</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">アニマックス</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">ディズニー</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass-panel p-8 rounded-3xl reveal-up flex flex-col justify-between hover:border-white/20 transition-colors duration-500 min-h-[200px]" style="transition-delay: 100ms;">
-                    <i class="ph-fill ph-clock-counter-clockwise text-4xl text-purple-400 mb-4"></i>
-                    <div><h3 class="text-xl font-bold mb-2">4週間見逃し視聴</h3><p class="text-sm text-gray-400">忙しいあなたへ。過去4週間分の全番組をクラウドに保存。いつでも好きな時に再生可能です。</p></div>
-                </div>
-                <div class="glass-panel p-8 rounded-3xl reveal-up flex flex-col justify-between hover:border-white/20 transition-colors duration-500 min-h-[200px]" style="transition-delay: 200ms;">
-                    <i class="ph-fill ph-globe-hemisphere-east text-4xl text-green-400 mb-4"></i>
-                    <div><h3 class="text-xl font-bold mb-2">VPN機能付きセットボックス</h3><p class="text-sm text-gray-400">面倒な設定は不要。Netflix, Amazon Prime, Abemaも日本と同じ環境で楽しめます。</p><p class="text-[10px] text-gray-600 mt-2">*別途各サービスの契約が必要です</p></div>
-                </div>
-                <div class="col-span-1 glass-panel p-8 rounded-3xl reveal-up flex flex-col justify-between hover:border-white/20 transition-colors duration-500 min-h-[200px]">
-                    <i class="ph-fill ph-device-mobile-camera text-4xl text-pink-500 mb-4"></i>
-                    <div><h3 class="text-xl font-bold mb-2">スマホ・タブレット</h3><p class="text-sm text-gray-400">専用アプリで、移動中や外出先でも快適に日本のテレビを楽しめます。</p></div>
-                </div>
-                <div class="col-span-1 md:col-span-2 glass-panel p-8 rounded-3xl reveal-up hover:border-white/20 transition-colors duration-500 relative overflow-hidden min-h-[200px]">
-                    <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
-                    <div class="flex flex-col md:flex-row items-center gap-8 relative z-10 h-full">
-                        <div class="flex-1">
-                            <h3 class="text-xl md:text-2xl font-bold mb-2">ストレスフリーな視聴体験</h3>
-                            <p class="text-gray-400">専用機器をテレビとネットにつなぐだけ。面倒な設定はありません。</p>
-                        </div>
-                        <div class="flex-1 grid grid-cols-3 gap-4 w-full relative z-10">
-                            <div class="text-center p-2 md:p-4 rounded-2xl bg-white/5 border border-white/5"><div class="text-xl md:text-2xl font-bold text-cyan-400 mb-1">HD</div><div class="text-[8px] md:text-[10px] text-gray-500 uppercase tracking-widest">Quality</div></div>
-                            <div class="text-center p-2 md:p-4 rounded-2xl bg-white/5 border border-white/5"><div class="text-xl md:text-2xl font-bold text-cyan-400 mb-1">0s</div><div class="text-[8px] md:text-[10px] text-gray-500 uppercase tracking-widest">Lag Free</div></div>
-                            <div class="text-center p-2 md:p-4 rounded-2xl bg-white/5 border border-white/5"><div class="text-xl md:text-2xl font-bold text-cyan-400 mb-1">JP</div><div class="text-[8px] md:text-[10px] text-gray-500 uppercase tracking-widest">日本語サポート</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="channels" class="py-24 px-6 bg-gradient-to-t from-black to-transparent">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-bold mb-4 text-center reveal-up">チャンネル一覧</h2>
-            <p class="text-gray-400 text-center mb-12 reveal-up">地上波・BS・CS、合わせて66チャンネル</p>
-            
-            <div class="space-y-6">
-                <div class="static-card-container reveal-up accordion-item" data-state="closed">
-                    <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none transition-colors text-left accordion-trigger focus:outline-none select-none md:hover:bg-white/5">
-                        <div class="flex items-center gap-4 pointer-events-none">
-                            <span class="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_white]"></span>
-                            <span class="font-bold text-base md:text-lg text-white">地上波：15ch</span>
-                        </div>
-                        <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300 pointer-events-none"></i>
-                    </button>
-                    <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out accordion-wrapper">
-                        <div class="overflow-hidden min-h-0">
-                            <div class="channel-grid-wrapper p-6 border-t border-white/10">
-                                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm md:text-base text-gray-300">
-                                    <div class="hover:text-white transition-colors">NHK 総合東京</div><div class="hover:text-white transition-colors">NHK Eテレ</div><div class="hover:text-white transition-colors">日本テレビ</div><div class="hover:text-white transition-colors">テレビ朝日</div><div class="hover:text-white transition-colors">TBSテレビ</div><div class="hover:text-white transition-colors">テレビ東京</div><div class="hover:text-white transition-colors">フジテレビ</div><div class="hover:text-white transition-colors">TOKYO MX</div><div class="hover:text-white transition-colors">NHK総合大阪</div><div class="hover:text-white transition-colors">読売テレビ</div><div class="hover:text-white transition-colors">毎日放送</div><div class="hover:text-white transition-colors">関西テレビ</div><div class="hover:text-white transition-colors">朝日放送</div><div class="hover:text-white transition-colors">テレビ大阪</div><div class="hover:text-white transition-colors">サンテレビ</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="static-card-container reveal-up accordion-item" data-state="closed">
-                    <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none bg-blue-900/10 transition-colors text-left accordion-trigger focus:outline-none select-none md:hover:bg-blue-900/20">
-                        <div class="flex items-center gap-4 pointer-events-none">
-                            <span class="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_10px_#60a5fa]"></span>
-                            <span class="font-bold text-base md:text-lg text-white">BS：21ch</span>
-                        </div>
-                        <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300 pointer-events-none"></i>
-                    </button>
-                    <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out accordion-wrapper">
-                        <div class="overflow-hidden min-h-0">
-                            <div class="channel-grid-wrapper p-6 border-t border-white/10">
-                                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm md:text-base text-gray-300">
-                                    <div class="hover:text-white transition-colors">NHK BS 東京</div><div class="hover:text-white transition-colors">NHK BSP4K</div><div class="hover:text-white transition-colors">BS 日本テレビ</div><div class="hover:text-white transition-colors">BS朝日</div><div class="hover:text-white transition-colors">BS TBS</div><div class="hover:text-white transition-colors">BS テレビ東京</div><div class="hover:text-white transition-colors">BS フジ</div><div class="hover:text-white transition-colors">WOWWOW Plime</div><div class="hover:text-white transition-colors">WOWWOW ライブ</div><div class="hover:text-white transition-colors">WOWWOW シネマ</div><div class="hover:text-white transition-colors">BS10 スターチャンネル</div><div class="hover:text-white transition-colors">グリーンチャンネル</div><div class="hover:text-white transition-colors">BS アニマックス</div><div class="hover:text-white transition-colors">J-Sports 1</div><div class="hover:text-white transition-colors">J-Sports 2</div><div class="hover:text-white transition-colors">J-Sports 3</div><div class="hover:text-white transition-colors">J-Sports 4</div><div class="hover:text-white transition-colors">BS 釣りビジョン</div><div class="hover:text-white transition-colors">日本映画専門チャンネル</div><div class="hover:text-white transition-colors">Disney チャンネル</div><div class="hover:text-white transition-colors">J:COM BS</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="static-card-container reveal-up accordion-item" data-state="closed">
-                    <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none bg-green-900/10 transition-colors text-left accordion-trigger focus:outline-none select-none md:hover:bg-green-900/20">
-                        <div class="flex items-center gap-4 pointer-events-none">
-                            <span class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_#4ade80]"></span>
-                            <span class="font-bold text-base md:text-lg text-white">CS：30ch</span>
-                        </div>
-                        <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300 pointer-events-none"></i>
-                    </button>
-                    <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out accordion-wrapper">
-                        <div class="overflow-hidden min-h-0">
-                            <div class="channel-grid-wrapper p-6 border-t border-white/10">
-                                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm md:text-base text-gray-300">
-                                    <div class="hover:text-white transition-colors">衛星劇場</div><div class="hover:text-white transition-colors">ムービープラス HD</div><div class="hover:text-white transition-colors">Sky A Sports</div><div class="hover:text-white transition-colors">Gaora Sports</div><div class="hover:text-white transition-colors">Nihon TV G+</div><div class="hover:text-white transition-colors">ゴルフネットワーク</div><div class="hover:text-white transition-colors">時代劇専門チャンネル</div><div class="hover:text-white transition-colors">ファミリー劇場 HD</div><div class="hover:text-white transition-colors">ホームドラマチャンネル</div><div class="hover:text-white transition-colors">MONDO TV</div><div class="hover:text-white transition-colors">フジテレビ NEXT</div><div class="hover:text-white transition-colors">女性チャンネル / LaLa TV</div><div class="hover:text-white transition-colors">Music Japan TV</div><div class="hover:text-white transition-colors">スペースシャワーTV</div><div class="hover:text-white transition-colors">MTV HD</div><div class="hover:text-white transition-colors">歌謡ポップスチャンネル</div><div class="hover:text-white transition-colors">キッズステーション</div><div class="hover:text-white transition-colors">カートゥーンネットワーク</div><div class="hover:text-white transition-colors">Disney Junior</div><div class="hover:text-white transition-colors">ディスカバリーチャンネル</div><div class="hover:text-white transition-colors">アニマルプラネット</div><div class="hover:text-white transition-colors">ヒストリーチャンネル</div><div class="hover:text-white transition-colors">National Geo graphic</div><div class="hover:text-white transition-colors">TBS News Bird</div><div class="hover:text-white transition-colors">TAKARAZUKA SKY STAGE</div><div class="hover:text-white transition-colors">東映チャンネル</div><div class="hover:text-white transition-colors">CNN J</div><div class="hover:text-white transition-colors">BBC World News</div><div class="hover:text-white transition-colors">旅チャンネル</div><div class="hover:text-white transition-colors">チャンネル銀河 歴史ドラマ</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="pricing" class="py-24 px-6 relative overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-900/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center mb-16 reveal-up">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">料金プラン</h2>
-                <p class="text-gray-400">ニーズに合わせて選べる3つのプラン。年払いで最大3ヶ月分がお得に。</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                <div class="glow-card-container interactive reveal-up relative h-full group">
-                    <div class="glow-effect" aria-hidden="true"></div>
-                    <div class="glow-card-content flex flex-col h-full">
-                        <h3 class="text-xl font-bold mb-2">Plan A</h3>
-                        <div class="text-4xl font-black mb-3">₹2,800<span class="text-sm font-medium text-gray-500">/mo</span></div>
-                        <div class="self-start px-3 py-1 rounded-full bg-cyan-900/20 text-xs text-cyan-300 border border-cyan-500/20 mb-3">年払いで1ヶ月分無料</div>
-                        <div class="text-sm text-gray-400 mb-6">年払い: ₹30,800</div>
-                        <div class="py-4 border-t border-white/10 mb-6 flex-grow"><div class="text-3xl font-bold mb-1">22<span class="text-sm font-normal text-gray-500 ml-1">Channels</span></div><p class="text-sm text-gray-400">地上波 15ch + BS 7ch</p></div>
-                        <button onclick="openChannelModal('planA')" class="block w-full py-3 rounded-xl border border-white/20 hover:bg-white hover:text-black text-center transition-all font-bold cursor-pointer">チャンネルを確認する</button>
-                    </div>
-                </div>
-                <div class="glow-card-container interactive reveal-up relative h-full group">
-                    <div class="glow-effect" aria-hidden="true"></div>
-                    <div class="glow-card-content flex flex-col h-full">
-                        <h3 class="text-xl font-bold mb-2">Plan B</h3>
-                        <div class="text-4xl font-black mb-3">₹3,800<span class="text-sm font-medium text-gray-500">/mo</span></div>
-                        <div class="self-start px-3 py-1 rounded-full bg-cyan-900/20 text-xs text-cyan-300 border border-cyan-500/20 mb-3">年払いで2ヶ月分無料</div>
-                        <div class="text-sm text-gray-400 mb-6">年払い: ₹38,000</div>
-                        <div class="py-4 border-t border-white/10 mb-6 flex-grow"><div class="text-3xl font-bold mb-1">36<span class="text-sm font-normal text-gray-500 ml-1">Channels</span></div><p class="text-sm text-gray-400">地上波 15ch + BS 21ch</p></div>
-                        <button onclick="openChannelModal('planB')" class="block w-full py-3 rounded-xl border border-white/20 hover:bg-white hover:text-black text-center transition-all font-bold cursor-pointer">チャンネルを確認する</button>
-                    </div>
-                </div>
-                <div class="glow-card-container interactive reveal-up relative h-full group">
-                    <div class="glow-effect" aria-hidden="true"></div>
-                    <div class="glow-card-content flex flex-col h-full">
-                        <h3 class="text-xl font-bold mb-2">Plan C</h3>
-                        <div class="text-4xl font-black mb-3">₹4,600<span class="text-sm font-medium text-gray-500">/mo</span></div>
-                        <div class="self-start px-3 py-1 rounded-full bg-purple-900/20 text-xs text-purple-300 border border-purple-500/20 mb-3">年払いで3ヶ月分無料</div>
-                        <div class="text-sm text-gray-400 mb-6">年払い: ₹41,400</div>
-                        <div class="py-4 border-t border-white/10 mb-6 flex-grow"><div class="text-3xl font-bold mb-1">66<span class="text-sm font-normal text-gray-500 ml-1">Channels</span></div><p class="text-sm text-gray-400">地上波 15ch + BS 21ch + CS 30ch</p></div>
-                        <button onclick="openChannelModal('planC')" class="block w-full py-3 rounded-xl border border-white/20 hover:bg-white hover:text-black text-center transition-all font-bold cursor-pointer">チャンネルを確認する</button>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-12 max-w-4xl mx-auto text-left text-xs md:text-sm text-gray-400 space-y-2 reveal-up">
-                <p><span class="text-pink-500 font-bold text-base align-middle mr-1">*</span>新規契約の契約期間は、最低3ヶ月となります。</p>
-                <p><span class="text-pink-500 font-bold text-base align-middle mr-1">*</span>表示価格はクレジットカード決済時の金額です。小切手および銀行振込によるお支払いの場合は、サービス料（8%）およびGST（18%）が加算されます。</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="trial" class="py-32 px-6 relative">
-        <div class="absolute inset-0 z-0">
-            <img 
-                src="/images/circuit.avif" 
-                srcset="/images/circuit-sm.avif 600w, /images/circuit.avif 1200w"
-                sizes="(max-width: 768px) 100vw, 80vw"
-                alt="World Connection" 
-                width="1200" 
-                height="800"
-                loading="lazy"
-                decoding="async"
-                class="w-full h-full object-cover opacity-30"
-                onerror="this.removeAttribute('srcset')" 
-            >
-            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent"></div>
-        </div>
-        <div class="max-w-3xl mx-auto text-center relative z-10 glow-card-container reveal-up group luxury-card-fix">
-            <div class="glow-effect" aria-hidden="true"></div>
-            <div class="glow-card-content !p-12 flex flex-col items-center">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-white">１週間の無料体験を試す</h2>
-                <p class="text-sm md:text-base text-gray-300 mb-8">
-                    今なら1週間、完全無料で日本のテレビ体験を。<br>
-                    リスクなしでお試しいただけます。
+    <div id="main-content-wrapper" class="w-full h-full transform-gpu">
+        <section id="hero-section" class="relative min-h-[100svh] flex flex-col justify-center items-center pt-20 pb-10 overflow-hidden">
+            <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+                <h1 class="reveal-up font-black mb-10 tracking-tight">
+                    <span class="block text-3xl sm:text-5xl md:text-6xl lg:text-8xl mb-4 md:mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/80">
+                        あなたのインド生活に、
+                    </span>
+                    <span class="block text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-white to-rose-500 text-glow leading-tight pt-2 pb-2 break-keep">
+                        日本のテレビを。
+                    </span>
+                </h1>
+                <p class="reveal-up text-gray-400 text-sm md:text-lg max-w-2xl mx-auto mb-12 leading-loose">
+                    BBINFOならインドにいても<br class="hidden md:block">日本のテレビ（地上波、BS、CS）66チャンネルが楽しめます。<br>
+                    VPN機能付きセットボックスだから<br class="hidden md:block">日本のNetflixやAmazon Prime、AbemaやTVerも視聴可能。<br><br>
+                    <span class="text-white font-semibold text-lg md:text-xl">1週間の無料体験で、まずはお試しください。</span>
                 </p>
-                <div class="flex justify-center mb-8 w-full">
+                <div class="reveal-up flex flex-col md:flex-row gap-4 justify-center items-center">
                     <a href="/trial/" class="gradient-button inline-flex items-center justify-center rounded-full min-w-[132px] px-6 md:px-9 py-4 text-sm leading-[19px] font-medium text-white font-sans font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:scale-105 transition-transform duration-300 whitespace-nowrap">
-                        <span class="flex items-center gap-2">
-                            1週間の無料体験を申し込む <i class="ph-bold ph-lightning"></i>
-                        </span>
+                        <span class="flex items-center gap-2">1週間の無料体験を申し込む <i class="ph-bold ph-lightning"></i></span>
                     </a>
                 </div>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-5 text-xs text-white font-bold mt-4 w-full">
-                    <div class="flex items-center gap-2">
-                        <i class="ph-fill ph-check-circle text-cyan-400"></i>
-                        <span>クレジットカード登録不要</span>
-                    </div>
-                    <span class="hidden md:block w-1 h-1 rounded-full bg-white/50"></span>
-                    <div class="flex items-center gap-2">
-                        <i class="ph-fill ph-check-circle text-cyan-400"></i>
-                        <span>自動課金なし</span>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-500"><i class="ph ph-caret-down text-2xl"></i></div>
+        </section>
 
-    <section id="news" class="py-24 px-6 relative border-t border-white/5">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-900/10 rounded-full blur-[80px] pointer-events-none"></div>
-        <div class="max-w-4xl mx-auto relative z-10">
-            <div class="text-center mb-12 reveal-up">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">お知らせ</h2>
-                <p class="text-gray-400">最新のニュース</p>
-            </div>
-            <div id="news-container" class="flex flex-col gap-3 reveal-up min-h-[300px]">
-                <div class="glass-panel p-5 h-24 flex items-center justify-center text-gray-500 animate-pulse">
-                    Loading news...
+        <section id="service_detail" class="py-24 px-6 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 reveal-up">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">Why BBINFO?</h2>
+                    <p class="text-gray-400">圧倒的な利便性と品質</p>
                 </div>
-                <div class="glass-panel p-5 h-24 hidden md:flex items-center justify-center text-gray-500 animate-pulse">
-                    Waiting for data...
+                <div class="bento-grid grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 auto-rows-fr">
+                    <div class="col-span-1 md:col-span-2 row-span-2 reveal-up glass-panel p-0 rounded-3xl overflow-hidden group hover:border-white/20 transition-colors duration-500 min-h-[300px]">
+                        <div class="relative h-full flex flex-col justify-end p-8">
+                            <div class="absolute top-0 right-0 w-full h-full z-0">
+                                <img 
+                                    src="/images/shibuya.avif" 
+                                    srcset="/images/shibuya-sm.avif 600w, /images/shibuya.avif 1200w"
+                                    sizes="(max-width: 768px) 100vw, 60vw"
+                                    alt="Tokyo Neon Night" 
+                                    width="800" 
+                                    height="600"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-700"
+                                    onerror="this.removeAttribute('srcset')" 
+                                >
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                            </div>
+                            <div class="relative z-10 h-full flex flex-col justify-end">
+                                <div class="w-12 h-12 bg-black/90 rounded-xl flex items-center justify-center mb-4 border border-white/10"><i class="ph-fill ph-television text-2xl text-cyan-400"></i></div>
+                                <h3 class="text-2xl md:text-3xl font-bold mb-2">地上波・BS・CS 66局</h3>
+                                <p class="text-gray-300 mb-4 text-sm md:text-base">日本の主要チャンネルを完全網羅。リアルタイム視聴はもちろん、30分のタイムシフト機能で「今」を見逃しません。</p>
+                                <div class="flex flex-wrap gap-2 text-xs font-mono text-cyan-300">
+                                    <span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">NHK</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">日テレ</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">テレ朝</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">TBS</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">フジ</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">WOWOW</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">J SPORTS</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">アニマックス</span><span class="px-2 py-1 bg-cyan-900/30 rounded border border-cyan-500/30">ディズニー</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-8 rounded-3xl reveal-up flex flex-col justify-between hover:border-white/20 transition-colors duration-500 min-h-[200px]" style="transition-delay: 100ms;">
+                        <i class="ph-fill ph-clock-counter-clockwise text-4xl text-purple-400 mb-4"></i>
+                        <div><h3 class="text-xl font-bold mb-2">4週間見逃し視聴</h3><p class="text-sm text-gray-400">忙しいあなたへ。過去4週間分の全番組をクラウドに保存。いつでも好きな時に再生可能です。</p></div>
+                    </div>
+                    <div class="glass-panel p-8 rounded-3xl reveal-up flex flex-col justify-between hover:border-white/20 transition-colors duration-500 min-h-[200px]" style="transition-delay: 200ms;">
+                        <i class="ph-fill ph-globe-hemisphere-east text-4xl text-green-400 mb-4"></i>
+                        <div><h3 class="text-xl font-bold mb-2">VPN機能付きセットボックス</h3><p class="text-sm text-gray-400">面倒な設定は不要。Netflix, Amazon Prime, Abemaも日本と同じ環境で楽しめます。</p><p class="text-[10px] text-gray-600 mt-2">*別途各サービスの契約が必要です</p></div>
+                    </div>
+                    <div class="col-span-1 glass-panel p-8 rounded-3xl reveal-up flex flex-col justify-between hover:border-white/20 transition-colors duration-500 min-h-[200px]">
+                        <i class="ph-fill ph-device-mobile-camera text-4xl text-pink-500 mb-4"></i>
+                        <div><h3 class="text-xl font-bold mb-2">スマホ・タブレット</h3><p class="text-sm text-gray-400">専用アプリで、移動中や外出先でも快適に日本のテレビを楽しめます。</p></div>
+                    </div>
+                    <div class="col-span-1 md:col-span-2 glass-panel p-8 rounded-3xl reveal-up hover:border-white/20 transition-colors duration-500 relative overflow-hidden min-h-[200px]">
+                        <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="flex flex-col md:flex-row items-center gap-8 relative z-10 h-full">
+                            <div class="flex-1">
+                                <h3 class="text-xl md:text-2xl font-bold mb-2">ストレスフリーな視聴体験</h3>
+                                <p class="text-gray-400">専用機器をテレビとネットにつなぐだけ。面倒な設定はありません。</p>
+                            </div>
+                            <div class="flex-1 grid grid-cols-3 gap-4 w-full relative z-10">
+                                <div class="text-center p-2 md:p-4 rounded-2xl bg-white/5 border border-white/5"><div class="text-xl md:text-2xl font-bold text-cyan-400 mb-1">HD</div><div class="text-[8px] md:text-[10px] text-gray-500 uppercase tracking-widest">Quality</div></div>
+                                <div class="text-center p-2 md:p-4 rounded-2xl bg-white/5 border border-white/5"><div class="text-xl md:text-2xl font-bold text-cyan-400 mb-1">0s</div><div class="text-[8px] md:text-[10px] text-gray-500 uppercase tracking-widest">Lag Free</div></div>
+                                <div class="text-center p-2 md:p-4 rounded-2xl bg-white/5 border border-white/5"><div class="text-xl md:text-2xl font-bold text-cyan-400 mb-1">JP</div><div class="text-[8px] md:text-[10px] text-gray-500 uppercase tracking-widest">日本語サポート</div></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section id="channels" class="py-24 px-6 bg-gradient-to-t from-black to-transparent">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-center reveal-up">チャンネル一覧</h2>
+                <p class="text-gray-400 text-center mb-12 reveal-up">地上波・BS・CS、合わせて66チャンネル</p>
+                
+                <div class="space-y-6">
+                    <div class="static-card-container reveal-up accordion-item" data-state="closed">
+                        <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none transition-colors text-left accordion-trigger focus:outline-none select-none md:hover:bg-white/5">
+                            <div class="flex items-center gap-4 pointer-events-none">
+                                <span class="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_white]"></span>
+                                <span class="font-bold text-base md:text-lg text-white">地上波：15ch</span>
+                            </div>
+                            <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300 pointer-events-none"></i>
+                        </button>
+                        <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out accordion-wrapper">
+                            <div class="overflow-hidden min-h-0">
+                                <div class="channel-grid-wrapper p-6 border-t border-white/10">
+                                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm md:text-base text-gray-300">
+                                        <div class="hover:text-white transition-colors">NHK 総合東京</div><div class="hover:text-white transition-colors">NHK Eテレ</div><div class="hover:text-white transition-colors">日本テレビ</div><div class="hover:text-white transition-colors">テレビ朝日</div><div class="hover:text-white transition-colors">TBSテレビ</div><div class="hover:text-white transition-colors">テレビ東京</div><div class="hover:text-white transition-colors">フジテレビ</div><div class="hover:text-white transition-colors">TOKYO MX</div><div class="hover:text-white transition-colors">NHK総合大阪</div><div class="hover:text-white transition-colors">読売テレビ</div><div class="hover:text-white transition-colors">毎日放送</div><div class="hover:text-white transition-colors">関西テレビ</div><div class="hover:text-white transition-colors">朝日放送</div><div class="hover:text-white transition-colors">テレビ大阪</div><div class="hover:text-white transition-colors">サンテレビ</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="static-card-container reveal-up accordion-item" data-state="closed">
+                        <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none bg-blue-900/10 transition-colors text-left accordion-trigger focus:outline-none select-none md:hover:bg-blue-900/20">
+                            <div class="flex items-center gap-4 pointer-events-none">
+                                <span class="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_10px_#60a5fa]"></span>
+                                <span class="font-bold text-base md:text-lg text-white">BS：21ch</span>
+                            </div>
+                            <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300 pointer-events-none"></i>
+                        </button>
+                        <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out accordion-wrapper">
+                            <div class="overflow-hidden min-h-0">
+                                <div class="channel-grid-wrapper p-6 border-t border-white/10">
+                                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm md:text-base text-gray-300">
+                                        <div class="hover:text-white transition-colors">NHK BS 東京</div><div class="hover:text-white transition-colors">NHK BSP4K</div><div class="hover:text-white transition-colors">BS 日本テレビ</div><div class="hover:text-white transition-colors">BS朝日</div><div class="hover:text-white transition-colors">BS TBS</div><div class="hover:text-white transition-colors">BS テレビ東京</div><div class="hover:text-white transition-colors">BS フジ</div><div class="hover:text-white transition-colors">WOWWOW Plime</div><div class="hover:text-white transition-colors">WOWWOW ライブ</div><div class="hover:text-white transition-colors">WOWWOW シネマ</div><div class="hover:text-white transition-colors">BS10 スターチャンネル</div><div class="hover:text-white transition-colors">グリーンチャンネル</div><div class="hover:text-white transition-colors">BS アニマックス</div><div class="hover:text-white transition-colors">J-Sports 1</div><div class="hover:text-white transition-colors">J-Sports 2</div><div class="hover:text-white transition-colors">J-Sports 3</div><div class="hover:text-white transition-colors">J-Sports 4</div><div class="hover:text-white transition-colors">BS 釣りビジョン</div><div class="hover:text-white transition-colors">日本映画専門チャンネル</div><div class="hover:text-white transition-colors">Disney チャンネル</div><div class="hover:text-white transition-colors">J:COM BS</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="static-card-container reveal-up accordion-item" data-state="closed">
+                        <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none bg-green-900/10 transition-colors text-left accordion-trigger focus:outline-none select-none md:hover:bg-green-900/20">
+                            <div class="flex items-center gap-4 pointer-events-none">
+                                <span class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_#4ade80]"></span>
+                                <span class="font-bold text-base md:text-lg text-white">CS：30ch</span>
+                            </div>
+                            <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300 pointer-events-none"></i>
+                        </button>
+                        <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out accordion-wrapper">
+                            <div class="overflow-hidden min-h-0">
+                                <div class="channel-grid-wrapper p-6 border-t border-white/10">
+                                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm md:text-base text-gray-300">
+                                        <div class="hover:text-white transition-colors">衛星劇場</div><div class="hover:text-white transition-colors">ムービープラス HD</div><div class="hover:text-white transition-colors">Sky A Sports</div><div class="hover:text-white transition-colors">Gaora Sports</div><div class="hover:text-white transition-colors">Nihon TV G+</div><div class="hover:text-white transition-colors">ゴルフネットワーク</div><div class="hover:text-white transition-colors">時代劇専門チャンネル</div><div class="hover:text-white transition-colors">ファミリー劇場 HD</div><div class="hover:text-white transition-colors">ホームドラマチャンネル</div><div class="hover:text-white transition-colors">MONDO TV</div><div class="hover:text-white transition-colors">フジテレビ NEXT</div><div class="hover:text-white transition-colors">女性チャンネル / LaLa TV</div><div class="hover:text-white transition-colors">Music Japan TV</div><div class="hover:text-white transition-colors">スペースシャワーTV</div><div class="hover:text-white transition-colors">MTV HD</div><div class="hover:text-white transition-colors">歌謡ポップスチャンネル</div><div class="hover:text-white transition-colors">キッズステーション</div><div class="hover:text-white transition-colors">カートゥーンネットワーク</div><div class="hover:text-white transition-colors">Disney Junior</div><div class="hover:text-white transition-colors">ディスカバリーチャンネル</div><div class="hover:text-white transition-colors">アニマルプラネット</div><div class="hover:text-white transition-colors">ヒストリーチャンネル</div><div class="hover:text-white transition-colors">National Geo graphic</div><div class="hover:text-white transition-colors">TBS News Bird</div><div class="hover:text-white transition-colors">TAKARAZUKA SKY STAGE</div><div class="hover:text-white transition-colors">東映チャンネル</div><div class="hover:text-white transition-colors">CNN J</div><div class="hover:text-white transition-colors">BBC World News</div><div class="hover:text-white transition-colors">旅チャンネル</div><div class="hover:text-white transition-colors">チャンネル銀河 歴史ドラマ</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="py-24 px-6 relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-900/10 rounded-full blur-[100px] pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="text-center mb-16 reveal-up">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">料金プラン</h2>
+                    <p class="text-gray-400">ニーズに合わせて選べる3つのプラン。年払いで最大3ヶ月分がお得に。</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                    <div class="glow-card-container interactive reveal-up relative h-full group">
+                        <div class="glow-effect" aria-hidden="true"></div>
+                        <div class="glow-card-content flex flex-col h-full">
+                            <h3 class="text-xl font-bold mb-2">Plan A</h3>
+                            <div class="text-4xl font-black mb-3">₹2,800<span class="text-sm font-medium text-gray-500">/mo</span></div>
+                            <div class="self-start px-3 py-1 rounded-full bg-cyan-900/20 text-xs text-cyan-300 border border-cyan-500/20 mb-3">年払いで1ヶ月分無料</div>
+                            <div class="text-sm text-gray-400 mb-6">年払い: ₹30,800</div>
+                            <div class="py-4 border-t border-white/10 mb-6 flex-grow"><div class="text-3xl font-bold mb-1">22<span class="text-sm font-normal text-gray-500 ml-1">Channels</span></div><p class="text-sm text-gray-400">地上波 15ch + BS 7ch</p></div>
+                            <button onclick="openChannelModal('planA')" class="block w-full py-3 rounded-xl border border-white/20 hover:bg-white hover:text-black text-center transition-all font-bold cursor-pointer">チャンネルを確認する</button>
+                        </div>
+                    </div>
+                    <div class="glow-card-container interactive reveal-up relative h-full group">
+                        <div class="glow-effect" aria-hidden="true"></div>
+                        <div class="glow-card-content flex flex-col h-full">
+                            <h3 class="text-xl font-bold mb-2">Plan B</h3>
+                            <div class="text-4xl font-black mb-3">₹3,800<span class="text-sm font-medium text-gray-500">/mo</span></div>
+                            <div class="self-start px-3 py-1 rounded-full bg-cyan-900/20 text-xs text-cyan-300 border border-cyan-500/20 mb-3">年払いで2ヶ月分無料</div>
+                            <div class="text-sm text-gray-400 mb-6">年払い: ₹38,000</div>
+                            <div class="py-4 border-t border-white/10 mb-6 flex-grow"><div class="text-3xl font-bold mb-1">36<span class="text-sm font-normal text-gray-500 ml-1">Channels</span></div><p class="text-sm text-gray-400">地上波 15ch + BS 21ch</p></div>
+                            <button onclick="openChannelModal('planB')" class="block w-full py-3 rounded-xl border border-white/20 hover:bg-white hover:text-black text-center transition-all font-bold cursor-pointer">チャンネルを確認する</button>
+                        </div>
+                    </div>
+                    <div class="glow-card-container interactive reveal-up relative h-full group">
+                        <div class="glow-effect" aria-hidden="true"></div>
+                        <div class="glow-card-content flex flex-col h-full">
+                            <h3 class="text-xl font-bold mb-2">Plan C</h3>
+                            <div class="text-4xl font-black mb-3">₹4,600<span class="text-sm font-medium text-gray-500">/mo</span></div>
+                            <div class="self-start px-3 py-1 rounded-full bg-purple-900/20 text-xs text-purple-300 border border-purple-500/20 mb-3">年払いで3ヶ月分無料</div>
+                            <div class="text-sm text-gray-400 mb-6">年払い: ₹41,400</div>
+                            <div class="py-4 border-t border-white/10 mb-6 flex-grow"><div class="text-3xl font-bold mb-1">66<span class="text-sm font-normal text-gray-500 ml-1">Channels</span></div><p class="text-sm text-gray-400">地上波 15ch + BS 21ch + CS 30ch</p></div>
+                            <button onclick="openChannelModal('planC')" class="block w-full py-3 rounded-xl border border-white/20 hover:bg-white hover:text-black text-center transition-all font-bold cursor-pointer">チャンネルを確認する</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 max-w-4xl mx-auto text-left text-xs md:text-sm text-gray-400 space-y-2 reveal-up">
+                    <p><span class="text-pink-500 font-bold text-base align-middle mr-1">*</span>新規契約の契約期間は、最低3ヶ月となります。</p>
+                    <p><span class="text-pink-500 font-bold text-base align-middle mr-1">*</span>表示価格はクレジットカード決済時の金額です。小切手および銀行振込によるお支払いの場合は、サービス料（8%）およびGST（18%）が加算されます。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="trial" class="py-32 px-6 relative">
+            <div class="absolute inset-0 z-0">
+                <img 
+                    src="/images/circuit.avif" 
+                    srcset="/images/circuit-sm.avif 600w, /images/circuit.avif 1200w"
+                    sizes="(max-width: 768px) 100vw, 80vw"
+                    alt="World Connection" 
+                    width="1200" 
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover opacity-30"
+                    onerror="this.removeAttribute('srcset')" 
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent"></div>
+            </div>
+            <div class="max-w-3xl mx-auto text-center relative z-10 glow-card-container reveal-up group luxury-card-fix">
+                <div class="glow-effect" aria-hidden="true"></div>
+                <div class="glow-card-content !p-12 flex flex-col items-center">
+                    <h2 class="text-3xl md:text-5xl font-black mb-6 text-white">１週間の無料体験を試す</h2>
+                    <p class="text-sm md:text-base text-gray-300 mb-8">
+                        今なら1週間、完全無料で日本のテレビ体験を。<br>
+                        リスクなしでお試しいただけます。
+                    </p>
+                    <div class="flex justify-center mb-8 w-full">
+                        <a href="/trial/" class="gradient-button inline-flex items-center justify-center rounded-full min-w-[132px] px-6 md:px-9 py-4 text-sm leading-[19px] font-medium text-white font-sans font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:scale-105 transition-transform duration-300 whitespace-nowrap">
+                            <span class="flex items-center gap-2">
+                                1週間の無料体験を申し込む <i class="ph-bold ph-lightning"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-5 text-xs text-white font-bold mt-4 w-full">
+                        <div class="flex items-center gap-2">
+                            <i class="ph-fill ph-check-circle text-cyan-400"></i>
+                            <span>クレジットカード登録不要</span>
+                        </div>
+                        <span class="hidden md:block w-1 h-1 rounded-full bg-white/50"></span>
+                        <div class="flex items-center gap-2">
+                            <i class="ph-fill ph-check-circle text-cyan-400"></i>
+                            <span>自動課金なし</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="py-24 px-6 relative border-t border-white/5">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-900/10 rounded-full blur-[80px] pointer-events-none"></div>
+            <div class="max-w-4xl mx-auto relative z-10">
+                <div class="text-center mb-12 reveal-up">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">お知らせ</h2>
+                    <p class="text-gray-400">最新のニュース</p>
+                </div>
+                <div id="news-container" class="flex flex-col gap-3 reveal-up min-h-[300px]">
+                    <div class="glass-panel p-5 h-24 flex items-center justify-center text-gray-500 animate-pulse">
+                        Loading news...
+                    </div>
+                    <div class="glass-panel p-5 h-24 hidden md:flex items-center justify-center text-gray-500 animate-pulse">
+                        Waiting for data...
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <div id="channel-modal-overlay" class="fixed inset-0 z-[100] hidden modal-overlay items-center justify-center p-4">
         <div id="channel-modal" class="bg-[#0a0a0a] border border-white/10 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden transform scale-95 opacity-0 transition-all duration-300">
@@ -278,11 +280,11 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <div id="modal-content" class="p-6 max-h-[60vh] overflow-y-auto custom-scrollbar overscroll-contain overscroll-y-contain" data-lenis-prevent></div>
             <div class="px-6 py-3 border-t border-white/5 bg-black/20 text-center">
-                <button id="modal-close-btn" onclick="closeChannelModal()" class="w-full sm:w-auto px-6 py-2 rounded-lg border border-cyan-500 text-cyan-400 font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:bg-cyan-950/30 text-xs">
+                <button id="modal-close-btn" onclick="closeChannelModal()" class="w-full sm:w-auto px-6 py-2 rounded-lg border border-cyan-400/80 text-cyan-400 font-bold transition-all duration-300 focus:outline-none shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:bg-cyan-950/30 text-xs">
                     閉じる
                 </button>
             </div>
-            </div>
+        </div>
     </div>
 
     <div id="news-modal-overlay" class="fixed inset-0 z-[100] hidden modal-overlay items-center justify-center p-4">
@@ -295,11 +297,11 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <div id="news-modal-body" class="p-8 text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-wrap max-h-[60vh] overflow-y-auto custom-scrollbar overscroll-contain overscroll-y-contain"></div>
             <div class="px-6 py-3 border-t border-white/5 bg-black/20 text-center">
-                <button id="news-modal-close-btn" onclick="closeNewsModal()" class="w-full sm:w-auto px-6 py-2 rounded-lg border border-cyan-500 text-cyan-400 font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:bg-cyan-950/30 text-xs">
+                <button id="news-modal-close-btn" onclick="closeNewsModal()" class="w-full sm:w-auto px-6 py-2 rounded-lg border border-cyan-400/80 text-cyan-400 font-bold transition-all duration-300 focus:outline-none shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:bg-cyan-950/30 text-xs">
                     閉じる
                 </button>
             </div>
-            </div>
+        </div>
     </div>
 
     <div id="mobile-cta" class="fixed bottom-0 left-0 right-0 z-50 md:hidden translate-y-full opacity-0 transition-all duration-300">
@@ -315,12 +317,17 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-    /* PCのみ: スクロールバー非表示 (overflow制御によるガタツキ防止) */
     @media (min-width: 768px) {
         body.overflow-hidden {
             overflow: hidden !important;
             padding-right: 15px;
         }
+    }
+    
+    /* 重要: ブラックアウト防止のため、コンテンツ全体をGPUレイヤーに昇格 */
+    .transform-gpu {
+        transform: translateZ(0);
+        will-change: transform;
     }
 </style>
 
@@ -364,15 +371,11 @@ import Layout from '../layouts/Layout.astro';
                 });
             });
         };
-        // PCのみで実行
         if (window.matchMedia('(hover: hover)').matches) {
             window.addEventListener('mousemove', handleMove);
         }
     };
 
-    // ==========================================
-    // Channel Accordion Logic
-    // ==========================================
     const initAccordion = () => {
         const accordions = document.querySelectorAll('.accordion-item');
         accordions.forEach(acc => {
@@ -385,9 +388,7 @@ import Layout from '../layouts/Layout.astro';
             trigger.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                
                 const isClosed = acc.getAttribute('data-state') === 'closed';
-                
                 if (isClosed) {
                     acc.setAttribute('data-state', 'open');
                     wrapper.classList.remove('grid-rows-[0fr]');
@@ -404,11 +405,8 @@ import Layout from '../layouts/Layout.astro';
     };
 
     // ==========================================
-    // "Blackout-Proof" Modal Logic
+    // BLACKOUT FIX: Input Interception
     // ==========================================
-    
-    // 背景(オーバーレイ)のタッチイベントだけを止める
-    // Bodyのスタイルはいじらない = 再描画させない
     const handleTouchMove = (e) => {
         if (e.target.classList.contains('modal-overlay')) {
             e.preventDefault();
@@ -416,11 +414,11 @@ import Layout from '../layouts/Layout.astro';
     };
 
     const lockScroll = (overlay) => {
-        // スマホ: イベントでスクロール阻止
+        // Mobile: Prevent touch only (No CSS changes to body)
         if (overlay) {
             overlay.addEventListener('touchmove', handleTouchMove, { passive: false });
         }
-        // PC: スクロールバー消去
+        // Desktop: Hide scrollbar
         if (window.innerWidth >= 768) {
             document.body.classList.add('overflow-hidden');
         }
@@ -472,7 +470,6 @@ import Layout from '../layouts/Layout.astro';
             requestAnimationFrame(() => {
                 modal.classList.remove('scale-95', 'opacity-0'); 
                 modal.classList.add('scale-100', 'opacity-100'); 
-                // フォーカスをボタンへ
                 const closeBtn = document.getElementById('modal-close-btn'); 
                 if (closeBtn) { closeBtn.focus(); }
             });
@@ -561,31 +558,23 @@ import Layout from '../layouts/Layout.astro';
                     const entryContent = item.Content || item.content || item.body;
                     const entryLabel = item.Label || item.label;
                     const entryType = item.Type || item.type;
-
                     let dateStr = "";
                     if (entryDate) {
                         try {
                             const d = new Date(entryDate);
                             if (d.toString() !== 'Invalid Date') {
                                 dateStr = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
-                            } else {
-                                dateStr = String(entryDate);
-                            }
-                        } catch (e) {
-                            dateStr = String(entryDate);
-                        }
+                            } else { dateStr = String(entryDate); }
+                        } catch (e) { dateStr = String(entryDate); }
                     }
-
                     let labelClass = "border-white/10 bg-white/5 text-gray-400";
                     if (entryType === 'キャンペーン' || entryType === 'important') {
                         labelClass = "border-pink-500/30 bg-pink-900/20 text-pink-400";
                     } else if (entryType === 'お知らせ' || entryType === 'update') {
                         labelClass = "border-cyan-500/30 bg-cyan-900/20 text-cyan-300";
                     }
-
                     const safeTitle = (entryTitle || "").replace(/'/g, "\\'");
                     const safeBody = (entryContent || "").replace(/'/g, "\\'").replace(/\n/g, "<br>");
-
                     return `
                     <div onclick="openNewsModal('${safeTitle}', '${safeBody}')" class="group relative overflow-hidden rounded-2xl glass-panel p-5 md:px-8 transition-all duration-300 hover:bg-white/5 hover:border-white/20 hover:-translate-y-1 block cursor-pointer">
                         <div class="flex flex-row items-center justify-between gap-4 relative z-10">
@@ -612,9 +601,7 @@ import Layout from '../layouts/Layout.astro';
         const heroSection = document.getElementById('hero-section');
         const mobileCTA = document.getElementById('mobile-cta');
         const footer = document.getElementById('main-footer') || document.querySelector('footer');
-        
         if (!heroSection || !mobileCTA) return;
-
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach(entry => {
@@ -624,27 +611,17 @@ import Layout from '../layouts/Layout.astro';
                         mobileCTA.classList.remove('translate-y-full', 'opacity-0');
                     }
                 });
-            },
-            {
-                threshold: 0,
-                rootMargin: '0px'
-            }
+            }, { threshold: 0, rootMargin: '0px' }
         );
-
         observer.observe(heroSection);
-
         const updateFooterPadding = () => {
             if (!footer) return;
             if (window.innerWidth < 768) {
                 const ctaHeight = mobileCTA.offsetHeight || 72;
                 footer.style.paddingBottom = `${ctaHeight}px`;
-            } else {
-                footer.style.paddingBottom = '';
-            }
+            } else { footer.style.paddingBottom = ''; }
         };
-
         updateFooterPadding();
-
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
