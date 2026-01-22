@@ -27,7 +27,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-500"><i class="ph ph-caret-down text-2xl"></i></div>
     </section>
 
-    <section id="service_detail" class="py-24 px-6 relative [content-visibility:auto] [contain-intrinsic-size:1000px]">
+    <section id="service_detail" class="py-24 px-6 relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal-up">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4">Why BBINFO?</h2>
@@ -157,7 +157,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
     </section>
 
-    <section id="pricing" class="py-24 px-6 relative overflow-hidden [content-visibility:auto] [contain-intrinsic-size:1000px]">
+    <section id="pricing" class="py-24 px-6 relative overflow-hidden">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-900/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-16 reveal-up">
@@ -206,7 +206,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
     </section>
 
-    <section id="trial" class="py-32 px-6 relative [content-visibility:auto] [contain-intrinsic-size:500px]">
+    <section id="trial" class="py-32 px-6 relative">
         <div class="absolute inset-0 z-0">
             <img 
                 src="/images/circuit.avif" 
@@ -252,7 +252,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
     </section>
 
-    <section id="news" class="py-24 px-6 relative border-t border-white/5 [content-visibility:auto] [contain-intrinsic-size:400px]">
+    <section id="news" class="py-24 px-6 relative border-t border-white/5">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-900/10 rounded-full blur-[80px] pointer-events-none"></div>
         <div class="max-w-4xl mx-auto relative z-10">
             <div class="text-center mb-12 reveal-up">
@@ -309,7 +309,7 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script is:inline>
-    // スクロール位置保存用変数（モーダルブラックアウト対策）
+    // スクロール位置保存用変数
     let savedScrollPosition = 0;
 
     // ==========================================
@@ -382,7 +382,7 @@ import Layout from '../layouts/Layout.astro';
     };
 
     // ==========================================
-    // Channel Modal Logic
+    // Channel Modal Logic (Fixed Scrolling Bug)
     // ==========================================
     const channelData = {
         planA: {
@@ -413,7 +413,7 @@ import Layout from '../layouts/Layout.astro';
         });
         modalContent.innerHTML = html;
         if(modalOverlay) {
-            // スクロールロック：現在の位置で固定
+            // 現在位置保存
             savedScrollPosition = window.scrollY;
             document.body.style.position = 'fixed';
             document.body.style.top = `-${savedScrollPosition}px`;
@@ -433,11 +433,21 @@ import Layout from '../layouts/Layout.astro';
                 modalOverlay.classList.add('hidden'); 
                 modalOverlay.classList.remove('flex'); 
             }
-            // スクロールロック解除：位置を復元
+            // ▼▼▼ 修正箇所: スムーズスクロールを一時的に無効化して瞬時に戻る ▼▼▼
+            const html = document.documentElement;
+            html.style.scrollBehavior = 'auto'; // 一時的に無効化
+            
             document.body.style.position = '';
             document.body.style.top = '';
             document.body.style.width = '';
             window.scrollTo(0, savedScrollPosition);
+            
+            // 少し待ってから元に戻す（衝突回避）
+            setTimeout(() => {
+                html.style.scrollBehavior = ''; 
+            }, 50);
+            // ▲▲▲ 修正箇所ここまで ▲▲▲
+
         }, 300);
     }
     if (modalOverlay) {
@@ -457,7 +467,6 @@ import Layout from '../layouts/Layout.astro';
         newsModalTitle.textContent = title;
         newsModalBody.innerHTML = body;
         
-        // スクロールロック：現在の位置で固定
         savedScrollPosition = window.scrollY;
         document.body.style.position = 'fixed';
         document.body.style.top = `-${savedScrollPosition}px`;
@@ -484,11 +493,20 @@ import Layout from '../layouts/Layout.astro';
                 newsModalOverlay.classList.add('hidden'); 
                 newsModalOverlay.classList.remove('flex'); 
             }
-            // スクロールロック解除：位置を復元
+            // ▼▼▼ 修正箇所: スムーズスクロールを一時的に無効化 ▼▼▼
+            const html = document.documentElement;
+            html.style.scrollBehavior = 'auto';
+            
             document.body.style.position = '';
             document.body.style.top = '';
             document.body.style.width = '';
             window.scrollTo(0, savedScrollPosition);
+            
+            setTimeout(() => {
+                html.style.scrollBehavior = '';
+            }, 50);
+            // ▲▲▲ 修正箇所ここまで ▲▲▲
+
         }, 300);
     }
     
@@ -564,9 +582,6 @@ import Layout from '../layouts/Layout.astro';
             });
     };
 
-    // ==========================================
-    // Mobile Fixed CTA Logic
-    // ==========================================
     const initMobileCTA = () => {
         const heroSection = document.getElementById('hero-section');
         const mobileCTA = document.getElementById('mobile-cta');
@@ -574,15 +589,12 @@ import Layout from '../layouts/Layout.astro';
         
         if (!heroSection || !mobileCTA) return;
 
-        // Intersection Observerでヒーローセクションを監視
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // ヒーローセクションが見えている = CTAを非表示
                         mobileCTA.classList.add('translate-y-full', 'opacity-0');
                     } else {
-                        // ヒーローセクションが見えていない = CTAを表示
                         mobileCTA.classList.remove('translate-y-full', 'opacity-0');
                     }
                 });
@@ -595,22 +607,18 @@ import Layout from '../layouts/Layout.astro';
 
         observer.observe(heroSection);
 
-        // フッターに余白を追加（CTAの高さ分）- モバイルのみ
         const updateFooterPadding = () => {
             if (!footer) return;
-            
             if (window.innerWidth < 768) {
-                const ctaHeight = mobileCTA.offsetHeight || 72; // デフォルト72px
+                const ctaHeight = mobileCTA.offsetHeight || 72;
                 footer.style.paddingBottom = `${ctaHeight}px`;
             } else {
                 footer.style.paddingBottom = '';
             }
         };
 
-        // 初回実行
         updateFooterPadding();
 
-        // リサイズ時の処理
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
