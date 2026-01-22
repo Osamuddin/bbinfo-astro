@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-    <div id="main-content-wrapper" class="w-full h-full transform-gpu">
+    <div id="main-content-wrapper" class="w-full h-full">
         <section id="hero-section" class="relative min-h-[100svh] flex flex-col justify-center items-center pt-20 pb-10 overflow-hidden">
             <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
                 <h1 class="reveal-up font-black mb-10 tracking-tight">
@@ -15,7 +15,7 @@ import Layout from '../layouts/Layout.astro';
                     </span>
                 </h1>
                 <p class="reveal-up text-gray-400 text-sm md:text-lg max-w-2xl mx-auto mb-12 leading-loose">
-                    BBINFOならインドにいても<br class="hidden md:block">日本のテレビ（地上波、BS、CS）66チャンネルが楽しめます。<br>
+                    BBINFOならインドにいても<br class="hidden md:block">日本のテレビ(地上波、BS、CS)66チャンネルが楽しめます。<br>
                     VPN機能付きセットボックスだから<br class="hidden md:block">日本のNetflixやAmazon Prime、AbemaやTVerも視聴可能。<br><br>
                     <span class="text-white font-semibold text-lg md:text-xl">1週間の無料体験で、まずはお試しください。</span>
                 </p>
@@ -102,7 +102,7 @@ import Layout from '../layouts/Layout.astro';
                         <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none transition-colors text-left accordion-trigger focus:outline-none select-none md:hover:bg-white/5">
                             <div class="flex items-center gap-4 pointer-events-none">
                                 <span class="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_white]"></span>
-                                <span class="font-bold text-base md:text-lg text-white">地上波：15ch</span>
+                                <span class="font-bold text-base md:text-lg text-white">地上波:15ch</span>
                             </div>
                             <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300 pointer-events-none"></i>
                         </button>
@@ -121,7 +121,7 @@ import Layout from '../layouts/Layout.astro';
                         <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none bg-blue-900/10 transition-colors text-left accordion-trigger focus:outline-none select-none md:hover:bg-blue-900/20">
                             <div class="flex items-center gap-4 pointer-events-none">
                                 <span class="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_10px_#60a5fa]"></span>
-                                <span class="font-bold text-base md:text-lg text-white">BS：21ch</span>
+                                <span class="font-bold text-base md:text-lg text-white">BS:21ch</span>
                             </div>
                             <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300 pointer-events-none"></i>
                         </button>
@@ -140,7 +140,7 @@ import Layout from '../layouts/Layout.astro';
                         <button type="button" class="static-card-content w-full flex justify-between items-center p-6 cursor-pointer list-none bg-green-900/10 transition-colors text-left accordion-trigger focus:outline-none select-none md:hover:bg-green-900/20">
                             <div class="flex items-center gap-4 pointer-events-none">
                                 <span class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_#4ade80]"></span>
-                                <span class="font-bold text-base md:text-lg text-white">CS：30ch</span>
+                                <span class="font-bold text-base md:text-lg text-white">CS:30ch</span>
                             </div>
                             <i class="ph-bold ph-caret-down caret-icon text-white transition-transform duration-300 pointer-events-none"></i>
                         </button>
@@ -202,7 +202,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <div class="mt-12 max-w-4xl mx-auto text-left text-xs md:text-sm text-gray-400 space-y-2 reveal-up">
                     <p><span class="text-pink-500 font-bold text-base align-middle mr-1">*</span>新規契約の契約期間は、最低3ヶ月となります。</p>
-                    <p><span class="text-pink-500 font-bold text-base align-middle mr-1">*</span>表示価格はクレジットカード決済時の金額です。小切手および銀行振込によるお支払いの場合は、サービス料（8%）およびGST（18%）が加算されます。</p>
+                    <p><span class="text-pink-500 font-bold text-base align-middle mr-1">*</span>表示価格はクレジットカード決済時の金額です。小切手および銀行振込によるお支払いの場合は、サービス料(8%)およびGST(18%)が加算されます。</p>
                 </div>
             </div>
         </section>
@@ -226,7 +226,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="max-w-3xl mx-auto text-center relative z-10 glow-card-container reveal-up group luxury-card-fix">
                 <div class="glow-effect" aria-hidden="true"></div>
                 <div class="glow-card-content !p-12 flex flex-col items-center">
-                    <h2 class="text-3xl md:text-5xl font-black mb-6 text-white">１週間の無料体験を試す</h2>
+                    <h2 class="text-3xl md:text-5xl font-black mb-6 text-white">1週間の無料体験を試す</h2>
                     <p class="text-sm md:text-base text-gray-300 mb-8">
                         今なら1週間、完全無料で日本のテレビ体験を。<br>
                         リスクなしでお試しいただけます。
@@ -272,6 +272,9 @@ import Layout from '../layouts/Layout.astro';
         </section>
     </div>
 
+    <!-- ブラックアウト防止用の白いカバー -->
+    <div id="modal-transition-cover" class="fixed inset-0 bg-black pointer-events-none opacity-0 transition-opacity duration-150" style="z-index: 99;"></div>
+
     <div id="channel-modal-overlay" class="fixed inset-0 z-[100] hidden modal-overlay items-center justify-center p-4">
         <div id="channel-modal" class="bg-[#0a0a0a] border border-white/10 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden transform scale-95 opacity-0 transition-all duration-300">
             <div class="px-6 py-5 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
@@ -280,7 +283,7 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <div id="modal-content" class="p-6 max-h-[60vh] overflow-y-auto custom-scrollbar overscroll-contain overscroll-y-contain" data-lenis-prevent></div>
             <div class="px-6 py-3 border-t border-white/5 bg-black/20 text-center">
-                <button id="modal-close-btn" onclick="closeChannelModal()" class="w-full sm:w-auto px-6 py-2 rounded-lg border border-cyan-400/80 text-cyan-400 font-bold transition-all duration-300 focus:outline-none shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:bg-cyan-950/30 text-xs">
+                <button id="modal-close-btn" onclick="closeChannelModal()" class="w-full sm:w-auto px-6 py-2.5 rounded-lg border border-cyan-400 text-cyan-400 font-bold transition-all duration-200 focus:outline-none shadow-[0_0_12px_rgba(34,211,238,0.4)] hover:shadow-[0_0_20px_rgba(34,211,238,0.6)] hover:bg-cyan-950/20 text-xs">
                     閉じる
                 </button>
             </div>
@@ -297,7 +300,7 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <div id="news-modal-body" class="p-8 text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-wrap max-h-[60vh] overflow-y-auto custom-scrollbar overscroll-contain overscroll-y-contain"></div>
             <div class="px-6 py-3 border-t border-white/5 bg-black/20 text-center">
-                <button id="news-modal-close-btn" onclick="closeNewsModal()" class="w-full sm:w-auto px-6 py-2 rounded-lg border border-cyan-400/80 text-cyan-400 font-bold transition-all duration-300 focus:outline-none shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:bg-cyan-950/30 text-xs">
+                <button id="news-modal-close-btn" onclick="closeNewsModal()" class="w-full sm:w-auto px-6 py-2.5 rounded-lg border border-cyan-400 text-cyan-400 font-bold transition-all duration-200 focus:outline-none shadow-[0_0_12px_rgba(34,211,238,0.4)] hover:shadow-[0_0_20px_rgba(34,211,238,0.6)] hover:bg-cyan-950/20 text-xs">
                     閉じる
                 </button>
             </div>
@@ -322,12 +325,6 @@ import Layout from '../layouts/Layout.astro';
             overflow: hidden !important;
             padding-right: 15px;
         }
-    }
-    
-    /* 重要: ブラックアウト防止のため、コンテンツ全体をGPUレイヤーに昇格 */
-    .transform-gpu {
-        transform: translateZ(0);
-        will-change: transform;
     }
 </style>
 
@@ -405,29 +402,19 @@ import Layout from '../layouts/Layout.astro';
     };
 
     // ==========================================
-    // BLACKOUT FIX: Input Interception
+    // BLACKOUT FIX: 段階的クローズ処理
     // ==========================================
-    const handleTouchMove = (e) => {
-        if (e.target.classList.contains('modal-overlay')) {
-            e.preventDefault();
-        }
-    };
+    let savedScrollY = 0;
+    const transitionCover = document.getElementById('modal-transition-cover');
 
-    const lockScroll = (overlay) => {
-        // Mobile: Prevent touch only (No CSS changes to body)
-        if (overlay) {
-            overlay.addEventListener('touchmove', handleTouchMove, { passive: false });
-        }
-        // Desktop: Hide scrollbar
+    const lockScroll = () => {
+        savedScrollY = window.scrollY;
         if (window.innerWidth >= 768) {
             document.body.classList.add('overflow-hidden');
         }
     };
 
-    const unlockScroll = (overlay) => {
-        if (overlay) {
-            overlay.removeEventListener('touchmove', handleTouchMove);
-        }
+    const unlockScroll = () => {
         if (window.innerWidth >= 768) {
             document.body.classList.remove('overflow-hidden');
         }
@@ -465,8 +452,9 @@ import Layout from '../layouts/Layout.astro';
         });
         modalContent.innerHTML = html;
         if(modalOverlay) {
-            lockScroll(modalOverlay);
-            modalOverlay.classList.remove('hidden'); modalOverlay.classList.add('flex');
+            lockScroll();
+            modalOverlay.classList.remove('hidden'); 
+            modalOverlay.classList.add('flex');
             requestAnimationFrame(() => {
                 modal.classList.remove('scale-95', 'opacity-0'); 
                 modal.classList.add('scale-100', 'opacity-100'); 
@@ -477,23 +465,38 @@ import Layout from '../layouts/Layout.astro';
     }
 
     window.closeChannelModal = function() {
-        if(!modal) return;
+        if(!modal || !modalOverlay) return;
+        
+        // ステップ1: 黒カバーを表示(ブラックアウトを見えなくする)
+        if (transitionCover) {
+            transitionCover.style.opacity = '1';
+        }
+        
+        // ステップ2: モーダルのアニメーション
         modal.classList.remove('scale-100', 'opacity-100');
         modal.classList.add('scale-95', 'opacity-0');
-        setTimeout(() => { 
-            if(modalOverlay) { 
-                modalOverlay.classList.add('hidden'); 
-                modalOverlay.classList.remove('flex'); 
-                unlockScroll(modalOverlay);
-            } 
-        }, 300);
+        
+        // ステップ3: 少し待ってからスクロール解除(視覚的に隠れている間に実行)
+        setTimeout(() => {
+            unlockScroll();
+            modalOverlay.classList.add('hidden'); 
+            modalOverlay.classList.remove('flex');
+            
+            // ステップ4: さらに少し待ってから黒カバーをフェードアウト
+            setTimeout(() => {
+                if (transitionCover) {
+                    transitionCover.style.opacity = '0';
+                }
+            }, 50);
+        }, 200);
     }
+    
     if (modalOverlay) {
         modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) { window.closeChannelModal(); } });
     }
 
     // ==========================================
-    // News Fetcher & Modal
+    // News Modal
     // ==========================================
     const newsModalOverlay = document.getElementById('news-modal-overlay');
     const newsModal = document.getElementById('news-modal');
@@ -505,7 +508,7 @@ import Layout from '../layouts/Layout.astro';
         newsModalTitle.textContent = title;
         newsModalBody.innerHTML = body;
         
-        lockScroll(newsModalOverlay);
+        lockScroll();
 
         newsModalOverlay.classList.remove('hidden'); 
         newsModalOverlay.classList.add('flex');
@@ -521,16 +524,27 @@ import Layout from '../layouts/Layout.astro';
     }
 
     window.closeNewsModal = function() {
-        if(!newsModal) return;
+        if(!newsModal || !newsModalOverlay) return;
+        
+        // 同じ段階的クローズ処理
+        if (transitionCover) {
+            transitionCover.style.opacity = '1';
+        }
+        
         newsModal.classList.remove('scale-100', 'opacity-100'); 
         newsModal.classList.add('scale-95', 'opacity-0');
-        setTimeout(() => { 
-            if(newsModalOverlay) {
-                newsModalOverlay.classList.add('hidden'); 
-                newsModalOverlay.classList.remove('flex'); 
-                unlockScroll(newsModalOverlay);
-            }
-        }, 300);
+        
+        setTimeout(() => {
+            unlockScroll();
+            newsModalOverlay.classList.add('hidden'); 
+            newsModalOverlay.classList.remove('flex');
+            
+            setTimeout(() => {
+                if (transitionCover) {
+                    transitionCover.style.opacity = '0';
+                }
+            }, 50);
+        }, 200);
     }
     
     if(newsModalOverlay) {
