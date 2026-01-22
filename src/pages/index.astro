@@ -20,7 +20,7 @@ import Layout from '../layouts/Layout.astro';
                     <span class="text-white font-semibold text-lg md:text-xl">1週間の無料体験で、まずはお試しください。</span>
                 </p>
                 <div class="reveal-up flex flex-col md:flex-row gap-4 justify-center items-center">
-                    <a href="/trial/" class="gradient-button inline-flex items-center justify-center rounded-full min-w-[132px] px-6 md:px-9 py-4 text-sm leading-[19px] font-medium text-white font-sans font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:scale-105 transition-transform duration-300 whitespace-nowrap">
+                    <a id="hero-cta" href="/trial/" class="gradient-button inline-flex items-center justify-center rounded-full min-w-[132px] px-6 md:px-9 py-4 text-sm leading-[19px] font-medium text-white font-sans font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:scale-105 transition-transform duration-300 whitespace-nowrap">
                         <span class="flex items-center gap-2">1週間の無料体験を申し込む <i class="ph-bold ph-lightning"></i></span>
                     </a>
                 </div>
@@ -232,7 +232,7 @@ import Layout from '../layouts/Layout.astro';
                         リスクなしでお試しいただけます。
                     </p>
                     <div class="flex justify-center mb-8 w-full">
-                        <a href="/trial/" class="gradient-button inline-flex items-center justify-center rounded-full min-w-[132px] px-6 md:px-9 py-4 text-sm leading-[19px] font-medium text-white font-sans font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:scale-105 transition-transform duration-300 whitespace-nowrap">
+                        <a id="bottom-cta" href="/trial/" class="gradient-button inline-flex items-center justify-center rounded-full min-w-[132px] px-6 md:px-9 py-4 text-sm leading-[19px] font-medium text-white font-sans font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:scale-105 transition-transform duration-300 whitespace-nowrap">
                             <span class="flex items-center gap-2">
                                 1週間の無料体験を申し込む <i class="ph-bold ph-lightning"></i>
                             </span>
@@ -272,7 +272,6 @@ import Layout from '../layouts/Layout.astro';
         </section>
     </div>
 
-    <!-- ブラックアウト防止用の白いカバー -->
     <div id="modal-transition-cover" class="fixed inset-0 bg-black pointer-events-none opacity-0 transition-opacity duration-150" style="z-index: 99;"></div>
 
     <div id="channel-modal-overlay" class="fixed inset-0 z-[100] hidden modal-overlay items-center justify-center p-4">
