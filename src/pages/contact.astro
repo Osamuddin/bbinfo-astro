@@ -146,7 +146,7 @@ import Layout from '../layouts/Layout.astro';
 
                         <div class="w-full h-64 bg-gray-900 rounded-xl overflow-hidden shadow-inner border border-white/10 relative mb-6">
                             <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.946399126343!2d77.16016637616052!3d28.481413990938676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1f7b7b7b7b7b%3A0x7b7b7b7b7b7b7b7b!2sSultanpur!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.5812836263547!2d77.1594191761614!3d28.49206199043259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1f73740e21a7%3A0x600b33230a112000!2sBeyond%20Designs!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
                                 width="100%" 
                                 height="100%" 
                                 style="border:0;" 
@@ -183,7 +183,6 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-    /* フォーム要素専用スタイル */
     .glass-input {
         width: 100%;
         background: rgba(255, 255, 255, 0.03);
@@ -202,7 +201,7 @@ import Layout from '../layouts/Layout.astro';
     }
     
     .glass-input.error {
-        border-color: #ef4444; /* red-500 */
+        border-color: #ef4444;
         background: rgba(239, 68, 68, 0.1);
     }
     
@@ -210,59 +209,59 @@ import Layout from '../layouts/Layout.astro';
         color: rgba(255, 255, 255, 0.3);
     }
 
-    /* Select要素のオプション背景 */
     select.glass-input option {
         background-color: #1a1a1a;
         color: white;
     }
 
-    /* Google Maps Dark Filter */
     .dark-map-filter {
         filter: grayscale(100%) invert(92%) contrast(83%);
     }
 </style>
 
 <script>
-    // ------------------------------------------
-    // バリデーション機能
-    // ------------------------------------------
     const form = document.getElementById('contact-form') as HTMLFormElement;
-    
     if (form) {
+        const requiredIds = ['name', 'email', 'category', 'message'];
+
+        // 各フィールドのバリデーション状態を更新する関数
+        const validateField = (id: string) => {
+            const input = document.getElementById(id) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+            const container = input.closest('.space-y-2');
+            const errorMsg = container?.querySelector('.error-message') as HTMLElement;
+
+            if (!input.value.trim()) {
+                input.classList.add('error');
+                if (errorMsg) errorMsg.classList.remove('hidden');
+                return false;
+            } else {
+                input.classList.remove('error');
+                if (errorMsg) errorMsg.classList.add('hidden');
+                return true;
+            }
+        };
+
+        // 入力時にリアルタイムでエラーを消す
+        requiredIds.forEach(id => {
+            const input = document.getElementById(id);
+            input?.addEventListener('input', () => validateField(id));
+            input?.addEventListener('change', () => validateField(id)); // select用
+        });
+
+        // 送信時のバリデーション
         form.addEventListener('submit', (e) => {
             let isValid = true;
-            
-            // 必須項目のIDリスト
-            const requiredIds = ['name', 'email', 'category', 'message'];
-            
             requiredIds.forEach(id => {
-                const input = document.getElementById(id) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
-                const errorMsg = input.nextElementSibling as HTMLElement; // inputの次の要素（pタグ）
-
-                if (!input.value.trim()) {
-                    isValid = false;
-                    input.classList.add('error');
-                    if(errorMsg && errorMsg.classList.contains('error-message')) {
-                        errorMsg.classList.remove('hidden');
-                    }
-                } else {
-                    input.classList.remove('error');
-                    if(errorMsg && errorMsg.classList.contains('error-message')) {
-                        errorMsg.classList.add('hidden');
-                    }
-                }
+                if (!validateField(id)) isValid = false;
             });
 
-            // バリデーションNGなら送信を止める
             if (!isValid) {
                 e.preventDefault();
             }
         });
     }
 
-    // ------------------------------------------
     // スクロール＆エフェクト
-    // ------------------------------------------
     const initScrollObserver = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {

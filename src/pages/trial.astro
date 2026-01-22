@@ -175,7 +175,6 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-    /* フォーム要素専用スタイル */
     .glass-input {
         width: 100%;
         background: rgba(255, 255, 255, 0.03);
@@ -194,7 +193,7 @@ import Layout from '../layouts/Layout.astro';
     }
     
     .glass-input.error {
-        border-color: #ef4444; /* red-500 */
+        border-color: #ef4444;
         background: rgba(239, 68, 68, 0.1);
     }
     
@@ -202,7 +201,6 @@ import Layout from '../layouts/Layout.astro';
         color: rgba(255, 255, 255, 0.3);
     }
 
-    /* 日付・時刻入力のアイコン調整 */
     input[type="date"]::-webkit-calendar-picker-indicator,
     input[type="time"]::-webkit-calendar-picker-indicator {
         position: absolute;
@@ -211,7 +209,6 @@ import Layout from '../layouts/Layout.astro';
     }
     input[type="date"], input[type="time"] { color-scheme: dark; }
 
-    /* カスタムラジオボタン */
     .custom-radio {
         appearance: none; width: 1.25rem; height: 1.25rem;
         border: 1px solid rgba(255, 255, 255, 0.3);
@@ -228,7 +225,6 @@ import Layout from '../layouts/Layout.astro';
         border-radius: 50%; box-shadow: 0 0 10px #00f3ff;
     }
 
-    /* カスタムチェックボックス */
     .custom-checkbox {
         appearance: none; width: 1.25rem; height: 1.25rem;
         border: 1px solid rgba(255, 255, 255, 0.3);
@@ -246,84 +242,96 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
-    // ------------------------------------------
-    // バリデーション機能
-    // ------------------------------------------
     const form = document.getElementById('trial-form') as HTMLFormElement;
     
     if (form) {
+        // --- バリデーション関数 ---
+        
+        // 1. テキスト・テキストエリア入力の検証
+        const validateTextField = (id: string) => {
+            const input = document.getElementById(id) as HTMLInputElement | HTMLTextAreaElement;
+            const container = input.closest('.space-y-2');
+            const errorMsg = container?.querySelector('.error-message');
+            
+            if (!input.value.trim()) {
+                input.classList.add('error');
+                errorMsg?.classList.remove('hidden');
+                return false;
+            } else {
+                input.classList.remove('error');
+                errorMsg?.classList.add('hidden');
+                return true;
+            }
+        };
+
+        // 2. ラジオボタン（設置方法）の検証
+        const validateInstallation = () => {
+            const group = document.getElementById('installation-group');
+            const radios = document.querySelectorAll('input[name="installation_method"]') as NodeListOf<HTMLInputElement>;
+            const errorMsg = group?.querySelector('.error-message');
+            const isChecked = Array.from(radios).some(r => r.checked);
+
+            if (!isChecked) {
+                errorMsg?.classList.remove('hidden');
+                return false;
+            } else {
+                errorMsg?.classList.add('hidden');
+                return true;
+            }
+        };
+
+        // 3. チェックボックス（きっかけ）の検証
+        const validateReferral = () => {
+            const group = document.getElementById('referral-group');
+            const checkboxes = document.querySelectorAll('input[name="referral_source"]') as NodeListOf<HTMLInputElement>;
+            const errorMsg = group?.querySelector('.error-message');
+            const isChecked = Array.from(checkboxes).some(c => c.checked);
+
+            if (!isChecked) {
+                errorMsg?.classList.remove('hidden');
+                return false;
+            } else {
+                errorMsg?.classList.add('hidden');
+                return true;
+            }
+        };
+
+        // --- リアルタイム・イベント設定 ---
+        const requiredTextIds = ['name', 'name_alpha', 'phone', 'email', 'address'];
+        
+        requiredTextIds.forEach(id => {
+            const el = document.getElementById(id);
+            el?.addEventListener('input', () => validateTextField(id));
+        });
+
+        document.querySelectorAll('input[name="installation_method"]').forEach(r => {
+            r.addEventListener('change', validateInstallation);
+        });
+
+        document.querySelectorAll('input[name="referral_source"]').forEach(c => {
+            c.addEventListener('change', validateReferral);
+        });
+
+        // --- 送信時バリデーション ---
         form.addEventListener('submit', (e) => {
             let isValid = true;
             
-            // 1. テキスト入力の必須チェック
-            const requiredTextIds = ['name', 'name_alpha', 'phone', 'email', 'address'];
             requiredTextIds.forEach(id => {
-                const input = document.getElementById(id) as HTMLInputElement | HTMLTextAreaElement;
-                const errorMsg = input.nextElementSibling as HTMLElement;
-
-                if (!input.value.trim()) {
-                    isValid = false;
-                    input.classList.add('error');
-                    if(errorMsg && errorMsg.classList.contains('error-message')) {
-                        errorMsg.classList.remove('hidden');
-                    }
-                } else {
-                    input.classList.remove('error');
-                    if(errorMsg && errorMsg.classList.contains('error-message')) {
-                        errorMsg.classList.add('hidden');
-                    }
-                }
+                if (!validateTextField(id)) isValid = false;
             });
 
-            // 2. ラジオボタン（設置方法）の必須チェック
-            const installationGroup = document.getElementById('installation-group');
-            const installationRadios = document.querySelectorAll('input[name="installation_method"]');
-            const installationError = installationGroup?.querySelector('.error-message');
-            let isInstallationChecked = false;
-            
-            installationRadios.forEach((radio: any) => {
-                if (radio.checked) isInstallationChecked = true;
-            });
+            if (!validateInstallation()) isValid = false;
+            if (!validateReferral()) isValid = false;
 
-            if (!isInstallationChecked) {
-                isValid = false;
-                if(installationError) installationError.classList.remove('hidden');
-            } else {
-                if(installationError) installationError.classList.add('hidden');
-            }
-
-            // 3. チェックボックス（きっかけ）の必須チェック
-            const referralGroup = document.getElementById('referral-group');
-            const referralCheckboxes = document.querySelectorAll('input[name="referral_source"]');
-            const referralError = referralGroup?.querySelector('.error-message');
-            let isReferralChecked = false;
-
-            referralCheckboxes.forEach((checkbox: any) => {
-                if (checkbox.checked) isReferralChecked = true;
-            });
-
-            if (!isReferralChecked) {
-                isValid = false;
-                if(referralError) referralError.classList.remove('hidden');
-            } else {
-                if(referralError) referralError.classList.add('hidden');
-            }
-
-            // バリデーションNGなら送信を止める
             if (!isValid) {
                 e.preventDefault();
-                // 最初のエラー箇所へスクロール（簡易的）
-                const firstError = document.querySelector('.error-message:not(.hidden)');
-                if (firstError) {
-                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+                const firstError = document.querySelector('.error-message:not(.hidden), .glass-input.error');
+                firstError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         });
     }
 
-    // ------------------------------------------
     // スクロール＆エフェクト
-    // ------------------------------------------
     const initScrollObserver = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
