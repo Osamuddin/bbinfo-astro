@@ -309,6 +309,9 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script is:inline>
+    // スクロール位置保存用変数（モーダルブラックアウト対策）
+    let savedScrollPosition = 0;
+
     // ==========================================
     // UI Interaction Logic
     // ==========================================
@@ -406,14 +409,18 @@ import Layout from '../layouts/Layout.astro';
         modalPlanName.textContent = data.title;
         let html = '';
         data.groups.forEach(group => {
-            // H4: JS内で生成される見出し (Plan Name H3 -> Group Name H4)
             html += `<div class="mb-6 last:mb-0"><div class="flex items-baseline gap-3 mb-3 border-b border-white/10 pb-1"><h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider">${group.name}</h4><span class="text-[10px] text-gray-600 font-mono">${group.count}</span></div><div class="grid grid-cols-2 sm:grid-cols-3 gap-x-2 gap-y-1.5">${group.channels.map(ch => `<div class="text-[11px] sm:text-xs text-gray-300 hover:text-white transition-colors cursor-default truncate" title="${ch}">${ch}</div>`).join('')}</div></div>`;
         });
         modalContent.innerHTML = html;
         if(modalOverlay) {
+            // スクロールロック：現在の位置で固定
+            savedScrollPosition = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${savedScrollPosition}px`;
+            document.body.style.width = '100%';
+
             modalOverlay.classList.remove('hidden'); modalOverlay.classList.add('flex');
             setTimeout(() => { modal.classList.remove('scale-95', 'opacity-0'); modal.classList.add('scale-100', 'opacity-100'); const closeBtn = document.getElementById('modal-close-btn'); if (closeBtn) { closeBtn.focus(); } }, 10);
-            document.body.style.overflow = 'hidden';
         }
     }
 
@@ -421,7 +428,17 @@ import Layout from '../layouts/Layout.astro';
         if(!modal) return;
         modal.classList.remove('scale-100', 'opacity-100');
         modal.classList.add('scale-95', 'opacity-0');
-        setTimeout(() => { if(modalOverlay) { modalOverlay.classList.add('hidden'); modalOverlay.classList.remove('flex'); } document.body.style.overflow = ''; }, 300);
+        setTimeout(() => { 
+            if(modalOverlay) { 
+                modalOverlay.classList.add('hidden'); 
+                modalOverlay.classList.remove('flex'); 
+            }
+            // スクロールロック解除：位置を復元
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, savedScrollPosition);
+        }, 300);
     }
     if (modalOverlay) {
         modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) { window.closeChannelModal(); } });
@@ -439,6 +456,13 @@ import Layout from '../layouts/Layout.astro';
         if(!newsModalOverlay) return;
         newsModalTitle.textContent = title;
         newsModalBody.innerHTML = body;
+        
+        // スクロールロック：現在の位置で固定
+        savedScrollPosition = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${savedScrollPosition}px`;
+        document.body.style.width = '100%';
+
         newsModalOverlay.classList.remove('hidden'); 
         newsModalOverlay.classList.add('flex');
         setTimeout(() => { 
@@ -449,7 +473,6 @@ import Layout from '../layouts/Layout.astro';
                 if (closeBtn) { closeBtn.focus(); }
             }
         }, 10);
-        document.body.style.overflow = 'hidden';
     }
 
     window.closeNewsModal = function() {
@@ -461,7 +484,11 @@ import Layout from '../layouts/Layout.astro';
                 newsModalOverlay.classList.add('hidden'); 
                 newsModalOverlay.classList.remove('flex'); 
             }
-            document.body.style.overflow = ''; 
+            // スクロールロック解除：位置を復元
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, savedScrollPosition);
         }, 300);
     }
     
