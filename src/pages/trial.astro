@@ -94,7 +94,20 @@ import Layout from '../layouts/Layout.astro';
                                 <label class="block text-sm font-bold text-gray-300">設置／来店希望日</label>
                                 <div class="text-[10px] text-gray-500 mb-1">新規機械設置・修理受付<br>平日10:00-17:00　定休日:土曜日,日曜日</div>
                                 <div class="input-wrapper relative">
-                                    <input type="date" name="preferred_date" class="glass-input" placeholder="DD/MM/YYYY">
+                                    <select name="preferred_date" class="glass-input appearance-none">
+                                        <option value="" disabled selected>日付を選択</option>
+                                        {Array.from({ length: 30 }, (_, i) => {
+                                            const d = new Date();
+                                            d.setDate(d.getDate() + i + 1);
+                                            const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+                                            const day = weekdays[d.getDay()];
+                                            const isWeekend = d.getDay() === 0 || d.getDay() === 6;
+                                            if (isWeekend) return null;
+                                            const label = `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}（${day}）`;
+                                            const value = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+                                            return <option value={value}>{label}</option>;
+                                        })}
+                                    </select>
                                     <i class="ph ph-calendar-blank input-icon absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
                                 </div>
                             </div>
@@ -225,13 +238,6 @@ import Layout from '../layouts/Layout.astro';
         color: rgba(255, 255, 255, 0.3);
     }
 
-    input[type="date"]::-webkit-calendar-picker-indicator,
-    input[type="time"]::-webkit-calendar-picker-indicator {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        opacity: 0; cursor: pointer; z-index: 10;
-    }
-    input[type="date"], input[type="time"] { color-scheme: dark; }
 
 
     .custom-radio {
@@ -266,18 +272,6 @@ import Layout from '../layouts/Layout.astro';
     }
 </style>
 
-<style is:global>
-    input[type="date"]::-webkit-datetime-edit,
-    input[type="date"]::-webkit-datetime-edit-fields-wrapper,
-    input[type="date"]::-webkit-datetime-edit-text,
-    input[type="date"]::-webkit-datetime-edit-month-field,
-    input[type="date"]::-webkit-datetime-edit-day-field,
-    input[type="date"]::-webkit-datetime-edit-year-field {
-        color: white !important;
-        -webkit-text-fill-color: white !important;
-        opacity: 1 !important;
-    }
-</style>
 
 <script>
     const form = document.getElementById('trial-form') as HTMLFormElement;
