@@ -208,6 +208,10 @@ import Layout from '../layouts/Layout.astro';
         height: auto;
         min-height: 0;
         appearance: none;
+        color: rgba(255, 255, 255, 0.3);
+    }
+    select.glass-input.has-value {
+        color: white;
     }
 
     .date-input {
@@ -401,6 +405,13 @@ import Layout from '../layouts/Layout.astro';
 
     initScrollObserver();
     initGlowingEffect();
+
+    const timeSelect = document.querySelector('select[name="preferred_time"]') as HTMLSelectElement;
+    if (timeSelect) {
+        timeSelect.addEventListener('change', () => {
+            timeSelect.classList.toggle('has-value', !!timeSelect.value);
+        });
+    }
 
     const dateInput = document.getElementById('preferred_date') as HTMLInputElement;
     const datePlaceholder = document.getElementById('date-placeholder');
