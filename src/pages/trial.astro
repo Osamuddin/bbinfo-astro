@@ -94,7 +94,8 @@ import Layout from '../layouts/Layout.astro';
                                 <label class="block text-sm font-bold text-gray-300">設置／来店希望日</label>
                                 <div class="text-[10px] text-gray-500 mb-1">新規機械設置・修理受付<br>平日10:00-17:00　定休日:土曜日,日曜日</div>
                                 <div class="input-wrapper relative">
-                                    <input type="date" name="preferred_date" class="glass-input date-input">
+                                    <input type="date" name="preferred_date" id="preferred_date" class="glass-input date-input">
+                                    <span id="date-placeholder" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none text-sm">日付を選択</span>
                                     <i class="ph ph-calendar-blank input-icon absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
                                 </div>
                             </div>
@@ -400,4 +401,12 @@ import Layout from '../layouts/Layout.astro';
 
     initScrollObserver();
     initGlowingEffect();
+
+    const dateInput = document.getElementById('preferred_date') as HTMLInputElement;
+    const datePlaceholder = document.getElementById('date-placeholder');
+    if (dateInput && datePlaceholder) {
+        dateInput.addEventListener('change', () => {
+            datePlaceholder.style.display = dateInput.value ? 'none' : '';
+        });
+    }
 </script>
