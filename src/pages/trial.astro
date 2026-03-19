@@ -89,8 +89,8 @@ import Layout from '../layouts/Layout.astro';
                             <p class="error-message text-red-400 text-xs hidden">設置方法を選択してください</p>
                         </div>
 
-                        <div class="flex flex-col md:flex-row gap-6 md:items-end">
-                            <div class="space-y-2 flex-1">
+                        <div class="datetime-group">
+                            <div class="space-y-2">
                                 <label class="block text-sm font-bold text-gray-300">設置／来店希望日</label>
                                 <div class="text-[10px] text-gray-500 mb-1">新規機械設置・修理受付<br>平日10:00-17:00　定休日:土曜日,日曜日</div>
                                 <div class="input-wrapper relative">
@@ -98,8 +98,8 @@ import Layout from '../layouts/Layout.astro';
                                     <i class="ph ph-calendar-blank input-icon absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
                                 </div>
                             </div>
-                            <div class="space-y-2 flex-1">
-                                <label class="block text-sm font-bold text-gray-300">設置／来店希望時間</label>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-300" style="margin-bottom: 8px;">設置／来店希望時間</label>
                                 <div class="input-wrapper relative">
                                     <select name="preferred_time" class="glass-input appearance-none">
                                         <option value="" disabled selected>時間を選択</option>
@@ -174,6 +174,22 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
+    .datetime-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+        .datetime-group {
+            flex-direction: row;
+            align-items: flex-end;
+            gap: 1.5rem;
+        }
+        .datetime-group > div {
+            flex: 1;
+        }
+    }
+
     .glass-input {
         width: 100%;
         background: rgba(255, 255, 255, 0.03);
@@ -182,6 +198,8 @@ import Layout from '../layouts/Layout.astro';
         padding: 1rem;
         color: white;
         transition: all 0.3s ease;
+        margin: 0;
+        display: block;
     }
     
     .glass-input:focus {
