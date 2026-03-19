@@ -233,15 +233,6 @@ import Layout from '../layouts/Layout.astro';
     }
     input[type="date"], input[type="time"] { color-scheme: dark; }
 
-    input[type="date"]::-webkit-datetime-edit,
-    input[type="date"]::-webkit-datetime-edit-fields-wrapper,
-    input[type="date"]::-webkit-datetime-edit-text,
-    input[type="date"]::-webkit-datetime-edit-month-field,
-    input[type="date"]::-webkit-datetime-edit-day-field,
-    input[type="date"]::-webkit-datetime-edit-year-field {
-        color: white;
-        -webkit-text-fill-color: white;
-    }
 
     .custom-radio {
         appearance: none; width: 1.25rem; height: 1.25rem;
@@ -272,6 +263,19 @@ import Layout from '../layouts/Layout.astro';
         content: '✓'; position: absolute; top: 50%; left: 50%;
         transform: translate(-50%, -50%);
         color: black; font-size: 0.8rem; font-weight: bold;
+    }
+</style>
+
+<style is:global>
+    input[type="date"]::-webkit-datetime-edit,
+    input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+    input[type="date"]::-webkit-datetime-edit-text,
+    input[type="date"]::-webkit-datetime-edit-month-field,
+    input[type="date"]::-webkit-datetime-edit-day-field,
+    input[type="date"]::-webkit-datetime-edit-year-field {
+        color: white !important;
+        -webkit-text-fill-color: white !important;
+        opacity: 1 !important;
     }
 </style>
 
