@@ -98,8 +98,8 @@ import Layout from '../layouts/Layout.astro';
                                     <i class="ph ph-calendar-blank input-icon absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
                                 </div>
                             </div>
-                            <div>
-                                <label class="block text-sm font-bold text-gray-300" style="margin-bottom: 8px;">設置／来店希望時間</label>
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-gray-300">設置／来店希望時間</label>
                                 <div class="input-wrapper relative">
                                     <select name="preferred_time" class="glass-input appearance-none">
                                         <option value="" disabled selected>時間を選択</option>
@@ -200,6 +200,21 @@ import Layout from '../layouts/Layout.astro';
         transition: all 0.3s ease;
         margin: 0;
         display: block;
+        line-height: 1.5;
+        font-size: 1rem;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    select.glass-input {
+        height: auto;
+        min-height: 0;
+        padding: 1rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        box-sizing: border-box;
+        -webkit-appearance: none !important;
+        appearance: none !important;
     }
     
     .glass-input:focus {
