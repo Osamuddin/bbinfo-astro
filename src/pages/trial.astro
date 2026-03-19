@@ -30,7 +30,7 @@ import Layout from '../layouts/Layout.astro';
                         novalidate
                     >
                         <input type="hidden" name="form-name" value="trial-form" />
-                        <input type="hidden" name="subject" value="【無料体験】Webサイトからのお申し込み" />
+                        <input type="hidden" name="subject" value="【無料体験】BBINFOサイトからのお申し込み" />
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-2">
@@ -100,7 +100,7 @@ import Layout from '../layouts/Layout.astro';
                             </div>
                             <div class="space-y-2">
                                 <label class="block text-sm font-bold text-gray-300">設置／来店希望時間</label>
-                                <div class="text-[10px] text-transparent mb-1 select-none">Time Space<br>Space</div>
+                                <div class="text-[10px] text-transparent mb-1 select-none hidden md:block">Time Space<br>Space</div>
                                 <div class="input-wrapper relative">
                                     <select name="preferred_time" class="glass-input appearance-none">
                                         <option value="" disabled selected>時間を選択</option>
