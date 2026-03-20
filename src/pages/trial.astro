@@ -216,9 +216,11 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .date-input {
-        -webkit-appearance: textfield;
+        -webkit-appearance: none !important;
+        appearance: none !important;
         color-scheme: dark;
         width: 100% !important;
+        min-width: 0 !important;
         box-sizing: border-box !important;
         max-width: 100% !important;
     }
