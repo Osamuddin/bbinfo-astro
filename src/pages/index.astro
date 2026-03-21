@@ -418,14 +418,31 @@ import Layout from '../layouts/Layout.astro';
 
     const initGlowingEffect = () => {
         const cards = document.querySelectorAll('.glow-card-container');
+        const rectCache = new Map();
+        const updateRects = () => {
+            cards.forEach(card => rectCache.set(card, card.getBoundingClientRect()));
+        };
+        updateRects();
+        let resizeTimer;
+        window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(updateRects, 100); });
+        window.addEventListener('scroll', updateRects, { passive: true });
+
+        let rafPending = false;
+        let lastEvent = null;
         const handleMove = (e) => {
+            lastEvent = e;
+            if (rafPending) return;
+            rafPending = true;
             requestAnimationFrame(() => {
+                rafPending = false;
+                const ev = lastEvent;
                 cards.forEach(card => {
                     const glowEffect = card.querySelector('.glow-effect');
                     if (!glowEffect) return;
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
+                    const rect = rectCache.get(card);
+                    if (!rect) return;
+                    const x = ev.clientX - rect.left;
+                    const y = ev.clientY - rect.top;
                     const inside = x >= -50 && x <= rect.width + 50 && y >= -50 && y <= rect.height + 50;
                     if (inside) {
                         glowEffect.style.setProperty('--active', '1');

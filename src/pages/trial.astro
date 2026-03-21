@@ -385,26 +385,47 @@ import Layout from '../layouts/Layout.astro';
 
     const initGlowingEffect = () => {
         const cards = document.querySelectorAll('.glow-card-container');
+        const rectCache = new Map<Element, DOMRect>();
+        const updateRects = () => {
+            cards.forEach(card => rectCache.set(card, card.getBoundingClientRect()));
+        };
+        updateRects();
+        let resizeTimer: ReturnType<typeof setTimeout>;
+        window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(updateRects, 100); });
+        window.addEventListener('scroll', updateRects, { passive: true });
+
+        let rafPending = false;
+        let lastEvent: MouseEvent | null = null;
         const handleMove = (e: MouseEvent) => {
-            cards.forEach(card => {
-                const htmlCard = card as HTMLElement;
-                const glowEffect = htmlCard.querySelector('.glow-effect') as HTMLElement;
-                if (!glowEffect) return;
-                const rect = htmlCard.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const inside = x >= -50 && x <= rect.width + 50 && y >= -50 && y <= rect.height + 50;
-                if (inside) {
-                    glowEffect.style.setProperty('--active', '1');
-                    const centerX = rect.width / 2; const centerY = rect.height / 2;
-                    const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) + 90;
-                    glowEffect.style.setProperty('--start', angle.toString());
-                } else {
-                    glowEffect.style.setProperty('--active', '0');
-                }
+            lastEvent = e;
+            if (rafPending) return;
+            rafPending = true;
+            requestAnimationFrame(() => {
+                rafPending = false;
+                const ev = lastEvent!;
+                cards.forEach(card => {
+                    const htmlCard = card as HTMLElement;
+                    const glowEffect = htmlCard.querySelector('.glow-effect') as HTMLElement;
+                    if (!glowEffect) return;
+                    const rect = rectCache.get(card);
+                    if (!rect) return;
+                    const x = ev.clientX - rect.left;
+                    const y = ev.clientY - rect.top;
+                    const inside = x >= -50 && x <= rect.width + 50 && y >= -50 && y <= rect.height + 50;
+                    if (inside) {
+                        glowEffect.style.setProperty('--active', '1');
+                        const centerX = rect.width / 2; const centerY = rect.height / 2;
+                        const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) + 90;
+                        glowEffect.style.setProperty('--start', angle.toString());
+                    } else {
+                        glowEffect.style.setProperty('--active', '0');
+                    }
+                });
             });
         };
-        window.addEventListener('mousemove', handleMove);
+        if (window.matchMedia('(hover: hover)').matches) {
+            window.addEventListener('mousemove', handleMove);
+        }
     };
 
     initScrollObserver();
