@@ -1,0 +1,161 @@
+@font-face {
+  font-family: "Phosphor";
+  src: url("/fonts/phosphor/Phosphor.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+.ph {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "Phosphor" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.ph.ph-phone:before {
+  content: "\e3b8";
+}
+.ph.ph-map-pin:before {
+  content: "\e316";
+}
+.ph.ph-envelope-simple:before {
+  content: "\e218";
+}
+.ph.ph-clock:before {
+  content: "\e19a";
+}
+.ph.ph-caret-down:before {
+  content: "\e136";
+}
+.ph.ph-list:before {
+  content: "\e2f0";
+}
+.ph.ph-envelope:before {
+  content: "\e214";
+}
+.ph.ph-calendar-blank:before {
+  content: "\e10a";
+}
+.ph.ph-buildings:before {
+  content: "\e102";
+}
+
+@font-face {
+  font-family: "Phosphor-Bold";
+  src: url("/fonts/phosphor/Phosphor-Bold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+.ph-bold {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "Phosphor-Bold" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.ph-bold.ph-lightning:before {
+  content: "\e2de";
+}
+.ph-bold.ph-caret-down:before {
+  content: "\e136";
+}
+.ph-bold.ph-x:before {
+  content: "\e4f6";
+}
+.ph-bold.ph-rewind:before {
+  content: "\e6a8";
+}
+.ph-bold.ph-paper-plane-right:before {
+  content: "\e396";
+}
+.ph-bold.ph-house:before {
+  content: "\e2c2";
+}
+.ph-bold.ph-caret-right:before {
+  content: "\e13a";
+}
+
+@font-face {
+  font-family: "Phosphor-Fill";
+  src: url("/fonts/phosphor/Phosphor-Fill.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+.ph-fill {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "Phosphor-Fill" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.ph-fill.ph-clock-counter-clockwise:before {
+  content: "\e1a0";
+}
+.ph-fill.ph-paper-plane-tilt:before {
+  content: "\e398";
+}
+.ph-fill.ph-check-circle:before {
+  content: "\e184";
+}
+.ph-fill.ph-television:before {
+  content: "\e754";
+}
+.ph-fill.ph-globe-hemisphere-east:before {
+  content: "\e28a";
+}
+.ph-fill.ph-device-mobile-camera:before {
+  content: "\e1e2";
+}
