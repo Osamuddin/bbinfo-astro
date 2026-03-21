@@ -61,5 +61,20 @@ import { ElegantShape } from '../components/shape-landing-hero';
         </main>
         
         <Footer />
+
+        <script is:inline>
+          function loadClarity() {
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window,document,"clarity","script","v5rvk99mct");
+          }
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadClarity, { timeout: 4000 });
+          } else {
+            setTimeout(loadClarity, 4000);
+          }
+        </script>
     </body>
 </html>
