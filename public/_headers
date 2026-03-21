@@ -1,0 +1,24 @@
+# Astro が生成する CSS/JS（ファイル名にコンテンツハッシュが含まれるため永続キャッシュ可）
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 画像・フォント（変更時はファイル名を変えること）
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ファビコン類
+/favicon.*
+  Cache-Control: public, max-age=86400
+
+/site.webmanifest
+  Cache-Control: public, max-age=86400
+
+# HTML は常に最新を返す
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
