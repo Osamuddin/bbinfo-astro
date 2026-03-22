@@ -654,7 +654,7 @@ import Layout from '../layouts/Layout.astro';
         const container = document.getElementById('news-container');
         if (!container) return;
 
-        fetch(GAS_API_URL)
+        const doFetch = () => fetch(GAS_API_URL)
             .then(response => response.json())
             .then(data => {
                 if (!data || data.length === 0) {
@@ -705,6 +705,17 @@ import Layout from '../layouts/Layout.astro';
                 console.error('Fetch Error:', error);
                 container.innerHTML = '<div class="text-center text-gray-500 py-4">情報の読み込みに失敗しました</div>';
             });
+
+        const newsSection = document.getElementById('news');
+        if (!newsSection) { doFetch(); return; }
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            if (entries[0].isIntersecting) {
+                obs.disconnect();
+                doFetch();
+            }
+        }, { rootMargin: '200px' });
+        observer.observe(newsSection);
     };
 
     const initMobileCTA = () => {
