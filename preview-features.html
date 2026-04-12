@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEATURES セクション プレビュー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body { background: #030303; color: #fff; font-family: "Inter", "Noto Sans JP", sans-serif; }
+
+        .glass-panel {
+            background: rgba(10,10,10,0.9);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+        }
+        .glass-panel:hover { border-color: rgba(255,255,255,0.2); }
+
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+        .animate-pulse { animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
+    </style>
+</head>
+<body>
+
+<!-- PREVIEW LABEL -->
+<div style="background:rgba(0,243,255,.08);border-bottom:1px solid rgba(0,243,255,.2);padding:8px 24px;font-size:11px;color:#00f3ff;letter-spacing:.1em;text-align:center;font-weight:600;position:sticky;top:0;z-index:100;">
+    PREVIEW — 4 Feature Sections（「Why BBINFO?」直後に挿入）
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     01  チャンネル数と臨場感
+════════════════════════════════════════════════════ -->
+<section style="padding:7rem 1.5rem; border-top:1px solid rgba(255,255,255,.05); position:relative; overflow:hidden;">
+    <div style="position:absolute;top:0;right:0;width:600px;height:600px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(0,243,255,.04) 0%,transparent 65%);"></div>
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+            <!-- Text -->
+            <div>
+                <div class="flex items-end gap-4 mb-8">
+                    <span style="font-size:80px;font-weight:900;line-height:1;color:rgba(0,243,255,.1);user-select:none;" aria-hidden="true">01</span>
+                    <div style="padding-bottom:12px;flex:1;height:1px;background:linear-gradient(to right,rgba(0,243,255,.2),transparent);"></div>
+                </div>
+                <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-6" style="background:rgba(0,243,255,.1);border:1px solid rgba(0,243,255,.2);">
+                    <span class="w-2 h-2 rounded-full animate-pulse" style="background:#00f3ff;"></span>
+                    <span class="text-xs font-semibold tracking-widest uppercase" style="color:#00f3ff;">LIVE STREAMING</span>
+                </div>
+                <h2 class="font-black mb-6 leading-tight" style="font-size:clamp(2.5rem,5vw,3.75rem);">
+                    圧倒的な<br><span style="color:#00f3ff;">チャンネル数</span>と<br>臨場感
+                </h2>
+                <p class="leading-relaxed mb-4" style="color:#9ca3af;font-size:1.125rem;">地上波・BS・CS 全66局を網羅。ニュース、バラエティ、ドラマはもちろん、熱狂のスポーツ中継や最新アニメまで、日本国内と変わらぬ臨場感でリアルタイムに楽しめます。</p>
+                <p class="leading-relaxed mb-10" style="color:#6b7280;">さらに、最大30分前まで遡れる「追っかけ再生機能」を搭載。不意の外出や用事で冒頭を見逃しても、ワンタッチで開始時間に巻き戻し、「今」の興奮を余さず共有できます。</p>
+                <!-- Stats -->
+                <div class="grid grid-cols-4 gap-3 mb-8">
+                    <div class="glass-panel rounded-2xl p-4 text-center">
+                        <div class="text-3xl font-black" style="color:#00f3ff;">28</div>
+                        <div class="uppercase tracking-widest mt-1" style="font-size:10px;color:#6b7280;">地上波</div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-4 text-center">
+                        <div class="text-3xl font-black" style="color:#a855f7;">21</div>
+                        <div class="uppercase tracking-widest mt-1" style="font-size:10px;color:#6b7280;">BS</div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-4 text-center">
+                        <div class="text-3xl font-black" style="color:#ec4899;">17</div>
+                        <div class="uppercase tracking-widest mt-1" style="font-size:10px;color:#6b7280;">CS</div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-4 text-center">
+                        <div class="text-3xl font-black text-white">66</div>
+                        <div class="uppercase tracking-widest mt-1" style="font-size:10px;color:#6b7280;">TOTAL</div>
+                    </div>
+                </div>
+                <!-- Timeshift callout -->
+                <div class="flex items-center gap-4 glass-panel rounded-2xl p-5">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(0,243,255,.1);">
+                        <i class="ph-fill ph-rewind-circle text-2xl" style="color:#00f3ff;"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold mb-0.5">追っかけ再生機能</div>
+                        <div class="text-sm" style="color:#6b7280;">最大30分前まで巻き戻し可能。見逃しゼロ。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual — EPG Guide -->
+            <div class="self-center">
+                <div class="glass-panel rounded-3xl overflow-hidden">
+                    <!-- Header -->
+                    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(0,243,255,.03);">
+                        <div style="display:flex;align-items:center;gap:8px;">
+                            <span style="width:8px;height:8px;border-radius:50%;background:#00f3ff;animation:pulse 2s infinite;display:inline-block;"></span>
+                            <span style="font-size:11px;font-weight:700;color:#00f3ff;letter-spacing:.1em;text-transform:uppercase;">LIVE TV GUIDE</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:12px;">
+                            <span style="font-size:11px;color:#4b5563;font-variant-numeric:tabular-nums;">19:24</span>
+                            <span style="font-size:10px;color:#4b5563;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.05);border-radius:6px;padding:2px 8px;">全 66ch</span>
+                        </div>
+                    </div>
+                    <!-- Time header -->
+                    <div style="display:flex;font-size:9px;color:#374151;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid rgba(255,255,255,.04);">
+                        <div style="width:88px;flex-shrink:0;padding:8px 12px;border-right:1px solid rgba(255,255,255,.04);"></div>
+                        <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);border-left:none;">
+                            <div style="padding:8px 12px;border-right:1px solid rgba(255,255,255,.04);">18:00</div>
+                            <div style="padding:8px 12px;border-right:1px solid rgba(255,255,255,.04);">19:00</div>
+                            <div style="padding:8px 12px;border-right:1px solid rgba(255,255,255,.04);">20:00</div>
+                            <div style="padding:8px 12px;">21:00</div>
+                        </div>
+                    </div>
+                    <!-- Channel rows -->
+                    <div style="border-bottom:none;">
+                        <!-- NHK総合 -->
+                        <div style="display:flex;align-items:stretch;font-size:10px;border-bottom:1px solid rgba(255,255,255,.04);">
+                            <div style="width:88px;flex-shrink:0;padding:10px 12px;display:flex;align-items:center;gap:6px;border-right:1px solid rgba(255,255,255,.04);">
+                                <span style="color:rgba(0,243,255,.4);font-family:monospace;font-size:9px;">1</span>
+                                <span style="color:#9ca3af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">NHK総合</span>
+                            </div>
+                            <div style="flex:1;display:flex;">
+                                <div style="flex:1;padding:10px 8px;background:rgba(0,243,255,.07);border-right:1px solid rgba(255,255,255,.03);"><span style="color:#67e8f9;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">ニュース7</span></div>
+                                <div style="flex:1;padding:10px 8px;border-right:1px solid rgba(255,255,255,.03);"><span style="color:#6b7280;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">クローズアップ現代</span></div>
+                                <div style="flex:2;padding:10px 8px;background:rgba(0,243,255,.04);border-right:1px solid rgba(255,255,255,.03);"><span style="color:rgba(0,243,255,.6);white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">NHKスペシャル</span></div>
+                                <div style="flex:1;padding:10px 8px;"><span style="color:#6b7280;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">ニュース9</span></div>
+                            </div>
+                        </div>
+                        <!-- 日本テレビ -->
+                        <div style="display:flex;align-items:stretch;font-size:10px;border-bottom:1px solid rgba(255,255,255,.04);">
+                            <div style="width:88px;flex-shrink:0;padding:10px 12px;display:flex;align-items:center;gap:6px;border-right:1px solid rgba(255,255,255,.04);">
+                                <span style="color:rgba(168,85,247,.4);font-family:monospace;font-size:9px;">4</span>
+                                <span style="color:#9ca3af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">日本テレビ</span>
+                            </div>
+                            <div style="flex:1;display:flex;">
+                                <div style="flex:1.5;padding:10px 8px;border-right:1px solid rgba(255,255,255,.03);"><span style="color:#6b7280;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">夕方ニュース</span></div>
+                                <div style="flex:3;padding:10px 8px;background:rgba(168,85,247,.06);border-right:1px solid rgba(255,255,255,.03);"><span style="color:#c084fc;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">ダウンタウンDX</span></div>
+                                <div style="flex:2;padding:10px 8px;background:rgba(251,191,36,.05);"><span style="color:rgba(251,191,36,.7);white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">ドラマ</span></div>
+                            </div>
+                        </div>
+                        <!-- TBSテレビ -->
+                        <div style="display:flex;align-items:stretch;font-size:10px;border-bottom:1px solid rgba(255,255,255,.04);">
+                            <div style="width:88px;flex-shrink:0;padding:10px 12px;display:flex;align-items:center;gap:6px;border-right:1px solid rgba(255,255,255,.04);">
+                                <span style="color:rgba(251,191,36,.4);font-family:monospace;font-size:9px;">6</span>
+                                <span style="color:#9ca3af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">TBSテレビ</span>
+                            </div>
+                            <div style="flex:1;display:flex;">
+                                <div style="flex:1;padding:10px 8px;background:rgba(0,243,255,.05);border-right:1px solid rgba(255,255,255,.03);"><span style="color:#67e8f9;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">JNNニュース</span></div>
+                                <div style="flex:2.5;padding:10px 8px;background:rgba(168,85,247,.06);border-right:1px solid rgba(255,255,255,.03);"><span style="color:#c084fc;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">バラエティ</span></div>
+                                <div style="flex:2.5;padding:10px 8px;background:rgba(251,191,36,.05);"><span style="color:rgba(251,191,36,.7);white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">金曜ドラマ</span></div>
+                            </div>
+                        </div>
+                        <!-- テレビ朝日 -->
+                        <div style="display:flex;align-items:stretch;font-size:10px;border-bottom:1px solid rgba(255,255,255,.04);">
+                            <div style="width:88px;flex-shrink:0;padding:10px 12px;display:flex;align-items:center;gap:6px;border-right:1px solid rgba(255,255,255,.04);">
+                                <span style="color:rgba(0,243,255,.4);font-family:monospace;font-size:9px;">5</span>
+                                <span style="color:#9ca3af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">テレビ朝日</span>
+                            </div>
+                            <div style="flex:1;display:flex;">
+                                <div style="flex:2;padding:10px 8px;background:rgba(0,243,255,.06);border-right:1px solid rgba(255,255,255,.03);"><span style="color:#67e8f9;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">報道ステーション</span></div>
+                                <div style="flex:4;padding:10px 8px;background:rgba(168,85,247,.06);border-right:1px solid rgba(255,255,255,.03);"><span style="color:#c084fc;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">アメトーーク！</span></div>
+                                <div style="flex:2;padding:10px 8px;"><span style="color:#6b7280;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">ニュース</span></div>
+                            </div>
+                        </div>
+                        <!-- フジテレビ -->
+                        <div style="display:flex;align-items:stretch;font-size:10px;border-bottom:1px solid rgba(255,255,255,.04);">
+                            <div style="width:88px;flex-shrink:0;padding:10px 12px;display:flex;align-items:center;gap:6px;border-right:1px solid rgba(255,255,255,.04);">
+                                <span style="color:rgba(74,222,128,.4);font-family:monospace;font-size:9px;">8</span>
+                                <span style="color:#9ca3af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">フジテレビ</span>
+                            </div>
+                            <div style="flex:1;display:flex;">
+                                <div style="flex:2;padding:10px 8px;border-right:1px solid rgba(255,255,255,.03);"><span style="color:#6b7280;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">FNNニュース</span></div>
+                                <div style="flex:6;padding:10px 8px;background:rgba(74,222,128,.06);"><span style="color:#86efac;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">⚽ サッカー日本代表 LIVE中継</span></div>
+                            </div>
+                        </div>
+                        <!-- テレビ東京 -->
+                        <div style="display:flex;align-items:stretch;font-size:10px;border-bottom:1px solid rgba(255,255,255,.04);">
+                            <div style="width:88px;flex-shrink:0;padding:10px 12px;display:flex;align-items:center;gap:6px;border-right:1px solid rgba(255,255,255,.04);">
+                                <span style="color:rgba(236,72,153,.4);font-family:monospace;font-size:9px;">7</span>
+                                <span style="color:#9ca3af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">テレビ東京</span>
+                            </div>
+                            <div style="flex:1;display:flex;">
+                                <div style="flex:1;padding:10px 8px;background:rgba(236,72,153,.06);border-right:1px solid rgba(255,255,255,.03);"><span style="color:#f9a8d4;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">アニメ</span></div>
+                                <div style="flex:2;padding:10px 8px;border-right:1px solid rgba(255,255,255,.03);"><span style="color:#6b7280;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">ガイアの夜明け</span></div>
+                                <div style="flex:2;padding:10px 8px;background:rgba(0,243,255,.05);border-right:1px solid rgba(255,255,255,.03);"><span style="color:#67e8f9;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">WBS</span></div>
+                                <div style="flex:2;padding:10px 8px;background:rgba(236,72,153,.06);"><span style="color:#f9a8d4;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">深夜アニメ</span></div>
+                            </div>
+                        </div>
+                        <!-- WOWOW -->
+                        <div style="display:flex;align-items:stretch;font-size:10px;border-bottom:1px solid rgba(255,255,255,.04);">
+                            <div style="width:88px;flex-shrink:0;padding:10px 12px;display:flex;align-items:center;gap:6px;border-right:1px solid rgba(255,255,255,.04);">
+                                <span style="color:rgba(96,165,250,.4);font-family:monospace;font-size:9px;">BS</span>
+                                <span style="color:#9ca3af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">WOWOW</span>
+                            </div>
+                            <div style="flex:1;display:flex;">
+                                <div style="flex:4;padding:10px 8px;background:rgba(96,165,250,.06);border-right:1px solid rgba(255,255,255,.03);"><span style="color:#93c5fd;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">🎬 映画 ミッション：インポッシブル</span></div>
+                                <div style="flex:4;padding:10px 8px;background:rgba(96,165,250,.04);"><span style="color:rgba(96,165,250,.5);white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">映画 トップガン</span></div>
+                            </div>
+                        </div>
+                        <!-- J SPORTS -->
+                        <div style="display:flex;align-items:stretch;font-size:10px;border-bottom:1px solid rgba(255,255,255,.04);">
+                            <div style="width:88px;flex-shrink:0;padding:10px 12px;display:flex;align-items:center;gap:6px;border-right:1px solid rgba(255,255,255,.04);">
+                                <span style="color:rgba(74,222,128,.4);font-family:monospace;font-size:9px;">CS</span>
+                                <span style="color:#9ca3af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">J SPORTS</span>
+                            </div>
+                            <div style="flex:1;padding:10px 8px;background:rgba(74,222,128,.06);">
+                                <span style="color:#86efac;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">🏀 バスケットボール 日本 vs USA LIVE</span>
+                            </div>
+                        </div>
+                        <!-- アニマックス -->
+                        <div style="display:flex;align-items:stretch;font-size:10px;">
+                            <div style="width:88px;flex-shrink:0;padding:10px 12px;display:flex;align-items:center;gap:6px;border-right:1px solid rgba(255,255,255,.04);">
+                                <span style="color:rgba(236,72,153,.4);font-family:monospace;font-size:9px;">CS</span>
+                                <span style="color:#9ca3af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">アニマックス</span>
+                            </div>
+                            <div style="flex:1;display:flex;">
+                                <div style="flex:2;padding:10px 8px;background:rgba(236,72,153,.06);border-right:1px solid rgba(255,255,255,.03);"><span style="color:#f9a8d4;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">鬼滅の刃</span></div>
+                                <div style="flex:2;padding:10px 8px;background:rgba(236,72,153,.06);border-right:1px solid rgba(255,255,255,.03);"><span style="color:#f9a8d4;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">進撃の巨人</span></div>
+                                <div style="flex:2;padding:10px 8px;background:rgba(236,72,153,.06);border-right:1px solid rgba(255,255,255,.03);"><span style="color:#f9a8d4;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">呪術廻戦</span></div>
+                                <div style="flex:2;padding:10px 8px;background:rgba(236,72,153,.06);"><span style="color:#f9a8d4;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;">ONE PIECE</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer -->
+                    <div style="padding:10px 20px;border-top:1px solid rgba(255,255,255,.05);background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:space-between;">
+                        <span style="font-size:10px;color:#374151;">地上波 28ch ・ BS 21ch ・ CS 17ch</span>
+                        <span style="font-size:10px;color:rgba(0,243,255,.4);">+ 57 more channels ↓</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     02  全録機能
+════════════════════════════════════════════════════ -->
+<section style="padding:7rem 1.5rem;border-top:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden;">
+    <div style="position:absolute;bottom:0;left:0;width:600px;height:600px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(168,85,247,.04) 0%,transparent 65%);"></div>
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+
+            <!-- Visual (left) — Scale Infographic -->
+            <div class="order-2 lg:order-1 flex flex-col justify-center">
+                <div class="glass-panel rounded-3xl overflow-hidden">
+                    <!-- Header -->
+                    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(168,85,247,.05);">
+                        <div style="display:flex;align-items:center;gap:8px;">
+                            <i class="ph-fill ph-broadcast" style="color:#a855f7;font-size:14px;"></i>
+                            <span style="font-size:11px;font-weight:700;color:#a855f7;letter-spacing:.08em;text-transform:uppercase;">ALLREC ENGINE</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:6px;">
+                            <span style="width:6px;height:6px;border-radius:50%;background:#a855f7;animation:pulse 2s infinite;display:inline-block;"></span>
+                            <span style="font-size:10px;color:rgba(168,85,247,.6);font-weight:600;letter-spacing:.08em;text-transform:uppercase;">常時録画中</span>
+                        </div>
+                    </div>
+
+                    <!-- Hero equation -->
+                    <div style="padding:24px 24px 20px;border-bottom:1px solid rgba(255,255,255,.05);">
+                        <div style="font-size:10px;color:#4b5563;text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;">4週間で積み上がる放送時間</div>
+                        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 16px;">
+                            <div style="text-align:center;">
+                                <div style="font-size:40px;font-weight:900;line-height:1;color:#fff;">66</div>
+                                <div style="font-size:10px;color:rgba(168,85,247,.7);font-weight:600;margin-top:4px;">チャンネル</div>
+                            </div>
+                            <span style="font-size:24px;color:rgba(168,85,247,.4);font-weight:100;padding-bottom:20px;">×</span>
+                            <div style="text-align:center;">
+                                <div style="font-size:40px;font-weight:900;line-height:1;color:#fff;">24</div>
+                                <div style="font-size:10px;color:rgba(168,85,247,.7);font-weight:600;margin-top:4px;">時間 / 日</div>
+                            </div>
+                            <span style="font-size:24px;color:rgba(168,85,247,.4);font-weight:100;padding-bottom:20px;">×</span>
+                            <div style="text-align:center;">
+                                <div style="font-size:40px;font-weight:900;line-height:1;color:#fff;">28</div>
+                                <div style="font-size:10px;color:rgba(168,85,247,.7);font-weight:600;margin-top:4px;">日間保存</div>
+                            </div>
+                            <span style="font-size:24px;color:rgba(168,85,247,.4);font-weight:100;padding-bottom:20px;">=</span>
+                            <div style="text-align:center;">
+                                <div style="font-size:40px;font-weight:900;line-height:1;color:#a855f7;">44,352</div>
+                                <div style="font-size:10px;color:rgba(168,85,247,.6);font-weight:600;margin-top:4px;">時間を常時保存</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Abstract channel stream -->
+                    <div style="padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.05);">
+                        <div style="font-size:10px;color:#4b5563;text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;">全チャンネル → クラウド自動保存 <span style="text-transform:none;color:#374151;">(概念図)</span></div>
+                        <div style="display:flex;align-items:center;gap:16px;">
+                            <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-width:0;">
+                                <!-- 地上波 -->
+                                <div style="display:flex;align-items:center;gap:8px;">
+                                    <span style="font-size:9px;color:rgba(6,182,212,.7);font-weight:700;width:32px;flex-shrink:0;">地上波</span>
+                                    <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+                                        <div style="height:6px;border-radius:9999px;width:95%;background:linear-gradient(to right,rgba(6,182,212,.9),rgba(6,182,212,.15));"></div>
+                                        <div style="height:6px;border-radius:9999px;width:87%;background:linear-gradient(to right,rgba(34,211,238,.7),rgba(6,182,212,.1));"></div>
+                                        <div style="height:6px;border-radius:9999px;width:91%;background:linear-gradient(to right,rgba(103,232,249,.6),rgba(6,182,212,.08));"></div>
+                                        <div style="height:6px;border-radius:9999px;width:83%;background:linear-gradient(to right,rgba(6,182,212,.5),rgba(6,182,212,.05));"></div>
+                                    </div>
+                                </div>
+                                <!-- BS -->
+                                <div style="display:flex;align-items:center;gap:8px;">
+                                    <span style="font-size:9px;color:rgba(96,165,250,.7);font-weight:700;width:32px;flex-shrink:0;">BS</span>
+                                    <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+                                        <div style="height:6px;border-radius:9999px;width:93%;background:linear-gradient(to right,rgba(96,165,250,.9),rgba(96,165,250,.15));"></div>
+                                        <div style="height:6px;border-radius:9999px;width:85%;background:linear-gradient(to right,rgba(147,197,253,.7),rgba(59,130,246,.1));"></div>
+                                        <div style="height:6px;border-radius:9999px;width:89%;background:linear-gradient(to right,rgba(96,165,250,.6),rgba(59,130,246,.07));"></div>
+                                    </div>
+                                </div>
+                                <!-- CS -->
+                                <div style="display:flex;align-items:center;gap:8px;">
+                                    <span style="font-size:9px;color:rgba(168,85,247,.7);font-weight:700;width:32px;flex-shrink:0;">CS</span>
+                                    <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+                                        <div style="height:6px;border-radius:9999px;width:97%;background:linear-gradient(to right,rgba(192,132,252,.9),rgba(168,85,247,.15));"></div>
+                                        <div style="height:6px;border-radius:9999px;width:80%;background:linear-gradient(to right,rgba(216,180,254,.7),rgba(124,58,237,.1));"></div>
+                                        <div style="height:6px;border-radius:9999px;width:88%;background:linear-gradient(to right,rgba(168,85,247,.6),rgba(168,85,247,.06));"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Arrow + cloud -->
+                            <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;">
+                                <i class="ph-fill ph-arrow-right" style="color:rgba(168,85,247,.4);font-size:14px;"></i>
+                                <div style="width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.25);">
+                                    <i class="ph-fill ph-cloud-arrow-up" style="color:#a855f7;font-size:22px;"></i>
+                                </div>
+                                <span style="font-size:9px;color:rgba(168,85,247,.5);font-weight:700;">クラウド</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Benefit rows -->
+                    <div style="padding:16px 20px;display:flex;flex-direction:column;gap:8px;">
+                        <div style="display:flex;align-items:center;gap:12px;border-radius:12px;padding:10px 12px;background:rgba(168,85,247,.06);">
+                            <i class="ph-fill ph-check-circle" style="color:#a855f7;font-size:18px;flex-shrink:0;"></i>
+                            <span style="font-size:14px;font-weight:600;color:#fff;">録画予約<span style="color:#a855f7;">不要</span></span>
+                            <span style="margin-left:auto;font-size:10px;color:#4b5563;flex-shrink:0;">すべて自動</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:12px;border-radius:12px;padding:10px 12px;background:rgba(168,85,247,.06);">
+                            <i class="ph-fill ph-check-circle" style="color:#a855f7;font-size:18px;flex-shrink:0;"></i>
+                            <span style="font-size:14px;font-weight:600;color:#fff;">HDD容量 <span style="color:#a855f7;">0GB</span></span>
+                            <span style="margin-left:auto;font-size:10px;color:#4b5563;flex-shrink:0;">端末を選ばない</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:12px;border-radius:12px;padding:10px 12px;background:rgba(168,85,247,.06);">
+                            <i class="ph-fill ph-check-circle" style="color:#a855f7;font-size:18px;flex-shrink:0;"></i>
+                            <span style="font-size:14px;font-weight:600;color:#fff;">時差フリー<span style="color:#a855f7;">視聴</span></span>
+                            <span style="margin-left:auto;font-size:10px;color:#4b5563;flex-shrink:0;">28日間いつでも</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text (right) -->
+            <div class="order-1 lg:order-2">
+                <div class="flex items-end gap-4 mb-8">
+                    <span style="font-size:80px;font-weight:900;line-height:1;color:rgba(168,85,247,.1);user-select:none;" aria-hidden="true">02</span>
+                    <div style="padding-bottom:12px;flex:1;height:1px;background:linear-gradient(to right,rgba(168,85,247,.2),transparent);"></div>
+                </div>
+                <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-6" style="background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2);">
+                    <i class="ph-fill ph-cloud-arrow-up text-sm" style="color:#a855f7;"></i>
+                    <span class="text-xs font-semibold tracking-widest uppercase" style="color:#a855f7;">ALL REC</span>
+                </div>
+                <h2 class="font-black mb-6 leading-tight" style="font-size:clamp(2.5rem,5vw,3.75rem);">
+                    録画の概念を<br>変える<br><span style="color:#a855f7;">「全録」</span>機能
+                </h2>
+                <p class="leading-relaxed mb-4" style="color:#9ca3af;font-size:1.125rem;">全66局の全番組を、クラウド上へ4週間分フルで自動保存。もう面倒な録画予約や、ハードディスクの容量不足を心配する必要はありません。</p>
+                <p class="leading-relaxed mb-10" style="color:#6b7280;">海外生活における時差の壁を越え、観たい時に観たい番組を呼び出す自由を。週末に1ヶ月分のドラマを「一気見」したり、話題のニュースを後からじっくり確認したりと、テレビがあなたのライフスタイルに寄り添う、新しい視聴体験をお届けします。</p>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                    <div class="flex items-center gap-3 glass-panel rounded-xl px-5 py-4">
+                        <i class="ph-fill ph-check-circle text-xl shrink-0" style="color:#a855f7;"></i>
+                        <span class="text-sm" style="color:#d1d5db;">録画予約は一切不要</span>
+                    </div>
+                    <div class="flex items-center gap-3 glass-panel rounded-xl px-5 py-4">
+                        <i class="ph-fill ph-check-circle text-xl shrink-0" style="color:#a855f7;"></i>
+                        <span class="text-sm" style="color:#d1d5db;">HDDの容量を使わないクラウド保存</span>
+                    </div>
+                    <div class="flex items-center gap-3 glass-panel rounded-xl px-5 py-4">
+                        <i class="ph-fill ph-check-circle text-xl shrink-0" style="color:#a855f7;"></i>
+                        <span class="text-sm" style="color:#d1d5db;">時差を超えて好きな時間に視聴</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     03  VPN内蔵セットトップボックス
+════════════════════════════════════════════════════ -->
+<section style="padding:7rem 1.5rem;border-top:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;right:0;width:600px;height:600px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(74,222,128,.04) 0%,transparent 65%);"></div>
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+
+            <!-- Text (left) -->
+            <div>
+                <div class="flex items-end gap-4 mb-8">
+                    <span style="font-size:80px;font-weight:900;line-height:1;color:rgba(74,222,128,.1);user-select:none;" aria-hidden="true">03</span>
+                    <div style="padding-bottom:12px;flex:1;height:1px;background:linear-gradient(to right,rgba(74,222,128,.2),transparent);"></div>
+                </div>
+                <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-6" style="background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.2);">
+                    <i class="ph-fill ph-plug text-sm" style="color:#4ade80;"></i>
+                    <span class="text-xs font-semibold tracking-widest uppercase" style="color:#4ade80;">PLUG & PLAY</span>
+                </div>
+                <h2 class="font-black mb-6 leading-tight" style="font-size:clamp(2.5rem,5vw,3.75rem);">
+                    <span style="color:#4ade80;">VPN内蔵</span><br>セットトップ<br>ボックス
+                </h2>
+                <p class="leading-relaxed mb-4" style="color:#9ca3af;font-size:1.125rem;">専用のセットトップボックスをテレビとインターネットに繋ぐだけで、セットアップは完了。複雑なVPN設定や専門知識は一切必要ありません。</p>
+                <p class="leading-relaxed mb-10" style="color:#6b7280;">オプション契約により高性能なVPN機能をご利用いただけるため、海外では制限されがちなNetflixやAmazon Prime Video、Abemaなども、日本国内と変わらない快適な視聴環境で再現。これ一台で、ご自宅のリビングがまるで日本にいるかのような、最高のエンターテインメント空間へと生まれ変わります。</p>
+                <div class="flex items-center gap-4 glass-panel rounded-2xl p-5" style="background:rgba(74,222,128,.03);border-color:rgba(74,222,128,.1);">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(74,222,128,.1);">
+                        <i class="ph-fill ph-lightning text-2xl" style="color:#4ade80;"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold mb-0.5">接続3分で日本のテレビ</div>
+                        <div class="text-sm" style="color:#6b7280;">ボックスをHDMIとLANに繋ぐだけ。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual (right) — step diagram -->
+            <div class="flex flex-col justify-center">
+                <div class="glass-panel rounded-3xl p-8" style="display:flex;flex-direction:column;gap:1rem;">
+                    <!-- Step 1 -->
+                    <div class="flex items-center gap-5 rounded-2xl p-5" style="background:rgba(255,255,255,.03);">
+                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.2);">
+                            <i class="ph-fill ph-wifi-high text-2xl" style="color:#4ade80;"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="uppercase tracking-widest mb-0.5" style="font-size:10px;color:#4b5563;">Step 1</div>
+                            <div class="font-semibold">インターネットに接続</div>
+                            <div class="text-xs mt-0.5" style="color:#6b7280;">自宅のルーターにLANケーブルを繋ぐ</div>
+                        </div>
+                        <i class="ph-fill ph-check-circle text-xl shrink-0" style="color:#4ade80;"></i>
+                    </div>
+                    <div class="flex justify-center">
+                        <i class="ph-fill ph-arrow-down text-2xl" style="color:rgba(74,222,128,.3);"></i>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex items-center gap-5 rounded-2xl p-5" style="background:rgba(74,222,128,.05);border:1px solid rgba(74,222,128,.15);">
+                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.3);">
+                            <i class="ph-fill ph-cube text-2xl" style="color:#4ade80;"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="uppercase tracking-widest mb-0.5" style="font-size:10px;color:#4b5563;">Step 2</div>
+                            <div class="font-semibold">BBINFOボックスを接続</div>
+                            <div class="text-xs mt-0.5" style="color:#6b7280;">VPN機能内蔵 — 自動的に日本環境へ</div>
+                        </div>
+                        <div class="rounded-lg px-2 py-1 shrink-0" style="background:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.3);">
+                            <span class="font-bold uppercase tracking-wide" style="font-size:9px;color:#4ade80;">VPN</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <i class="ph-fill ph-arrow-down text-2xl" style="color:rgba(74,222,128,.3);"></i>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex items-center gap-5 rounded-2xl p-5" style="background:rgba(255,255,255,.03);">
+                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);">
+                            <i class="ph-fill ph-television text-2xl" style="color:rgba(255,255,255,.6);"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="uppercase tracking-widest mb-0.5" style="font-size:10px;color:#4b5563;">Step 3</div>
+                            <div class="font-semibold">テレビで日本放送を視聴</div>
+                            <div class="text-xs mt-0.5" style="color:#6b7280;">リモコン一つで66局を自由に切り替え</div>
+                        </div>
+                        <i class="ph-fill ph-check-circle text-xl shrink-0" style="color:#4ade80;"></i>
+                    </div>
+                    <!-- Streaming services -->
+                    <div style="padding-top:1rem;border-top:1px solid rgba(255,255,255,.05);">
+                        <div class="uppercase tracking-widest mb-3" style="font-size:10px;color:#4b5563;">オプションVPNで追加対応</div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-xl text-xs" style="color:#9ca3af;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.05);">Netflix</span>
+                            <span class="px-3 py-1.5 rounded-xl text-xs" style="color:#9ca3af;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.05);">Amazon Prime</span>
+                            <span class="px-3 py-1.5 rounded-xl text-xs" style="color:#9ca3af;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.05);">Abema</span>
+                            <span class="px-3 py-1.5 rounded-xl text-xs" style="color:#9ca3af;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.05);">Disney+</span>
+                            <span class="px-3 py-1.5 rounded-xl text-xs" style="color:#9ca3af;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.05);">Hulu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     04  スマートフォン対応
+════════════════════════════════════════════════════ -->
+<section style="padding:7rem 1.5rem;border-top:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden;">
+    <div style="position:absolute;bottom:0;right:0;width:600px;height:600px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(236,72,153,.04) 0%,transparent 65%);"></div>
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+
+            <!-- Visual (left) — phone mockup -->
+            <div class="order-2 lg:order-1 flex flex-col justify-center items-center">
+                <div style="width:260px;position:relative;">
+                    <div style="border-radius:2.75rem;padding:12px;border:2px solid rgba(236,72,153,.3);background:rgba(236,72,153,.03);box-shadow:0 0 60px rgba(236,72,153,.08);">
+                        <!-- Notch -->
+                        <div style="width:72px;height:5px;border-radius:99px;background:rgba(255,255,255,.1);margin:0 auto 10px;"></div>
+                        <!-- Screen -->
+                        <div style="border-radius:1.75rem;overflow:hidden;background:#050505;min-height:440px;position:relative;">
+                            <!-- Status bar -->
+                            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 20px 8px;">
+                                <span style="font-size:10px;color:rgba(255,255,255,.4);">9:41</span>
+                                <div style="display:flex;gap:4px;align-items:center;">
+                                    <i class="ph-fill ph-wifi-high" style="font-size:10px;color:rgba(255,255,255,.3);"></i>
+                                    <i class="ph-fill ph-battery-full" style="font-size:10px;color:rgba(255,255,255,.3);"></i>
+                                </div>
+                            </div>
+                            <!-- App header -->
+                            <div style="padding:0 16px 12px;border-bottom:1px solid rgba(255,255,255,.05);">
+                                <div style="display:flex;justify-content:space-between;align-items:center;">
+                                    <span style="font-size:12px;font-weight:700;">BBINFO</span>
+                                    <div style="width:24px;height:24px;border-radius:50%;background:rgba(236,72,153,.2);display:flex;align-items:center;justify-content:center;">
+                                        <i class="ph-fill ph-user" style="font-size:10px;color:#ec4899;"></i>
+                                    </div>
+                                </div>
+                                <div style="margin-top:8px;display:flex;align-items:center;gap:6px;">
+                                    <span style="width:6px;height:6px;border-radius:50%;background:#ec4899;animation:pulse 2s infinite;display:inline-block;"></span>
+                                    <span style="font-size:9px;color:#ec4899;font-weight:600;letter-spacing:.1em;text-transform:uppercase;">LIVE NOW</span>
+                                </div>
+                            </div>
+                            <!-- Channel list -->
+                            <div>
+                                <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:rgba(236,72,153,.05);border-bottom:1px solid rgba(255,255,255,.04);">
+                                    <div style="width:28px;height:28px;border-radius:8px;background:rgba(236,72,153,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                        <i class="ph-fill ph-television" style="font-size:12px;color:#ec4899;"></i>
+                                    </div>
+                                    <div style="flex:1;min-width:0;">
+                                        <div style="font-size:10px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">NHK総合 ニュース7</div>
+                                        <div style="font-size:8px;color:#6b7280;margin-top:2px;">19:00 〜 19:30</div>
+                                    </div>
+                                    <div style="width:20px;height:20px;border-radius:50%;background:rgba(236,72,153,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                        <i class="ph-fill ph-play" style="font-size:8px;color:#ec4899;"></i>
+                                    </div>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.04);">
+                                    <div style="width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                        <i class="ph-fill ph-television" style="font-size:12px;color:rgba(255,255,255,.3);"></i>
+                                    </div>
+                                    <div style="flex:1;min-width:0;">
+                                        <div style="font-size:10px;font-weight:500;color:rgba(255,255,255,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">日本テレビ バラエティ</div>
+                                        <div style="font-size:8px;color:#4b5563;margin-top:2px;">19:00 〜 20:54</div>
+                                    </div>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.04);">
+                                    <div style="width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                        <i class="ph-fill ph-television" style="font-size:12px;color:rgba(255,255,255,.3);"></i>
+                                    </div>
+                                    <div style="flex:1;min-width:0;">
+                                        <div style="font-size:10px;font-weight:500;color:rgba(255,255,255,.5);">TBS ドラマ</div>
+                                        <div style="font-size:8px;color:#4b5563;margin-top:2px;">21:00 〜 21:54</div>
+                                    </div>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.04);">
+                                    <div style="width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                        <i class="ph-fill ph-television" style="font-size:12px;color:rgba(255,255,255,.3);"></i>
+                                    </div>
+                                    <div style="flex:1;min-width:0;">
+                                        <div style="font-size:10px;font-weight:500;color:rgba(255,255,255,.5);">フジテレビ スポーツ中継</div>
+                                        <div style="font-size:8px;color:#4b5563;margin-top:2px;">19:30 〜 22:00</div>
+                                    </div>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;">
+                                    <div style="width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                        <i class="ph-fill ph-television" style="font-size:12px;color:rgba(255,255,255,.3);"></i>
+                                    </div>
+                                    <div style="flex:1;min-width:0;">
+                                        <div style="font-size:10px;font-weight:500;color:rgba(255,255,255,.5);">アニマックス 深夜アニメ</div>
+                                        <div style="font-size:8px;color:#4b5563;margin-top:2px;">24:00 〜 24:30</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Bottom nav -->
+                            <div style="position:absolute;bottom:32px;left:12px;right:12px;display:flex;justify-content:space-around;padding:10px;background:rgba(0,0,0,.8);border-radius:16px;border:1px solid rgba(255,255,255,.05);">
+                                <i class="ph-fill ph-house" style="font-size:16px;color:#ec4899;"></i>
+                                <i class="ph-fill ph-television" style="font-size:16px;color:rgba(255,255,255,.3);"></i>
+                                <i class="ph-fill ph-clock-counter-clockwise" style="font-size:16px;color:rgba(255,255,255,.3);"></i>
+                                <i class="ph-fill ph-magnifying-glass" style="font-size:16px;color:rgba(255,255,255,.3);"></i>
+                            </div>
+                        </div>
+                        <!-- Home bar -->
+                        <div style="width:90px;height:4px;border-radius:99px;background:rgba(255,255,255,.15);margin:10px auto 0;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text (right) -->
+            <div class="order-1 lg:order-2">
+                <div class="flex items-end gap-4 mb-8">
+                    <span style="font-size:80px;font-weight:900;line-height:1;color:rgba(236,72,153,.1);user-select:none;" aria-hidden="true">04</span>
+                    <div style="padding-bottom:12px;flex:1;height:1px;background:linear-gradient(to right,rgba(236,72,153,.2),transparent);"></div>
+                </div>
+                <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-6" style="background:rgba(236,72,153,.1);border:1px solid rgba(236,72,153,.2);">
+                    <i class="ph-fill ph-device-mobile text-sm" style="color:#ec4899;"></i>
+                    <span class="text-xs font-semibold tracking-widest uppercase" style="color:#ec4899;">MOBILE APP</span>
+                </div>
+                <h2 class="font-black mb-6 leading-tight" style="font-size:clamp(2.5rem,5vw,3.75rem);">
+                    <span style="color:#ec4899;">手のひら</span>に<br>日本のテレビを
+                </h2>
+                <p class="leading-relaxed mb-4" style="color:#9ca3af;font-size:1.125rem;">楽しみ方は、テレビの前だけにとどまりません。専用アプリをインストールするだけで、お手持ちのスマートフォンが瞬時に「日本専用のテレビ」へと進化。</p>
+                <p class="leading-relaxed mb-10" style="color:#6b7280;">通勤の合間や外出先のカフェ、そして寝室でのリラックスタイムなど、シーンを選ばず日本の放送へシームレスにアクセスできます。独自の高画質ストリーミング技術により、移動中でも途切れることなく、お気に入りの番組を心ゆくまでご堪能ください。</p>
+                <!-- OS chips -->
+                <div class="flex gap-3 mb-8">
+                    <div class="flex-1 flex items-center gap-3 glass-panel rounded-2xl px-5 py-4">
+                        <i class="ph-fill ph-apple-logo text-2xl shrink-0" style="color:rgba(255,255,255,.7);"></i>
+                        <div>
+                            <div class="text-sm font-semibold">iOS</div>
+                            <div class="text-xs" style="color:#6b7280;">App Store</div>
+                        </div>
+                    </div>
+                    <div class="flex-1 flex items-center gap-3 glass-panel rounded-2xl px-5 py-4">
+                        <i class="ph-fill ph-android-logo text-2xl shrink-0" style="color:rgba(255,255,255,.7);"></i>
+                        <div>
+                            <div class="text-sm font-semibold">Android</div>
+                            <div class="text-xs" style="color:#6b7280;">Google Play</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FREE callout -->
+                <div class="flex items-center gap-4 rounded-2xl p-5" style="background:rgba(236,72,153,.08);border:1px solid rgba(236,72,153,.2);">
+                    <div class="text-4xl font-black shrink-0" style="color:#ec4899;">FREE</div>
+                    <div>
+                        <div class="font-semibold mb-0.5">期間限定 無料公開中</div>
+                        <div class="text-sm" style="color:#6b7280;">専用アプリを今すぐダウンロードしてご体験ください。</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
