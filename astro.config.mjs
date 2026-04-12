@@ -9,5 +9,7 @@ import react from "@astrojs/react";
 export default defineConfig({
   site: 'https://bbinfoindia.com',
   integrations: [tailwind(), sitemap(), react()],
-  
+  build: {
+    inlineStylesheets: 'always',
+  },
 });
