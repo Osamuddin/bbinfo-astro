@@ -1317,28 +1317,18 @@ import Layout from '../layouts/Layout.astro';
             }, { threshold: 0, rootMargin: '0px' }
         );
         observer.observe(heroSection);
-        // Read offsetHeight once at init (before any class changes) to avoid forced reflow
-        let cachedCtaHeight = 72;
-        requestAnimationFrame(() => {
-            cachedCtaHeight = mobileCTA.offsetHeight || 72;
-        });
+        const ctaHeight = 72;
         const updateFooterPadding = () => {
             if (!footer) return;
             if (window.innerWidth < 768) {
-                footer.style.paddingBottom = `${cachedCtaHeight}px`;
+                footer.style.paddingBottom = `${ctaHeight}px`;
             } else { footer.style.paddingBottom = ''; }
         };
         updateFooterPadding();
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                // Re-read height on resize in a rAF to batch reads before writes
-                requestAnimationFrame(() => {
-                    cachedCtaHeight = mobileCTA.offsetHeight || 72;
-                    updateFooterPadding();
-                });
-            }, 150);
+            resizeTimer = setTimeout(updateFooterPadding, 150);
         });
     };
 
