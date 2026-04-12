@@ -1015,14 +1015,7 @@ import Layout from '../layouts/Layout.astro';
 
     const initGlowingEffect = () => {
         const cards = document.querySelectorAll('.glow-card-container');
-        const rectCache = new Map();
-        const updateRects = () => {
-            cards.forEach(card => rectCache.set(card, card.getBoundingClientRect()));
-        };
-        updateRects();
-        let resizeTimer;
-        window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(updateRects, 100); });
-        window.addEventListener('scroll', updateRects, { passive: true });
+        if (!cards.length) return;
 
         let rafPending = false;
         let lastEvent = null;
@@ -1033,18 +1026,19 @@ import Layout from '../layouts/Layout.astro';
             requestAnimationFrame(() => {
                 rafPending = false;
                 const ev = lastEvent;
-                cards.forEach(card => {
+                // 読み取りをまとめて先に実行（forced reflow 防止）
+                const rects = Array.from(cards).map(card => card.getBoundingClientRect());
+                // 書き込みをまとめて後に実行
+                cards.forEach((card, i) => {
                     const glowEffect = card.querySelector('.glow-effect');
                     if (!glowEffect) return;
-                    const rect = rectCache.get(card);
-                    if (!rect) return;
+                    const rect = rects[i];
                     const x = ev.clientX - rect.left;
                     const y = ev.clientY - rect.top;
                     const inside = x >= -50 && x <= rect.width + 50 && y >= -50 && y <= rect.height + 50;
                     if (inside) {
                         glowEffect.style.setProperty('--active', '1');
-                        const centerX = rect.width / 2; const centerY = rect.height / 2;
-                        const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) + 90;
+                        const angle = Math.atan2(y - rect.height / 2, x - rect.width / 2) * (180 / Math.PI) + 90;
                         glowEffect.style.setProperty('--start', angle);
                     } else {
                         glowEffect.style.setProperty('--active', '0');
