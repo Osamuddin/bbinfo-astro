@@ -14,7 +14,7 @@ import Layout from '../layouts/Layout.astro';
     <div id="main-content-wrapper" class="w-full h-full">
         <section id="hero-section" class="relative min-h-[100svh] flex flex-col justify-center items-center pt-32 pb-10 overflow-hidden">
             <div class="relative z-10 max-w-7xl mx-auto px-6 text-center w-full">
-                <h1 class="reveal-up font-black mb-10 tracking-tight">
+                <h1 class="reveal-up font-black mb-10 tracking-tight lg:pt-16">
                     <span class="block text-3xl sm:text-5xl md:text-6xl lg:text-8xl mb-4 md:mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/80">
                         あなたのインド生活に、
                     </span>
@@ -337,9 +337,10 @@ import Layout from '../layouts/Layout.astro';
                                 </div>
                             </div>
 
+
                             <!-- Hero equation -->
                             <div class="px-6 pt-6 pb-5 border-b border-white/5">
-                                <p class="text-[10px] text-gray-600 uppercase tracking-widest mb-4">4週間で積み上がる放送時間</p>
+                                <p class="text-[10px] text-gray-600 uppercase tracking-widest mb-4">4週間で積み上がる放送時間（平均18時間/日で算出）</p>
                                 <div class="flex flex-wrap items-end gap-x-4 gap-y-2">
                                     <div class="text-center">
                                         <div class="text-[40px] font-black leading-none text-white">66</div>
@@ -347,7 +348,7 @@ import Layout from '../layouts/Layout.astro';
                                     </div>
                                     <span class="text-2xl text-purple-400/40 font-thin pb-5">×</span>
                                     <div class="text-center">
-                                        <div class="text-[40px] font-black leading-none text-white">24</div>
+                                        <div class="text-[40px] font-black leading-none text-white">18</div>
                                         <div class="text-[10px] text-purple-400/70 font-semibold mt-1">時間 / 日</div>
                                     </div>
                                     <span class="text-2xl text-purple-400/40 font-thin pb-5">×</span>
@@ -357,7 +358,7 @@ import Layout from '../layouts/Layout.astro';
                                     </div>
                                     <span class="text-2xl text-purple-400/40 font-thin pb-5">=</span>
                                     <div class="text-center">
-                                        <div class="text-[40px] font-black leading-none text-purple-400">44,352</div>
+                                        <div class="text-[40px] font-black leading-none text-purple-400">33,264</div>
                                         <div class="text-[10px] text-purple-400/60 font-semibold mt-1">時間を常時保存</div>
                                     </div>
                                 </div>
@@ -1301,7 +1302,7 @@ import Layout from '../layouts/Layout.astro';
                 obs.disconnect();
                 doFetch();
             }
-        }, { rootMargin: '200px' });
+        }, { rootMargin: '800px' });
         observer.observe(newsSection);
     };
 
