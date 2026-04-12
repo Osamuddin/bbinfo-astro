@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'bbinfo-v1';
+const CACHE_VERSION = 'bbinfo-v2';
 
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const HTML_CACHE   = `${CACHE_VERSION}-html`;
