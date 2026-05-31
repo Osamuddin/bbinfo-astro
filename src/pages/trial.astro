@@ -95,7 +95,7 @@ import Layout from '../layouts/Layout.astro';
                                 <div class="text-[10px] text-gray-500 mb-1">新規機械設置・修理受付<br>平日10:00-17:00　定休日:土曜日,日曜日</div>
                                 <div class="input-wrapper relative">
                                     <input type="date" name="preferred_date" id="preferred_date" class="glass-input date-input">
-                                    <span id="date-placeholder" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none text-base">日付を選択</span>
+                                    <span id="date-placeholder" class="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none text-base" style="color: rgba(255,255,255,0.3);">日付を選択</span>
                                     <i class="ph ph-calendar-blank input-icon absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
                                 </div>
                             </div>
@@ -194,7 +194,7 @@ import Layout from '../layouts/Layout.astro';
     .glass-input {
         width: 100%;
         background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 0.75rem;
         padding: 1rem;
         color: white;
@@ -225,9 +225,25 @@ import Layout from '../layouts/Layout.astro';
         box-sizing: border-box !important;
         max-width: 100% !important;
     }
+    .date-input::-webkit-calendar-picker-indicator {
+        opacity: 0;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
     .date-input::-webkit-date-and-time-value {
         color: white;
         text-align: left;
+    }
+    .date-input::-webkit-datetime-edit {
+        color: transparent;
+        opacity: 0;
+    }
+    .date-input.has-value::-webkit-datetime-edit {
+        color: white;
+        opacity: 1;
     }
     
     .glass-input:focus {
@@ -443,6 +459,7 @@ import Layout from '../layouts/Layout.astro';
     if (dateInput && datePlaceholder) {
         dateInput.addEventListener('change', () => {
             datePlaceholder.style.display = dateInput.value ? 'none' : '';
+            dateInput.classList.toggle('has-value', !!dateInput.value);
         });
     }
 </script>
