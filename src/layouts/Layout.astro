@@ -1,6 +1,12 @@
 ---
 // src/layouts/Layout.astro
 import '../styles/global.css';
+import '@fontsource/noto-sans-jp/400.css';
+import '@fontsource/noto-sans-jp/500.css';
+import '@fontsource/noto-sans-jp/700.css';
+import '@fontsource/noto-sans-jp/900.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/600.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -24,19 +30,7 @@ import ElegantShape from '../components/ElegantShape.astro';
 
         <slot name="head" />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-        <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600&display=optional"
-            rel="stylesheet"
-            media="print"
-            onload="this.media='all'"
-        >
-
-        <noscript>
-            <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600&display=optional" rel="stylesheet">
-        </noscript>
+        <!-- Fonts: self-hosted via @fontsource (imported in frontmatter) -->
         <link rel="stylesheet" href="/fonts/phosphor/icons.css" media="print" onload="this.media='all'" />
         <noscript><link rel="stylesheet" href="/fonts/phosphor/icons.css" /></noscript>
 
